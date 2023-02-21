@@ -4,9 +4,9 @@ plugins {
 }
 
 group 'CCFinderSW'
-version '1.0.1'
+version '1.0.2'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.17
 mainClassName = 'ccfindersw.CCFSWLauncher'
 def executableBaseName = group + "-" + version
 
@@ -15,9 +15,7 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
     implementation group: 'org.antlr', name: 'antlr4-runtime', version: '4.11.1'
-    // https://mvnrepository.com/artifact/commons-cli/commons-cli
     implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
 }
 
@@ -26,7 +24,6 @@ compileJava {
 }
 
 jar {
-    archiveName = "${executableBaseName}.jar"
     manifest {
         attributes 'Main-Class' : mainClassName
     }
