@@ -8,6 +8,7 @@
       <module name="CCFinderSW.AnalyzeArtifact.test" target="1.8" />
       <module name="CCFinderSW.CCFinder.main" target="1.8" />
       <module name="CCFinderSW.CCFinder.test" target="1.8" />
+      <module name="CCFinderSW.test" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>
