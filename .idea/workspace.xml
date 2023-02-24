@@ -4,12 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fe3014f-1211-4de8-9b3d-1feb11910cc3" name="Default Changelist" comment="Removed japanese docs">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gemx/gemx/GemXMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="2fe3014f-1211-4de8-9b3d-1feb11910cc3" name="Default Changelist" comment="gemx compiles">
+      <change afterPath="$PROJECT_DIR$/colors.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/logonew_with_name.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/CCFinderSW-1.0.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/ccfinderx/CCFinderX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/ccfinderx/CCFinderX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/gemx/GemXMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/gemx/GemXMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/gemx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/gemx/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/gemx/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/gemx/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/gemx/dialogs/AboutDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/gemx/dialogs/AboutDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/logo3_16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logo3_16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/logonew16.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logonew16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/logonew32.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logonew32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/logonew64.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logonew64.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/res/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/res/Messages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/res/ja.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/res/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/res/messages_ja.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/utility/ExecutionModuleDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/utility/ExecutionModuleDirectory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/utility/Picosel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/utility/Picosel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +63,11 @@
                 <item name="CCFinderSW" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="distribution" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CCFinderSW" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -175,31 +193,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\CCFinderSW\src\main\resources" />
       <recent name="D:\GitHub\CCFinderSW\src\main\java\gemx\gemx" />
       <recent name="C:\Users\wenin\IdeaProjects\CCFSW\src\main" />
     </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="gemx.ccfinderx.CCFinderX" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gradle.CCFSW [build]">
+  <component name="RunManager" selected="Application.GemXMain">
+    <configuration name="ExecutionModuleDirectory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gemx.utility.ExecutionModuleDirectory" />
+      <module name="CCFinderSW.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gemx.utility.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GemXMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gemx.gemx.GemXMain" />
+      <module name="CCFinderSW.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gemx.gemx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CCFSW [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -242,27 +296,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="CCFSW [processResources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="processResources" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration name="CCFSW [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -284,34 +317,13 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GradleBuild [distZip]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="distZip" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ExecutionModuleDirectory" />
+        <item itemvalue="Application.GemXMain" />
         <item itemvalue="Gradle.CCFSW [build]" />
         <item itemvalue="Gradle.CCFSW [run]" />
         <item itemvalue="Gradle.CCFSW [jar]" />
-        <item itemvalue="Gradle.GradleBuild [distZip]" />
-        <item itemvalue="Gradle.CCFSW [processResources]" />
       </list>
     </recent_temporary>
   </component>
@@ -329,7 +341,8 @@
       <workItem from="1676938942644" duration="1057000" />
       <workItem from="1676940009835" duration="3542000" />
       <workItem from="1676944793655" duration="66000" />
-      <workItem from="1676944999098" duration="404000" />
+      <workItem from="1676944999098" duration="5396000" />
+      <workItem from="1677274590664" duration="5304000" />
     </task>
     <task id="LOCAL-00001" summary="[update] 0.9.1">
       <created>1551875161619</created>
@@ -380,7 +393,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676940066969</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="gemx compiles">
+      <created>1676945492720</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676945492720</updated>
+    </task>
+    <task id="LOCAL-00009" summary="gemx compiles">
+      <created>1676945571158</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1676945571158</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -449,6 +476,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="[update] 0.9.1" />
     <MESSAGE value="[update] 1.0" />
     <MESSAGE value="[update] delete build" />
@@ -456,7 +484,29 @@
     <MESSAGE value="[update] Usage" />
     <MESSAGE value="JDK 17" />
     <MESSAGE value="Removed japanese docs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed japanese docs" />
+    <MESSAGE value="gemx compiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="gemx compiles" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/gemx/ccfinderx/CCFinderX.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/gemx/gemx/GemXMain.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/gemx/gemx/Main.java</url>
+          <line>142</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gradle/vcs-1/gc.properties">

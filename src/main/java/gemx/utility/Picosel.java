@@ -1,16 +1,8 @@
 package gemx.utility;
 
-public class Picosel {
-	static {
-		System.loadLibrary("picosellib"); //$NON-NLS-1$
-	}
+import gemx.ccfinderx.CCFinderX;
 
-	public static native int invokePicosel(
-			String tableFile, 
-			String outputFile, 
-			String column,
-			String[] expressions);
-	
+public class Picosel {
 	private String tableFile;
 	private String outputFile;
 	private String column;
@@ -38,6 +30,6 @@ public class Picosel {
 	}
 	
 	public int invokePicosel() {
-		return invokePicosel(tableFile, outputFile, column, expressions);
+		return CCFinderX.invokePicosel(tableFile, outputFile, column, expressions);
 	}
 }

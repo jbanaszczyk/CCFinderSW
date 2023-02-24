@@ -134,7 +134,7 @@ public class AboutDialog {
 				}
 				Image img = null;
 				{
-					ImageData imgData = new ImageData(AboutDialog.class.getResourceAsStream("logonew_with_name.png")); //$NON-NLS-1$
+					ImageData imgData = new ImageData(AboutDialog.class.getResourceAsStream("/logonew_with_name.png")); //$NON-NLS-1$
 					if (imgData != null) {
 						img = new Image(parent.getDisplay(), imgData);
 						labelIcon.setImage(img);
@@ -251,21 +251,6 @@ public class AboutDialog {
 //				System.exit(1);
 //			}
 			
-			boolean ccfxSuccessfullyInvoked = true;
-			try {
-				int r = ccfinderx.invokeCCFinderX(new String[0]);
-				ccfxSuccessfullyInvoked = r == 0;
-			}
-			catch (Exception e) {
-				ccfxSuccessfullyInvoked = false;			
-			}
-			if (! ccfxSuccessfullyInvoked) {
-				showErrorMessageAndOpenTroubleshootingPage(
-						"INSTALLATION ERROR:\n" //$NON-NLS-1$
-						+ "Fail to invoke ccfx. \n" //$NON-NLS-1$
-						+ "Check the required libraries have been installed, please."); //$NON-NLS-1$
-				System.exit(1);
-			}
 		}
 		
 		shellC.setVisible(false);

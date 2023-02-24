@@ -46,7 +46,6 @@ public class Main {
 	private static final String sVerMajor = "verMajor"; //$NON-NLS-1$
 	private static final String sVerMinor1 = "verMinor1"; //$NON-NLS-1$
 	private static final String sVerMinor2 = "verMinor2"; //$NON-NLS-1$
-	private static final String sRunning = "running"; //$NON-NLS-1$
 	private static final String sSettingPreprocessor = "settingPreprocessor"; //$NON-NLS-1$
 	private static final String sSettingMinimumCloneLength = "settingMinimumCloneLength"; //$NON-NLS-1$
 	private static final String sSettingMinimumTKS = "settingMinimumTKS"; //$NON-NLS-1$
@@ -139,51 +138,16 @@ public class Main {
 	
 	protected void loadProperties(Shell shell) {
 		CCFinderX check = CCFinderX.theInstance;
-		int[] ccfxVersion = check.getVersion();
-		
-		if (! (ccfxVersion[0] == ApplicationVersion.verMajor && ccfxVersion[1] == ApplicationVersion.verMinor1 && ccfxVersion[2] == ApplicationVersion.verMinor2)) {
-			MessageBox box1 = new MessageBox(shell, 
-					SWT.ICON_WARNING | SWT.OK | SWT.CANCEL);
-			box1.setText("Warning - GemX"); //$NON-NLS-1$
-			box1.setMessage(
-					String.format(Messages.getString("gemx.Main.S_GEMX_CCFX_VERSION_MISMATCH") //$NON-NLS-1$
-					+ "GemX : %d.%d.%d \n" //$NON-NLS-1$
-					+ "ccfx : %d.%d.%d \n" //$NON-NLS-1$
-					+ "\n" //$NON-NLS-1$
-					+ Messages.getString("gemx.Main.S_FORCE_CONTINUE_P"), //$NON-NLS-1$
-					ApplicationVersion.verMajor, ApplicationVersion.verMinor1, ApplicationVersion.verMinor2,
-					ccfxVersion[0], ccfxVersion[1], ccfxVersion[2]));
-			if (box1.open() == SWT.CANCEL) {
-				System.exit(0);
-			}
-		}
-		
+
 		boolean noPropertyFileExists = false;
 		Properties config = new Properties();
 		try {
 			boolean propertyFileVersionMismatch = false;
 			InputStream inputStream = new FileInputStream(new File(propertyFile));
 			config.load(inputStream);
-			try {
-				int processIdOfRunningInstance = Integer.parseInt(config.getProperty(sRunning));
-				if (processIdOfRunningInstance != 0 && gemx.ccfinderx.CCFinderX.theInstance.isProcessAlive(processIdOfRunningInstance)) {
-					MessageBox box1 = new MessageBox(shell, 
-							SWT.ICON_WARNING | SWT.OK | SWT.CANCEL);
-					box1.setText("Warning - GemX"); //$NON-NLS-1$
-					box1.setMessage(
-							String.format(Messages.getString("gemx.Main.S_ANOTHER_INSTANCE_OF_GEMX_IS_RUNNING"), processIdOfRunningInstance)  //$NON-NLS-1$
-							+ "\n" //$NON-NLS-1$
-							+ Messages.getString("gemx.Main.S_FORCE_CONTINUE_P") //$NON-NLS-1$
-							);
-					if (box1.open() == SWT.CANCEL) {
-						System.exit(0);
-					}
-					noPropertyFileExists = true;
-				}
-			} catch (NumberFormatException e) {
-				propertyFileVersionMismatch = true;
-			}
-			
+
+			noPropertyFileExists = true;
+
 			int v0 = Integer.parseInt(config.getProperty(sVerMajor));
 			int v1 = Integer.parseInt(config.getProperty(sVerMinor1));
 			int v2 = Integer.parseInt(config.getProperty(sVerMinor2));
@@ -261,8 +225,7 @@ public class Main {
 			settingResetScopeItemInContextMenus = parseBooleanLikeThing(config.getProperty(sSettingResetScopeItemInContextMenus));
 		}
 		
-		config.setProperty(sRunning, String.valueOf(gemx.ccfinderx.CCFinderX.theInstance.getCurrentProcessId()));
-		
+
 		try {
 			if (! makeDirectoryIfNotExist(propertyFile)) {
 				MessageBox box1 = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
@@ -296,8 +259,7 @@ public class Main {
 			System.exit(1);
 		}
 		
-		config.setProperty(sRunning, String.valueOf(0));
-		
+
 		config.setProperty(sSettingPreprocessor, settingPreprocessor);
 		config.setProperty(sSettingMinimumCloneLength, String.valueOf(settingMinimumCloneLength));
 		config.setProperty(sSettingMinimumTKS, String.valueOf(settingMinimumTKS));
@@ -349,7 +311,7 @@ public class Main {
 	}
 	
 	private static String readColorConfigFile() {
-		final String fileName = "colors.json"; //$NON-NLS-1$
+		final String fileName = CCFinderX.getApplicationDataPath() + "/colors.json"; //$NON-NLS-1$
 		try {
 			BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8")); //$NON-NLS-1$
 			StringBuilder builder = new StringBuilder();
@@ -396,7 +358,7 @@ public class Main {
 		try {
 			Image img = null;
 			{
-				ImageData imgData = new ImageData(Main.class.getResourceAsStream("logonew16.png")); //$NON-NLS-1$
+				ImageData imgData = new ImageData(Main.class.getResourceAsStream("/logonew16.png")); //$NON-NLS-1$
 				if (imgData != null) {
 					img = new Image(display, imgData);
 					shell.setImage(img);

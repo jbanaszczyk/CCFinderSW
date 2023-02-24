@@ -719,11 +719,11 @@ public class MainWindow {
 			}
 			int shaperLevel = lastShaperLevel;
 			if (lastUsePMatch == null) {
-				lastUsePMatch = new Boolean(main.settingUsePMatch);
+				lastUsePMatch =  main.settingUsePMatch;
 			}
 			boolean usePMatch = lastUsePMatch.booleanValue();
 			if (lastUsePrescreening == null) {
-				lastUsePrescreening = new Boolean(main.settingUsePrescreening);
+				lastUsePrescreening = main.settingUsePrescreening;
 			}
 			boolean usePrescreening = lastUsePrescreening.booleanValue();
 			{
@@ -965,7 +965,7 @@ public class MainWindow {
 			}
 			int shaperLevel = lastShaperLevel;
 			if (lastUsePMatch == null) {
-				lastUsePMatch = new Boolean(main.settingUsePMatch);
+				lastUsePMatch = main.settingUsePMatch;
 			}
 			boolean usePMatch = lastUsePMatch.booleanValue();
 			if (lastPreprocessorByDoDetectClones == null || lastPreprocessorByDoDetectClones.length() == 0) {
@@ -973,7 +973,7 @@ public class MainWindow {
 			}
 			String preprocessor = lastPreprocessorByDoDetectClones;
 			if (lastUsePrescreening == null) {
-				lastUsePrescreening = new Boolean(main.settingUsePrescreening);
+				lastUsePrescreening = main.settingUsePrescreening;
 			}
 			boolean usePrescreening = lastUsePrescreening.booleanValue();
 			{
