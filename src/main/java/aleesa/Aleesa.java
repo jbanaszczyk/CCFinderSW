@@ -24,26 +24,24 @@ import java.util.regex.Pattern;
  */
 
 public class Aleesa {
+    private static String variableRegex = "[0-9a-zA-Z_]";
+    public boolean isRecursive = false;
+    public String skipRegex = "";
+    public String reservedRegex = "";
+    public String strRegex = "";
     private LinkedHashSet<String> keywordList = new LinkedHashSet<>();
     private ArrayList<String> fragmentList = new ArrayList<>();
     private LinkedHashMap<String, ArrayList<String>> lexerExpList = new LinkedHashMap<>();
     private StringBuilder builderSkip = new StringBuilder();
     private StringBuilder builderKeyWord = new StringBuilder();
+    // (\[[0-9a-zA-Z_]+]|'[0-9a-zA-Z_]+'|[0-9a-zA-Z_]|[()|])+
     private LinkedHashMap<String, ArrayList<String>> stringList = new LinkedHashMap<>();
     private StringBuilder builderString = new StringBuilder();
     private ArrayList<String> filePathList = new ArrayList<>();
-    private static String variableRegex = "[0-9a-zA-Z_]";
     private String specialRegex =
             "(\\[" + variableRegex + "+]|"
                     + "'" + variableRegex + "+'|"
                     + variableRegex + "|[()|])+";
-    // (\[[0-9a-zA-Z_]+]|'[0-9a-zA-Z_]+'|[0-9a-zA-Z_]|[()|])+
-
-    public boolean isRecursive = false;
-    public String skipRegex = "";
-    public String reservedRegex = "";
-    public String strRegex = "";
-
     private String language = null;
 
     public void getGrammar(String g4DirectoryPath) {
@@ -245,7 +243,7 @@ public class Aleesa {
                     || ((entry.getKey().toLowerCase().contains("comment")
                     || p.matcher(entry.getValue().get(entry.getValue().size() - 1)).find()) &&
                     !isCommentInArrayList(entry.getValue()))
-                    ) {
+            ) {
                 skip = true;
             }
 

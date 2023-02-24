@@ -11,10 +11,9 @@ import static common.TokenName.*;
 
 public class CCFXPrepReload {
 
+    public ArrayList<Token> tokenList = new ArrayList<>();
     private String directoryName;
     private String language;
-
-    public ArrayList<Token> tokenList = new ArrayList<>();
 
     public CCFXPrepReload(String dn, String language) {
         directoryName = dn;

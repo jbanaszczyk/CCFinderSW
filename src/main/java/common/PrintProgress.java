@@ -19,6 +19,10 @@ public class PrintProgress {
         this.scale = 1;
     }
 
+    public static void main(String[] args) {
+        new PrintProgress().testRun();
+    }
+
     /**
      * percent = progress / max * 100
      *
@@ -50,10 +54,6 @@ public class PrintProgress {
         if (progressX == max) {
             System.out.println("100%");
         }
-    }
-
-    public static void main(String[] args) {
-        new PrintProgress().testRun();
     }
 
     public void testRun() {

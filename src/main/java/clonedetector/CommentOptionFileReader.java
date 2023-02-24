@@ -15,8 +15,8 @@ import static common.TokenName.*;
 public class CommentOptionFileReader {
 
     String language;
-    private String filename;
     OptionReader or;
+    private String filename;
 
     public CommentOptionFileReader(String language, OptionReader or) {
         this.language = language;

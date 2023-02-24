@@ -13,9 +13,6 @@ import java.util.regex.Pattern;
 import static common.TokenName.*;
 
 public class PreProcess {
-    private String filename;
-    private OptionReader or;
-
     /**
      * tokenList Tokenのリスト
      */
@@ -24,15 +21,15 @@ public class PreProcess {
      * preList ccfxprepのリスト
      */
     public ArrayList<Pre> preList = new ArrayList<>();
-
+    int nowLine;// 行数
+    private String filename;
+    private OptionReader or;
     private boolean doEscape, lineendEscape = true;
-
     /* isComment() で使用するグローバル変数 */
     private ArrayList<CommentRule> ruleList;
     private ArrayList<CommentRule> ruleList_Line;
     private ArrayList<CommentRule> literalList;
     private ArrayList<String> reservedWordList;
-
     private int commentRuleSize;
     private int commentRuleSize_Line;
     private int literalRuleSize;
@@ -41,13 +38,10 @@ public class PreProcess {
     private String commentStart;
     private String commentEnd;
     private int commentType;
-
     private boolean spaceIndent;
     //private String variableRegex;
     private Pattern p;
-
     private boolean doZero = false;
-
     /**
      * ZeroToken のためのグローバル変数
      */
@@ -55,8 +49,6 @@ public class PreProcess {
     private int parenCount = 0;
     private String beforeToken = "";
     private int beforeType = 0;
-
-    int nowLine;// 行数
     private int lastNewLine = 0;
     private int nowLineTmp;
     private int lastNewLineTmp;

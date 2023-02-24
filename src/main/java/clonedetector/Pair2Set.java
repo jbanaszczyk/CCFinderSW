@@ -10,30 +10,55 @@ import java.util.TreeSet;
 public class Pair2Set {
     private ArrayList<PlaceAndRoad> placeAndRoadList = new ArrayList<>();
 
-    /**
-     * そのコード片の位置と，ペアとなるコード片のインスタンスを保持するクラス
-     */
-    static class PlaceAndRoad {
-        /**
-         * コード片の出現場所
-         */
-        int place;
-        /**
-         * コード片の探索が終わったかどうか
-         */
-        boolean visited = false;
-        /**
-         * このコード片とペアとなるコード片のリスト
-         */
-        ArrayList<PlaceAndRoad> direction = new ArrayList<>();
-        /**
-         * このコード片を含むクローンペアの位置(clonePairList中のindex)
-         */
-        ArrayList<Integer> indexOfPair = new ArrayList<>();
-
-        PlaceAndRoad(int place) {
-            this.place = place;
+    private static int compareDistanceForBack(int[] s, int[] t) {
+        if (s[2] < t[2])
+            return -1;
+        else if (s[2] > t[2])
+            return 1;
+        else {
+            if (s[0] < t[0]) {
+                return -1;
+            } else if (s[0] > t[0]) {
+                return 1;
+            } else {
+                if (s[1] < t[1]) {
+                    return -1;
+                } else if (s[1] > t[1]) {
+                    return 1;
+                }
+            }
         }
+        return 0;
+    }
+
+    public static int compareForBack(int[] s, int[] t) {
+        if (s[0] < t[0]) {
+            return -1;
+        } else if (s[0] > t[0]) {
+            return 1;
+        } else {
+            if (s[1] < t[1]) {
+                return -1;
+            } else if (s[1] > t[1]) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public static int CloneIDFor(int[] a, int[] b) {
+        if (a[3] < b[3]) {
+            return -1;
+        } else if (a[3] > b[3]) {
+            return 1;
+        } else {
+            if (a[0] < b[0]) {
+                return -1;
+            } else if (a[0] > b[0]) {
+                return 1;
+            }
+        }
+        return 0;
     }
 
     /**
@@ -127,54 +152,29 @@ public class Pair2Set {
         }
     }
 
-    private static int compareDistanceForBack(int[] s, int[] t) {
-        if (s[2] < t[2])
-            return -1;
-        else if (s[2] > t[2])
-            return 1;
-        else {
-            if (s[0] < t[0]) {
-                return -1;
-            } else if (s[0] > t[0]) {
-                return 1;
-            } else {
-                if (s[1] < t[1]) {
-                    return -1;
-                } else if (s[1] > t[1]) {
-                    return 1;
-                }
-            }
-        }
-        return 0;
-    }
+    /**
+     * そのコード片の位置と，ペアとなるコード片のインスタンスを保持するクラス
+     */
+    static class PlaceAndRoad {
+        /**
+         * コード片の出現場所
+         */
+        int place;
+        /**
+         * コード片の探索が終わったかどうか
+         */
+        boolean visited = false;
+        /**
+         * このコード片とペアとなるコード片のリスト
+         */
+        ArrayList<PlaceAndRoad> direction = new ArrayList<>();
+        /**
+         * このコード片を含むクローンペアの位置(clonePairList中のindex)
+         */
+        ArrayList<Integer> indexOfPair = new ArrayList<>();
 
-    public static int compareForBack(int[] s, int[] t) {
-        if (s[0] < t[0]) {
-            return -1;
-        } else if (s[0] > t[0]) {
-            return 1;
-        } else {
-            if (s[1] < t[1]) {
-                return -1;
-            } else if (s[1] > t[1]) {
-                return 1;
-            }
+        PlaceAndRoad(int place) {
+            this.place = place;
         }
-        return 0;
-    }
-
-    public static int CloneIDFor(int[] a, int[] b) {
-        if (a[3] < b[3]) {
-            return -1;
-        } else if (a[3] > b[3]) {
-            return 1;
-        } else {
-            if (a[0] < b[0]) {
-                return -1;
-            } else if (a[0] > b[0]) {
-                return 1;
-            }
-        }
-        return 0;
     }
 }

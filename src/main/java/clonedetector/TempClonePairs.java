@@ -84,34 +84,6 @@ public class TempClonePairs {
         return pairList;
     }
 
-    public void outputNgramCount(int[] nGramCountList, String directoryPath) {
-        String filename = directoryPath + File.separator + ".ngramcount";
-        StringBuilder buf = new StringBuilder();
-        Arrays.stream(nGramCountList).forEach(s -> buf.append(s).append("\n"));
-        FileAndString.writeAll(filename, buf.toString());
-    }
-
-    public int[] loadNgramCount(String directoryPath) {
-        String filename = directoryPath + File.separator + ".ngramcount";
-        String str = "";
-        try {
-            str = FileAndString.readAll(filename);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String[] x = str.split("\r\n?|\n");
-        int i = 0;
-        int[] tmp = new int[x.length - 1];
-        for (String a : x) {
-            try {
-                tmp[i++] = Integer.parseInt(a);
-            } catch (NumberFormatException ignored) {
-
-            }
-        }
-        return tmp;
-    }
-
     public static void tmpPairList(int[][] pairList, int hash, String directoryPath, int groupA, int groupB, int group) {
         String filename = directoryPath + File.separator + ".rare" + hash + "_" + groupA + "_" + groupB + "_" + group + ".ccfswtmp";
         try (FileOutputStream out = new FileOutputStream(filename, true)) {
@@ -124,7 +96,6 @@ public class TempClonePairs {
             e.printStackTrace();
         }
     }
-
 
     public static int[][] loadPairList(int[][] pairList, int hash, String directoryPath,
                                        int groupA, int groupB, int group, int nowPairCount, int sumPairCount) {
@@ -152,5 +123,33 @@ public class TempClonePairs {
             pair[idx][2] = pairList[idx - sumPairCount + nowPairCount][2];
         }
         return pair;
+    }
+
+    public void outputNgramCount(int[] nGramCountList, String directoryPath) {
+        String filename = directoryPath + File.separator + ".ngramcount";
+        StringBuilder buf = new StringBuilder();
+        Arrays.stream(nGramCountList).forEach(s -> buf.append(s).append("\n"));
+        FileAndString.writeAll(filename, buf.toString());
+    }
+
+    public int[] loadNgramCount(String directoryPath) {
+        String filename = directoryPath + File.separator + ".ngramcount";
+        String str = "";
+        try {
+            str = FileAndString.readAll(filename);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String[] x = str.split("\r\n?|\n");
+        int i = 0;
+        int[] tmp = new int[x.length - 1];
+        for (String a : x) {
+            try {
+                tmp[i++] = Integer.parseInt(a);
+            } catch (NumberFormatException ignored) {
+
+            }
+        }
+        return tmp;
     }
 }

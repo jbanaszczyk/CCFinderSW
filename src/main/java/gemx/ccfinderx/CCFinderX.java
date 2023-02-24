@@ -5,6 +5,8 @@ import java.nio.file.Path;
 
 public class CCFinderX {
 
+    public static CCFinderX theInstance = new CCFinderX();
+
     public static int invokePicosel(
             String tableFile,
             String outputFile,
@@ -13,10 +15,18 @@ public class CCFinderX {
         throw new RuntimeException();
     }
 
+    public static String getApplicationDataPath() {
 
-    private class GemxException extends RuntimeException {
-        public GemxException() {
+//        var clazz = MethodHandles.lookup().lookupClass();
+//        return CCFinderX.class.getProtectionDomain().getCodeSource().getLocation().getFile();
+
+        try {
+            return Path.of(".").toRealPath().toString();
+        } catch (IOException e) {
+            return System.getProperty("user.dir");
         }
+
+
     }
 
     public void setModuleDirectory(String path) {
@@ -28,7 +38,7 @@ public class CCFinderX {
     }
 
     public int[] getVersion() {
-        int[] version =  {20,0,0,};
+        int[] version = {20, 0, 0,};
         return version;
     }
 
@@ -52,20 +62,6 @@ public class CCFinderX {
         throw new GemxException();
     }
 
-    public static String getApplicationDataPath() {
-
-//        var clazz = MethodHandles.lookup().lookupClass();
-//        return CCFinderX.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-
-        try {
-            return Path.of(".").toRealPath().toString();
-        } catch (IOException e) {
-            return System.getProperty("user.dir");
-        }
-
-
-    }
-
     public int getCurrentProcessId() {
         throw new GemxException();
     }
@@ -74,7 +70,9 @@ public class CCFinderX {
         throw new GemxException();
     }
 
-
-    public static CCFinderX theInstance = new CCFinderX();
+    private class GemxException extends RuntimeException {
+        public GemxException() {
+        }
+    }
 
 }

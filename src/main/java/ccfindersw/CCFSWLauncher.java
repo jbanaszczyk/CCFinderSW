@@ -6,6 +6,10 @@ import java.util.Arrays;
 
 public class CCFSWLauncher {
 
+    public static final String commandHelp = "CCFinderSW mode\n" +
+            "     D, d -> CloneDetector\n" +
+            "     P, p -> //future works PrettyPrinter(etc. CCFXD to CCFSW or JSON)\n" +
+            "     S, s -> //future works FilteringCloneData\n";
     /**
      * CCFSW mode
      * <null>, D, d -> CloneDetector.java
@@ -16,12 +20,6 @@ public class CCFSWLauncher {
     //black30 red31 green32 yellow33 blue34 magenta35 cyan36 white37
     public static String YELLOW = (char) 27 + "[33m";
     public static String RESET = (char) 27 + "[0m";
-
-    public static final String commandHelp = "CCFinderSW mode\n" +
-            "     D, d -> CloneDetector\n" +
-            "     P, p -> //future works PrettyPrinter(etc. CCFXD to CCFSW or JSON)\n" +
-            "     S, s -> //future works FilteringCloneData\n";
-
     public static final String caution = YELLOW + "Please input mode option.\n"
             + "\"java -jar CCFinderSW_version.jar D -hoge huga...\"" + RESET;
 

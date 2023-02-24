@@ -11,14 +11,14 @@ import static common.TokenName.*;
 public class CCFXPrepOutput {
 
     private String directoryName;
-	private ArrayList<Pre> preList;
-	private String language;
+    private ArrayList<Pre> preList;
+    private String language;
 
-	public CCFXPrepOutput(String dn, ArrayList<Pre> preList, String language){
-		directoryName = dn;
-		this.preList=preList;
-		this.language = language;
-	}
+    public CCFXPrepOutput(String dn, ArrayList<Pre> preList, String language) {
+        directoryName = dn;
+        this.preList = preList;
+        this.language = language;
+    }
 
     /**
      * 見たらわかる

@@ -10,13 +10,6 @@ import static common.TokenName.BAR;
 
 @SuppressWarnings("deprecation")
 public class CloneDetectorCLIParser {
-    private OptionReader or;
-    private boolean ccfinder = false;
-    private boolean ccfinderx = false;
-    private boolean ccfindersw = false;
-    private boolean cloneSet = false;
-    private boolean noLexer = false;
-    private Options opts;
     private final String d = "d";
     private final String l = "l";
     private final String o = "o";
@@ -34,6 +27,13 @@ public class CloneDetectorCLIParser {
     private final String help = "help";
     private final String tks = "tks";
     private final String rnr = "rnr";
+    private OptionReader or;
+    private boolean ccfinder = false;
+    private boolean ccfinderx = false;
+    private boolean ccfindersw = false;
+    private boolean cloneSet = false;
+    private boolean noLexer = false;
+    private Options opts;
 
 
     public CloneDetectorCLIParser(OptionReader or) {
@@ -43,8 +43,8 @@ public class CloneDetectorCLIParser {
     public void addOptions() {
         opts.addOption(help, "help", false,
                 "display this help\n" +
-                "Refer to github.com/YuichiSemura/CCFinderSW\n" +
-                "Example: -help\n");
+                        "Refer to github.com/YuichiSemura/CCFinderSW\n" +
+                        "Example: -help\n");
         opts.addOption(d, "directory", true,
                 "directory of source files\nExample: -d src");
         opts.addOption(l, "language", true,
@@ -55,7 +55,7 @@ public class CloneDetectorCLIParser {
                         "                  reserved word file -> \"cpp_reserved.txt\"");
         opts.addOption(o, "outputFile", true,
                 "outputFile of clonePair data\nExample: -o outputFile\n" +
-                "-> outputFile.txt or outputFile.ccfxd\n");
+                        "-> outputFile.txt or outputFile.ccfxd\n");
         opts.addOption(t, "threshold", true,
                 "minimum number of tokens of clone pair\nExample: -t 50");
         opts.addOption(w, "detection range", true,
@@ -70,21 +70,21 @@ public class CloneDetectorCLIParser {
                 "output with format of Rigel(CCAnalyzer) to \"outputFile_ccfsw.json\" \n" +
                         "choose \"+\" or \"-\", about json formatting\n" +
                         "recommend \"+\"\n" +
-                "Example: -json +");
+                        "Example: -json +");
         opts.addOption(charset, "charset", true,
                 "charset of tokenization set \"utf8\",\"sjis\"");
         opts.addOption(b, "block", false,
                 "recognizes indent block and embeds a zero-width hash\n A width of tab is 4 times a space");
         opts.addOption(antlr, "antlr", true,
                 "Take comment and reserved word from grammarsv4\\language\\foo.g4\n" +
-                "As this argument, you should set Regular Expression of extensions of target source codes.\n" +
-                "Example: -antlr h|hh|hpp|hxx|c|cc|cpp|cxx\n" +
-                "Example: -antlr py");
+                        "As this argument, you should set Regular Expression of extensions of target source codes.\n" +
+                        "Example: -antlr h|hh|hpp|hxx|c|cc|cpp|cxx\n" +
+                        "Example: -antlr py");
         opts.addOption(g, "group", true,
                 "grouping of detection \nExample: -g 10 ");
         opts.addOption(nolx, "noLexer", false,
                 "use when in exactly the same condition as last\n" +
-                "Example: -nolx ");
+                        "Example: -nolx ");
         opts.addOption(tks, "TKS", true,
                 "Size of a set of tokens in a code fragment \nExample: -tks 10 ");
         opts.addOption(rnr, "RNR", true,

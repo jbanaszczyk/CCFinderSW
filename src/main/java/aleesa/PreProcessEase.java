@@ -12,9 +12,9 @@ import static common.TokenName.*;
 public class PreProcessEase {
 
     public int nowLine;// 行数
-    private int lastNewLine = 0;
     public ArrayList<Token> tokenList = new ArrayList<>();
     public ArrayList<Pre> preList = new ArrayList<>();
+    private int lastNewLine = 0;
     private String variableRegex = "[0-9a-zA-Z_]+";
     private String reservedRegex;
     private Pattern p = null;
@@ -87,13 +87,13 @@ public class PreProcessEase {
         if (str.charAt(i) == '\n') {
             lastNewLine = i + 1;
             nowLine++;
-            return i+1;
+            return i + 1;
         } else if (str.charAt(i) == '\r') {
             if (i + 1 < str.length()) {
                 if (str.charAt(i + 1) == '\n') {
                     lastNewLine = i + 2;
                     nowLine++;
-                    return i+2;
+                    return i + 2;
                 }
             }
             lastNewLine = i + 1;
@@ -133,6 +133,7 @@ public class PreProcessEase {
         tokenListAdd(new Token(str, lineS, clmS, lineS, clmS, ZERO));
         preListAdd(new Pre(str, lineS, clmS, lineS, clmS, ZERO, sum, sum));
     }
+
     private void preListAdd(Pre tmp) {
         preList.add(tmp);
     }

@@ -27,11 +27,11 @@ public class CommentRule {
     }
 
     public CommentRule(int type, String start, String end) {
-        this(type,start,end,false);
+        this(type, start, end, false);
     }
 
     public CommentRule(int type, String start) {
-        this(type,start,null,false);
+        this(type, start, null, false);
     }
 
     @Override

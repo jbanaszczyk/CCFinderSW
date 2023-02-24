@@ -13,22 +13,6 @@ public class CommentsRemoverUsingRegex {
         new CommentsRemoverUsingRegex().runInstance(args);
     }
 
-    private void runInstance(String[] args) {
-        String target = "C:\\Users\\y-semura\\Desktop\\Test.java";
-        String output = "C:\\Users\\y-semura\\Desktop\\TestSkipped.java";
-        String comRegex = "/\\*[\\s\\S]*?\\*/|//((?![\\r\\n])[\\s\\S])*";
-        String strRegex = "\\\"((?!\\\")[\\s\\S])*?\\\"";
-
-        String source = "";
-        try {
-            source = JudgeCharset.readAll(target, "UTF-8");
-        } catch (IOException e) {
-            System.out.println(e);
-        }
-        String str = getCommentRemover(source, "UTF-8", comRegex, strRegex);
-        FileAndString.writeAll(output, str);
-    }
-
     //通常
     public static String getCommentRemover(String path, String charset, String COM, String STR) {
         String source = "";
@@ -115,5 +99,21 @@ public class CommentsRemoverUsingRegex {
             source = sb.toString();
         }
         return source;
+    }
+
+    private void runInstance(String[] args) {
+        String target = "C:\\Users\\y-semura\\Desktop\\Test.java";
+        String output = "C:\\Users\\y-semura\\Desktop\\TestSkipped.java";
+        String comRegex = "/\\*[\\s\\S]*?\\*/|//((?![\\r\\n])[\\s\\S])*";
+        String strRegex = "\\\"((?!\\\")[\\s\\S])*?\\\"";
+
+        String source = "";
+        try {
+            source = JudgeCharset.readAll(target, "UTF-8");
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        String str = getCommentRemover(source, "UTF-8", comRegex, strRegex);
+        FileAndString.writeAll(output, str);
     }
 }

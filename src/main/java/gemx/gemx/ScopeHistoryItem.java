@@ -1,8 +1,8 @@
 package gemx.gemx;
 
 public class ScopeHistoryItem {
-	public String cloneDataFile;
-	public String fileMetricFile;
-	public String cloneSetMetricFile;
+    public String cloneDataFile;
+    public String fileMetricFile;
+    public String cloneSetMetricFile;
 }
 

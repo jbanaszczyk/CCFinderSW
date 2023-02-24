@@ -4,7 +4,7 @@ package clonedetector.classlist;
  * for CCFXprep
  * use in PreProcess.java
  */
-public class Pre{
+public class Pre {
     /**
      * 開始行
      */

@@ -20,10 +20,15 @@ import java.util.HashMap;
 public class OptionReader {
 
     private static final String toolName = CCFSWData.getToolName();
+    private final String relativePath = "..";
+    public Aleesa als = new Aleesa();
+    public HashMap<String, LangRuleConstructor> languageRuleMap = new HashMap<>();
+    public ArrayList<String> extensionList = new ArrayList<>();
+    public ArrayList<ArrayList<String>> extensionMap = new ArrayList<>();
+    public HashMap<String, String> extensionMapTrueEnd = new HashMap<>();
     private String charset = "UTF-8";
     private String variableRegex
             = "[0-9a-zA-Z_]+";// [0-9a-zA-Z\\u3040-\\u30FF一-龠_]+
-    private final String relativePath = "..";
     private int threshold = 50;
     private int N = threshold;
     private String output = null;
@@ -43,12 +48,14 @@ public class OptionReader {
     private String extensionRegex;
     private int tks = 0;
     private float rnr = 0;
-    public Aleesa als = new Aleesa();
 
-    public HashMap<String, LangRuleConstructor> languageRuleMap = new HashMap<>();
-    public ArrayList<String> extensionList = new ArrayList<>();
-    public ArrayList<ArrayList<String>> extensionMap = new ArrayList<>();
-    public HashMap<String, String> extensionMapTrueEnd = new HashMap<>();
+    public static Path getApplicationPath(Class<?> cls) throws URISyntaxException {
+        ProtectionDomain pd = cls.getProtectionDomain();
+        CodeSource cs = pd.getCodeSource();
+        URL location = cs.getLocation();
+        URI uri = location.toURI();
+        return Paths.get(uri);
+    }
 
     public void readCommentReservedFiles() {
         Path path = null;
@@ -79,14 +86,6 @@ public class OptionReader {
             e.printStackTrace();
         }
         return searchCommentReservedDirectory(path.getParent().getParent().toString());
-    }
-
-    public static Path getApplicationPath(Class<?> cls) throws URISyntaxException {
-        ProtectionDomain pd = cls.getProtectionDomain();
-        CodeSource cs = pd.getCodeSource();
-        URL location = cs.getLocation();
-        URI uri = location.toURI();
-        return Paths.get(uri);
     }
 
     public String searchCommentReservedDirectory(String parentDirPath) {
@@ -299,12 +298,12 @@ public class OptionReader {
         this.noLexer = noLexer;
     }
 
-    public void setANTLRMode(boolean b) {
-        this.ANTLRMode = b;
-    }
-
     public boolean isANTLRMode() {
         return ANTLRMode;
+    }
+
+    public void setANTLRMode(boolean b) {
+        this.ANTLRMode = b;
     }
 
     public boolean isCcfinder() {

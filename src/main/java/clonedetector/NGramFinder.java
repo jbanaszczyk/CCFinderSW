@@ -12,40 +12,22 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.stream.IntStream;
 
-import static common.TokenName.*;
+import static common.TokenName.getNewHash;
 
 /**
  * Clone Detection by comparing NGrams
  */
 public class NGramFinder {
 
-    OptionReader or;
-    /**
-     * クローン検出のトークン数のしきい値
-     */
-    private int THRESHOLD;
-    /**　　
-     * 検出範囲についてのオプション
-     */
-    private int detectionRange = 0;
-
     public int N;
-
     /**
      * ハッシュでソートする(uniqueを作るために用いる，uniqueを作ったらcountソートに戻す)
      */
     public HashCount[] sethList;
-
     /**
      * トークンリスト
      */
     public TokenData[] tokenList;
-
-    /**
-     * ユニークリスト
-     */
-    private ArrayList<ArrayList<Integer>> uniqueList;
-
     /**
      * pairArray はクローンペアを格納するリストである
      * pairList.get(0) frontward clone index
@@ -55,6 +37,20 @@ public class NGramFinder {
      */
 
     public int[][] pairArray;
+    OptionReader or;
+    /**
+     * クローン検出のトークン数のしきい値
+     */
+    private int THRESHOLD;
+    /**
+     *
+     * 検出範囲についてのオプション
+     */
+    private int detectionRange = 0;
+    /**
+     * ユニークリスト
+     */
+    private ArrayList<ArrayList<Integer>> uniqueList;
 
     public NGramFinder(OptionReader or) {
         this.or = or;
@@ -63,6 +59,27 @@ public class NGramFinder {
         this.N = or.getN();
 
         uniqueList = new ArrayList<>();
+    }
+
+    private static int compareForBackDistance(int[] s, int[] t) {
+        if (s[0] < t[0]) {
+            return -1;
+        } else if (s[0] > t[0]) {
+            return 1;
+        } else {
+            if (s[1] < t[1]) {
+                return -1;
+            } else if (s[1] > t[1]) {
+                return 1;
+            } else {
+                if (s[2] < t[2]) {
+                    return -1;
+                } else if (s[2] > t[2]) {
+                    return 1;
+                }
+            }
+        }
+        return 0;
     }
 
     public void doGroupLoad(int groupA, int groupB, int group, FileData fd) {
@@ -158,7 +175,6 @@ public class NGramFinder {
             sethList[count + j - N + 1] = new HashCount(tmpHash, count + j - N + 1, fileNumber, j - N + 1);
         }
     }
-
 
     /**
      * main of clone detection
@@ -268,26 +284,5 @@ public class NGramFinder {
         }
 
         Arrays.sort(sethList, Comparator.comparingInt(s -> s.count));
-    }
-
-    private static int compareForBackDistance(int[] s, int[] t) {
-        if (s[0] < t[0]) {
-            return -1;
-        } else if (s[0] > t[0]) {
-            return 1;
-        } else {
-            if (s[1] < t[1]) {
-                return -1;
-            } else if (s[1] > t[1]) {
-                return 1;
-            } else {
-                if (s[2] < t[2]) {
-                    return -1;
-                } else if (s[2] > t[2]) {
-                    return 1;
-                }
-            }
-        }
-        return 0;
     }
 }
