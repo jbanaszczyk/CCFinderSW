@@ -17,13 +17,13 @@ public class TextRuler implements ITextRuler {
     private static final int marginHeight = 5;
     private static final int[] dashPattern = new int[]{4, 4};
     //private MainWindow mainWindow;
-    private Shell shell;
-    private Display display;
+    private final Shell shell;
+    private final Display display;
+    private final Canvas canvas;
+    private final ArrayList<Rectangle> frameRectangles = new ArrayList<Rectangle>();
     private MultipleTextPane pane;
-    private Canvas canvas;
     private Image image;
     private boolean visible;
-    private ArrayList<Rectangle> frameRectangles = new ArrayList<Rectangle>();
     private int draggedFrameIndex = -1;
     private int focusedTextPaneIndex = -1;
 
@@ -66,7 +66,7 @@ public class TextRuler implements ITextRuler {
             public void mouseDown(MouseEvent e) {
                 boolean rightClick = e.button == 3;
                 if (rightClick) {
-                    return; // pop-up menu
+                    // pop-up menu
                 } else if (e.button == 1) {
                     canvas.forceFocus();
                     if ((e.stateMask & SWT.ALT) != 0) {
@@ -475,11 +475,11 @@ public class TextRuler implements ITextRuler {
     }
 
     private static class LineDrawer {
-        private GC gc;
-        private boolean inAdvance;
-        private int maxFileLength;
-        private Color gray;
-        private Color backgroundColor;
+        private final GC gc;
+        private final boolean inAdvance;
+        private final int maxFileLength;
+        private final Color gray;
+        private final Color backgroundColor;
 
         public LineDrawer(GC gc_, boolean inAdvance_, Color gray_, Color backgroundColor_, int maxFileLength_) {
             this.gc = gc_;

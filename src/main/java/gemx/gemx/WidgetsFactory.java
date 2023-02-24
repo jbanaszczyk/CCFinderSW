@@ -9,13 +9,11 @@ public class WidgetsFactory {
         return new FileTable(composite, bAddResetScopeItemToContextMenu, mainWindow);
     }
 
-    public ClonesetTable newCloneSetTable(Composite composite, boolean bAddResetScopeItemToContextMenu,
-                                          MainWindow mainWindow) {
+    public ClonesetTable newCloneSetTable(Composite composite, boolean bAddResetScopeItemToContextMenu, MainWindow mainWindow) {
         return new ClonesetTable(composite, bAddResetScopeItemToContextMenu, mainWindow);
     }
 
-    public ScatterPlotPane newScatterPlotPane(Composite composite, int shorter, boolean bAddResetScopeItemToContextMenu,
-                                              MainWindow mainWindow) {
+    public ScatterPlotPane newScatterPlotPane(Composite composite, int shorter, boolean bAddResetScopeItemToContextMenu, MainWindow mainWindow) {
         return new ScatterPlotPane(composite, shorter, bAddResetScopeItemToContextMenu, mainWindow);
     }
 

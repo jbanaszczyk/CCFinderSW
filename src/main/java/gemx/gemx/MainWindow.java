@@ -229,6 +229,7 @@ public class MainWindow {
     private Boolean lastUsePrescreening = null;
     private long lastShowingCloneSetIDByShowCloneCode = -1;
     private int lastShowingClonePairIndexByShowCloneCode = -1;
+
     public MainWindow(Main main, WidgetsFactory factory) {
         this.ccfxhelper = new CCFinderXHelper(this);
         this.main = main;

@@ -27,6 +27,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -39,13 +40,13 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
     private static final int SELECTION_END_LINE = 1 << 5;
     private static final int BETWEEN_FILE_SHIFT = 6;
     private final ArrayList<TextPaneScrollListener> listeners = new ArrayList<TextPaneScrollListener>();
-    private Shell shell;
-    private MainWindow mainWindow;
-    private Composite sc;
-    private Label fileNameLabel;
-    private Composite lineNumberAndText;
-    private StyledText text;
-    private Canvas lineNumber;
+    private final Shell shell;
+    private final MainWindow mainWindow;
+    private final Composite sc;
+    private final Label fileNameLabel;
+    private final Composite lineNumberAndText;
+    private final StyledText text;
+    private final Canvas lineNumber;
     private Model viewedModel;
     private int initialTopPosition;
     private int initialTokenPosition;
@@ -616,10 +617,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
         }
 
         this.encodingName = encodingName;
-        if (!Decoder.isValidEncoding(encodingName)) {
-            return false;
-        }
-        return true;
+        return Decoder.isValidEncoding(encodingName);
     }
 
     public void copyTextToClipboard() {
@@ -751,7 +749,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
                             gc.setBackground(black);
                             gc.fillRectangle(0, y, ex.x, charHeight);
                             gc.setForeground(white);
-                            gc.drawText(s, (ex.x - 0) / 2, y, SWT.NONE);
+                            gc.drawText(s, (ex.x) / 2, y, SWT.NONE);
                         }
                     }
                     y += charHeight;
@@ -776,7 +774,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
                 gc.fillRectangle(w1 + margin, y0 + margin, w2 - margin * 2, bottomDisplayHeight - margin * 2);
             }
             if (cloneExists[1]) {
-                gc.fillRectangle(0 + margin, y0 + margin, w1 - margin * 2, bottomDisplayHeight - margin * 2);
+                gc.fillRectangle(margin, y0 + margin, w1 - margin * 2, bottomDisplayHeight - margin * 2);
             }
         }
     }
@@ -835,13 +833,13 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
         }
     }
 
-    private String readSourceFile(String path) throws FileNotFoundException,
+    private String readSourceFile(String path) throws
             IOException {
         final File file = new File(path);
         final InputStream inp = new FileInputStream(file);
         final BufferedInputStream inpBuf = new BufferedInputStream(inp);
         if (encodingName.length() == 0) {
-            Reader reader = new InputStreamReader(inpBuf, "UTF8"); //$NON-NLS-1$
+            Reader reader = new InputStreamReader(inpBuf, StandardCharsets.UTF_8); //$NON-NLS-1$
             StringWriter writer = new StringWriter();
             int data;
             while ((data = reader.read()) != -1) {
@@ -980,12 +978,12 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
     private void setFile(int fileIndex) {
         this.fileIndex = fileIndex;
         file = viewedModel.getFile(fileIndex);
-        String filenamestr = String.valueOf(file.id) + " " + file.path; //$NON-NLS-1$
+        String filenamestr = file.id + " " + file.path; //$NON-NLS-1$
         fileNameLabel.setText(filenamestr); //$NON-NLS-1$
         fileNameLabel.setToolTipText(filenamestr);
         CcfxDetectionOptions options = viewedModel.getDetectionOption();
         String postfix = options.getPostfix();
-        String prepDirs[] = options.get("n"); //$NON-NLS-1$
+        String[] prepDirs = options.get("n"); //$NON-NLS-1$
         if (postfix == null) {
             postfix = "." + viewedModel.getPreprocessScript() + ".ccfxprep"; //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -1455,8 +1453,8 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
     }
 
     static class SelectionAdapterWithCloneSetIDs extends SelectionAdapter {
-        private TextPane pane;
-        private long[] selectedIDs;
+        private final TextPane pane;
+        private final long[] selectedIDs;
 
         public SelectionAdapterWithCloneSetIDs(TextPane pane, long[] selectedIDs) {
             this.pane = pane;
@@ -1481,7 +1479,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
     }
 
     private class ScrollRequest {
-        private int cloneIndex;
+        private final int cloneIndex;
 
         public ScrollRequest(int cloneIndex) {
             this.cloneIndex = cloneIndex;

@@ -55,6 +55,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
     private boolean showDirectoryBox = true;
     private int coloringMetric = -1; // -1 means not colored with any metric
     private String strNotApplicable = "N/A"; //$NON-NLS-1$
+
     public ScatterPlotPane(Composite parent, int maxSize, boolean bAddResetScopeItemToContextMenu,
                            MainWindow mainWindow) {
         this.mainWindow = mainWindow;

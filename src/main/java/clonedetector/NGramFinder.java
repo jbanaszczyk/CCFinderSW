@@ -43,7 +43,6 @@ public class NGramFinder {
      */
     private int THRESHOLD;
     /**
-     *
      * 検出範囲についてのオプション
      */
     private int detectionRange = 0;
