@@ -2,22 +2,10 @@ package gemx.utility;
 
 import gemx.ccfinderx.CCFinderX;
 
-import java.io.File;
 import java.io.IOException;
 
 public class PrepReader {
-    public static void main(String[] args) throws IOException, PrepReaderError {
-        {
-            File inputFile = new File(args[0]);
-            String postfix = args[1];
-            PrepReader reader = new PrepReader();
-            PrepToken[] tokens = reader.read(inputFile.getParent(), postfix);
-            for (int i = 0; i < tokens.length; ++i) {
-                System.out.println(tokens[i].toString());
-            }
-        }
-        System.exit(0);
-    }
+
 
     private int valueOfHexChar(byte b) throws PrepReaderError {
         if ('0' <= b && b <= '9') {

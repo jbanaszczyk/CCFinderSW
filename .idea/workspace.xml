@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2fe3014f-1211-4de8-9b3d-1feb11910cc3" name="Default Changelist" comment="reformat everything">
-      <change beforePath="$PROJECT_DIR$/gemx.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gemx.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/aleesa/CommentsRemoverUsingRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/aleesa/CommentsRemoverUsingRegex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/gemx/dialogs/MinMaxSettingDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/gemx/dialogs/MinMaxSettingDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/utility/BitArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/utility/BitArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/utility/ExecutionModuleDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/utility/ExecutionModuleDirectory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gemx/utility/PrepReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gemx/utility/PrepReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +217,33 @@
       <recent name="gemx.ccfinderx.CCFinderX" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GemXMain">
+  <component name="RunManager" selected="Application.ExecutionModuleDirectory">
+    <configuration name="BitArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gemx.utility.BitArray" />
+      <module name="CCFinderSW.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gemx.utility.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CloneDetector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="clonedetector.CloneDetector" />
+      <module name="CCFinderSW.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="clonedetector.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ExecutionModuleDirectory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gemx.utility.ExecutionModuleDirectory" />
       <module name="CCFinderSW.main" />
@@ -240,76 +270,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CCFSW [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="CCFSW [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="jar" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="CCFSW [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="run" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
+    <configuration name="PrintProgress" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="common.PrintProgress" />
+      <module name="CCFinderSW.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="common.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CloneDetector" />
+        <item itemvalue="Application.BitArray" />
+        <item itemvalue="Application.PrintProgress" />
         <item itemvalue="Application.ExecutionModuleDirectory" />
         <item itemvalue="Application.GemXMain" />
-        <item itemvalue="Gradle.CCFSW [build]" />
-        <item itemvalue="Gradle.CCFSW [run]" />
-        <item itemvalue="Gradle.CCFSW [jar]" />
       </list>
     </recent_temporary>
   </component>
@@ -329,7 +309,7 @@
       <workItem from="1676944793655" duration="66000" />
       <workItem from="1676944999098" duration="5396000" />
       <workItem from="1677274590664" duration="5304000" />
-      <workItem from="1677280448989" duration="419000" />
+      <workItem from="1677280448989" duration="1235000" />
     </task>
     <task id="LOCAL-00001" summary="[update] 0.9.1">
       <created>1551875161619</created>
@@ -408,7 +388,42 @@
       <option name="project" value="LOCAL" />
       <updated>1677280619122</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="reformat everything">
+      <created>1677280968199</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1677280968199</updated>
+    </task>
+    <task id="LOCAL-00013" summary="reformat everything">
+      <created>1677280980466</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1677280980466</updated>
+    </task>
+    <task id="LOCAL-00014" summary="reformat everything">
+      <created>1677281009876</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1677281009876</updated>
+    </task>
+    <task id="LOCAL-00015" summary="reformat everything">
+      <created>1677281014167</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1677281014167</updated>
+    </task>
+    <task id="LOCAL-00016" summary="reformat everything">
+      <created>1677281041535</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1677281041535</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">

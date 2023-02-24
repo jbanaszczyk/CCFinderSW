@@ -190,19 +190,6 @@ public class MinMaxSettingDialog {
         okButton.setFocus();
     }
 
-    public static void main(String[] args) {
-        Shell shell = new Shell();
-        MinMaxSettingDialog dialog = new MinMaxSettingDialog(shell, 3);
-        dialog.setText("Input birthday"); //$NON-NLS-1$
-        dialog.setName(0, "Year"); //$NON-NLS-1$
-        dialog.setMinMaxDigits(0, 1900, 2050, 0);
-        dialog.setName(1, "Month"); //$NON-NLS-1$
-        dialog.setMinMaxDigits(1, 1, 12, 0);
-        dialog.setName(2, "Day"); //$NON-NLS-1$
-        dialog.setMinMaxDigits(2, 1, 31, 0);
-        int result = dialog.open();
-        System.out.println("result = " + result);
-    }
 
     public void setText(String text) {
         shellC.setText(text);
