@@ -19,16 +19,15 @@ import org.eclipse.swt.widgets.Listener;
 import java.util.ArrayList;
 
 public class MultipleTextPane implements FileSelectionListener, CloneSelectionListener {
-    private MainWindow mainWindow;
-    private ArrayList<TextPane> textPanes;
-    private ITextRuler ruler;
-    private Composite sc;
-    private SashForm sash;
+    private final MainWindow mainWindow;
+    private final ArrayList<TextPane> textPanes;
+    private final ITextRuler ruler;
+    private final Composite sc;
+    private final SashForm sash;
+    private final ArrayList<Listener> addedListeners = new ArrayList<Listener>();
     private Model viewedModel;
     private boolean independentMode;
     private int focusedTextPaneIndex = -1;
-
-    private ArrayList<Listener> addedListeners = new ArrayList<Listener>();
 
     public MultipleTextPane(Composite parent, MainWindow mainWindow, WidgetsFactory widgetsFactory) {
         int ntipleText = mainWindow.getMain().settingNtipleSourceTextPane;

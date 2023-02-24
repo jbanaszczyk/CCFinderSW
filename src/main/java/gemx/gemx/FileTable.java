@@ -26,16 +26,16 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class FileTable implements FileSelectionListener {
+    private final Table table;
+    private final TableWithCheckHelper tableWithCheckHelper;
+    private final MainWindow mainWindow;
+    private final Shell shell;
+    private final Display display;
+    private final TableColumn[] cols;
+    private final Composite sc;
+    private final Label commonPathLabel;
     public String searchingText = null;
     public int searchingIndex = -1;
-    private Table table;
-    private TableWithCheckHelper tableWithCheckHelper;
-    private MainWindow mainWindow;
-    private Shell shell;
-    private Display display;
-    private TableColumn[] cols;
-    private Composite sc;
-    private Label commonPathLabel;
     private FileMetricModel fileMetricModel;
     private int[] fileIndex2Id;
     private int[] fileId2Index;
@@ -619,7 +619,7 @@ public class FileTable implements FileSelectionListener {
             }
 
             if (fileIndex2Id != null) {
-                final String nullString = new String();
+                final String nullString = "";
                 int count = fileIndex2Id.length;
                 for (int i = 0; i < count; ++i) {
                     TableItem item = table.getItem(i);
@@ -764,7 +764,7 @@ public class FileTable implements FileSelectionListener {
     }
 
     private class FilesUnderDirectory extends SelectionAdapter {
-        private int nthParent;
+        private final int nthParent;
 
         public FilesUnderDirectory(int rad) {
             this.nthParent = rad;

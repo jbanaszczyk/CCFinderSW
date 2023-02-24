@@ -28,13 +28,14 @@ import org.eclipse.swt.widgets.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 class CCFinderXHelper {
     private final String tempFileName1 = TemporaryFileManager.createTemporaryFileName();
+    private final MainWindow mainWindow;
     private String[] preprocessorList;
     private String[] preprocessorHavingExtensionList;
-    private MainWindow mainWindow;
 
     public CCFinderXHelper(MainWindow mainWindow) {
         this.mainWindow = mainWindow;
@@ -94,23 +95,23 @@ class CCFinderXHelper {
 
         options.add("D"); //$NON-NLS-1$
         options.add(preprocessScript);
-        options.addAll(Arrays.asList(new String[]{"-i", fileListPath})); //$NON-NLS-1$
+        options.addAll(Arrays.asList("-i", fileListPath)); //$NON-NLS-1$
         if (encodingName != null && encodingName.length() > 0) {
-            options.addAll(Arrays.asList(new String[]{"-c", encodingName})); //$NON-NLS-1$
+            options.addAll(Arrays.asList("-c", encodingName)); //$NON-NLS-1$
         }
-        options.addAll(Arrays.asList(new String[]{"-b", String.valueOf(minCloneLength)})); //$NON-NLS-1$
-        options.addAll(Arrays.asList(new String[]{"-t", String.valueOf(minTKS)})); //$NON-NLS-1$
+        options.addAll(Arrays.asList("-b", String.valueOf(minCloneLength))); //$NON-NLS-1$
+        options.addAll(Arrays.asList("-t", String.valueOf(minTKS))); //$NON-NLS-1$
         if (shaperLevel >= 0) {
-            options.addAll(Arrays.asList(new String[]{"-s", String.valueOf(shaperLevel)})); //$NON-NLS-1$
+            options.addAll(Arrays.asList("-s", String.valueOf(shaperLevel))); //$NON-NLS-1$
         }
-        options.addAll(Arrays.asList(new String[]{"-u", usePMatch ? "+" : "-"})); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        options.addAll(Arrays.asList("-u", usePMatch ? "+" : "-")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         for (String p : preprocessFileDirectories) {
-            options.addAll(Arrays.asList(new String[]{"-n", p})); //$NON-NLS-1$
+            options.addAll(Arrays.asList("-n", p)); //$NON-NLS-1$
         }
-        options.addAll(Arrays.asList(new String[]{"-k",  //$NON-NLS-1$
-                chunkSize != 0 ? String.valueOf(chunkSize) + "M" : "0"})); //$NON-NLS-1$ //$NON-NLS-2$
+        options.addAll(Arrays.asList("-k",  //$NON-NLS-1$
+                chunkSize != 0 ? chunkSize + "M" : "0")); //$NON-NLS-1$ //$NON-NLS-2$
         if (maxWorkerThreads > 0) {
-            options.add("--threads=" + String.valueOf(maxWorkerThreads)); //$NON-NLS-1$
+            options.add("--threads=" + maxWorkerThreads); //$NON-NLS-1$
         }
         options.add("-v"); //$NON-NLS-1$
 
@@ -148,17 +149,17 @@ class CCFinderXHelper {
             ArrayList<String> options = new ArrayList<String>();
             options.add("D"); //$NON-NLS-1$
             options.add(preprocessor);
-            if (preprocessFileDirectoires != null && preprocessFileDirectoires.length > 0) {
+            if (preprocessFileDirectoires != null) {
                 for (String d : preprocessFileDirectoires) {
-                    options.addAll(Arrays.asList(new String[]{"-n", d})); //$NON-NLS-1$
+                    options.addAll(Arrays.asList("-n", d)); //$NON-NLS-1$
                 }
             }
-            options.addAll(Arrays.asList(new String[]{"-p", "-i", fileListFile})); //$NON-NLS-1$ //$NON-NLS-2$
+            options.addAll(Arrays.asList("-p", "-i", fileListFile)); //$NON-NLS-1$ //$NON-NLS-2$
             if (encodingName != null && encodingName.length() > 0) {
-                options.addAll(Arrays.asList(new String[]{"-c", encodingName})); //$NON-NLS-1$
+                options.addAll(Arrays.asList("-c", encodingName)); //$NON-NLS-1$
             }
             if (maxWorkerThreads > 0) {
-                options.add("--threads=" + String.valueOf(maxWorkerThreads)); //$NON-NLS-1$
+                options.add("--threads=" + maxWorkerThreads); //$NON-NLS-1$
             }
             options.add("-v"); //$NON-NLS-1$
             CCFinderX.theInstance.invokeCCFinderX(options.toArray(new String[0]));
@@ -171,10 +172,10 @@ class CCFinderXHelper {
         args.add(gemx.utility.PythonVersionChecker.thePythonInterpreterPath);
         args.add(scriptPath);
         args.add(preprocessor);
-        args.addAll(Arrays.asList(new String[]{"-i", fileListFile})); //$NON-NLS-1$
-        args.addAll(Arrays.asList(new String[]{"-o", maskedFileList})); //$NON-NLS-1$
+        args.addAll(Arrays.asList("-i", fileListFile)); //$NON-NLS-1$
+        args.addAll(Arrays.asList("-o", maskedFileList)); //$NON-NLS-1$
         if (encodingName != null && encodingName.length() > 0) {
-            args.addAll(Arrays.asList(new String[]{"-c", encodingName})); //$NON-NLS-1$
+            args.addAll(Arrays.asList("-c", encodingName)); //$NON-NLS-1$
         }
         //options.add("-v"); //$NON-NLS-1$
 
@@ -197,6 +198,9 @@ public class MainWindow {
     private final String tempFileName3 = TemporaryFileManager.createTemporaryFileName();
     private final Main main;
     private final CCFinderXHelper ccfxhelper;
+    private final Model rootModel;
+    private final WidgetsFactory widgetsFactory;
+    private final String lastDirectoryByDoDetectClones = null;
     public Clipboard clipboard;
     private Shell shell;
     private Table scopeHistoryList;
@@ -213,14 +217,11 @@ public class MainWindow {
     private Label fileInfoBar;
     private Label cloneSetInfoBar;
     private gemx.customwidgets.Searchbox searchBox;
-    private Model rootModel;
     private Model currentScope;
     private MetricModelsHolder metricModels;
     private ArrayList<ScopeHistoryItem> scopeHistory;
     private long[] currentSelectedCloneSetIDs;
     private int[] currentSelectedFileIndices;
-    private WidgetsFactory widgetsFactory;
-    private String lastDirectoryByDoDetectClones = null;
     private String lastPreprocessorByDoDetectClones = null;
     private int lastMinCloneLengthByDoDetectClones = -1;
     private int lastMinTKSByDoDetectClones = -1;
@@ -305,7 +306,7 @@ public class MainWindow {
         dialog.open();
 
         String dir = dialog.getFilterPath();
-        String files[] = dialog.getFileNames();
+        String[] files = dialog.getFileNames();
         if (files.length >= 2) {
             showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_CLONE_DATA_FILE")); //$NON-NLS-1$
         } else if (files.length == 1) {
@@ -350,7 +351,7 @@ public class MainWindow {
         dialog.open();
 
         String dir = dialog.getFilterPath();
-        String files[] = dialog.getFileNames();
+        String[] files = dialog.getFileNames();
         if (files.length >= 2) {
             showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE")); //$NON-NLS-1$
         } else if (files.length == 1) {
@@ -368,13 +369,11 @@ public class MainWindow {
                 int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"P", shi.cloneDataFile, "-ln", "-o", path}); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 if (r != 0) {
                     showErrorMessage("error in invocation of ccfx."); //$NON-NLS-1$
-                    return;
                 }
             } finally {
                 statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
             }
         } else {
-            return;
         }
     }
 
@@ -396,7 +395,7 @@ public class MainWindow {
         dialog.open();
 
         String dir = dialog.getFilterPath();
-        String files[] = dialog.getFileNames();
+        String[] files = dialog.getFileNames();
         if (files.length >= 2) {
             showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE")); //$NON-NLS-1$
         } else if (files.length == 1) {
@@ -417,7 +416,6 @@ public class MainWindow {
                 statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
             }
         } else {
-            return;
         }
 
 
@@ -468,7 +466,7 @@ public class MainWindow {
             String[] preprocessFileDirectories = detectionOptions.get("n"); //$NON-NLS-1$
 
             // set other options
-            CcfxDetectionOptions ops = (CcfxDetectionOptions) detectionOptions;
+            CcfxDetectionOptions ops = detectionOptions;
             int minCloneLength = ops.getMinimumCloneLength();
             int minTKS = ops.getMinimumTokenSetSize();
             if (lastShaperLevel == -1) {
@@ -549,9 +547,9 @@ public class MainWindow {
                 ArrayList<String> options = ccfxhelper.buildCcfxCommandLineForDetection(preprocessor, encodingName,
                         fileListName, minCloneLength, minTKS, shaperLevel, usePMatch,
                         main.settingChunkSize, main.settingMaxWorkerThreads, preprocessFileDirectories);
-                options.addAll(Arrays.asList(new String[]{"-o", theCloneDataFileName}));
+                options.addAll(Arrays.asList("-o", theCloneDataFileName));
                 if (usePrescreening) {
-                    options.addAll(Arrays.asList(new String[]{"-mr", "masked"})); //$NON-NLS-1$ //$NON-NLS-2$
+                    options.addAll(Arrays.asList("-mr", "masked")); //$NON-NLS-1$ //$NON-NLS-2$
                 }
 
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
@@ -680,10 +678,8 @@ public class MainWindow {
                 ArrayList<String> args = new ArrayList<String>();
                 args.add("F");  //$NON-NLS-1$
                 args.add(preprocessor);
-                args.addAll(Arrays.asList(new String[]{"-o", tempFileName1}));  //$NON-NLS-1$
-                for (String a : directories) {
-                    args.add(a);
-                }
+                args.addAll(Arrays.asList("-o", tempFileName1));  //$NON-NLS-1$
+                Collections.addAll(args, directories);
 
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
                 try {
@@ -829,9 +825,9 @@ public class MainWindow {
                         fileListName, minCloneLength, minTKS, shaperLevel, usePMatch,
                         main.settingChunkSize, main.settingMaxWorkerThreads,
                         preprocessFileDirectories);
-                options.addAll(Arrays.asList(new String[]{"-o", theCloneDataFileName}));
+                options.addAll(Arrays.asList("-o", theCloneDataFileName));
                 if (usePrescreening) {
-                    options.addAll(Arrays.asList(new String[]{"-mr", "masked"}));   //$NON-NLS-1$ //$NON-NLS-2$
+                    options.addAll(Arrays.asList("-mr", "masked"));   //$NON-NLS-1$ //$NON-NLS-2$
                 }
 
                 TemporaryMouseCursorChanger wcm = new TemporaryMouseCursorChanger(shell);
@@ -880,7 +876,7 @@ public class MainWindow {
                 dialog.open();
 
                 String dir = dialog.getFilterPath();
-                String files[] = dialog.getFileNames();
+                String[] files = dialog.getFileNames();
                 if (files.length >= 2) {
                     showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE_LIST")); //$NON-NLS-1$
                     return;
@@ -1046,10 +1042,10 @@ public class MainWindow {
                         encodingName, fileListName, minCloneLength,
                         minTKS, shaperLevel, usePMatch,
                         main.settingChunkSize, main.settingMaxWorkerThreads, preprocessFileDirectories);
-                options.addAll(Arrays.asList(new String[]{"-o", theCloneDataFileName}));
+                options.addAll(Arrays.asList("-o", theCloneDataFileName));
 
                 if (usePrescreening) {
-                    options.addAll(Arrays.asList(new String[]{"-mr", "masked"}));   //$NON-NLS-1$ //$NON-NLS-2$
+                    options.addAll(Arrays.asList("-mr", "masked"));   //$NON-NLS-1$ //$NON-NLS-2$
                 }
 
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
@@ -1131,7 +1127,7 @@ public class MainWindow {
         dialog.open();
 
         String dir = dialog.getFilterPath();
-        String files[] = dialog.getFileNames();
+        String[] files = dialog.getFileNames();
         if (files.length >= 2) {
             showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_CLONE_DATA_FILE")); //$NON-NLS-1$
         } else if (files.length == 1) {
@@ -1153,7 +1149,6 @@ public class MainWindow {
                 }
             }
         } else {
-            return;
         }
     }
 
@@ -1321,7 +1316,7 @@ public class MainWindow {
             ScopeHistoryItem shi = new ScopeHistoryItem();
             shi.cloneDataFile = newModel.getCloneDataFilePath();
             scopeHistory.add(shi);
-            this.addScopeHistoryItem("Fit File: " + String.valueOf(selectedIndices.length), newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("Fit File: " + selectedIndices.length, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                 this.add_both_file_and_clone_set_metrics();
@@ -1359,7 +1354,7 @@ public class MainWindow {
             ScopeHistoryItem shi = new ScopeHistoryItem();
             shi.cloneDataFile = newModel.getCloneDataFilePath();
             scopeHistory.add(shi);
-            this.addScopeHistoryItem("Fit File Except: " + String.valueOf(selectedIndex.length), newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("Fit File Except: " + selectedIndex.length, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                 this.add_both_file_and_clone_set_metrics();
@@ -1621,7 +1616,7 @@ public class MainWindow {
             dir = dir.substring(0, pos);
         }
         int pos = dir.length();
-        dir = dir + file.path.substring(pos, pos + 1);
+        dir = dir + file.path.charAt(pos);
         int[] fileIndices = currentScope.findFilesUnderDirectory(dir);
         this.setFileSelection_i(fileIndices, null);
         update_info_bars();
@@ -1728,7 +1723,7 @@ public class MainWindow {
                     ScopeHistoryItem shi = new ScopeHistoryItem();
                     shi.cloneDataFile = newModel.getCloneDataFilePath();
                     scopeHistory.add(shi);
-                    this.addScopeHistoryItem("Filtering File: " + usedMetricsStr.toString(), newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+                    this.addScopeHistoryItem("Filtering File: " + usedMetricsStr, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
 
                     if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                         this.add_both_file_and_clone_set_metrics();
@@ -1866,7 +1861,7 @@ public class MainWindow {
                     ScopeHistoryItem shi = new ScopeHistoryItem();
                     shi.cloneDataFile = newModel.getCloneDataFilePath();
                     scopeHistory.add(shi);
-                    this.addScopeHistoryItem("Filtering Clone Set: " + usedMetricsStr.toString(), newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+                    this.addScopeHistoryItem("Filtering Clone Set: " + usedMetricsStr, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
 
                     if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                         this.add_both_file_and_clone_set_metrics();
@@ -1923,11 +1918,10 @@ public class MainWindow {
     }
 
     private <T> void makeExpr(ArrayList<String> expressions, String columnName, T min, T max) {
-        expressions.addAll(Arrays.asList(new String[]{
-                columnName, ".ge.", String.valueOf(min),  //$NON-NLS-1$
+        expressions.addAll(Arrays.asList(columnName, ".ge.", String.valueOf(min),  //$NON-NLS-1$
                 "and",  //$NON-NLS-1$
                 columnName, ".le.", String.valueOf(max)  //$NON-NLS-1$
-        }));
+        ));
     }
 
     private void fit_scope_to_current_selected_cloneset_ids() {
@@ -1962,7 +1956,7 @@ public class MainWindow {
             ScopeHistoryItem shi = new ScopeHistoryItem();
             shi.cloneDataFile = newModel.getCloneDataFilePath();
             scopeHistory.add(shi);
-            this.addScopeHistoryItem("Fit Clone: " + String.valueOf(cloneClassIDs.length), newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("Fit Clone: " + cloneClassIDs.length, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                 this.add_both_file_and_clone_set_metrics();
@@ -2000,7 +1994,7 @@ public class MainWindow {
             ScopeHistoryItem shi = new ScopeHistoryItem();
             shi.cloneDataFile = newModel.getCloneDataFilePath();
             scopeHistory.add(shi);
-            this.addScopeHistoryItem("Fit Clone Excpet: " + String.valueOf(cloneClassIDs.length), newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("Fit Clone Excpet: " + cloneClassIDs.length, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                 this.add_both_file_and_clone_set_metrics();
@@ -2156,12 +2150,12 @@ public class MainWindow {
                 final ArrayList<String> args = new ArrayList<String>();
                 args.add("M"); //$NON-NLS-1$
                 if (main.settingMaxWorkerThreads > 0) {
-                    args.add("--threads=" + String.valueOf(main.settingMaxWorkerThreads));  //$NON-NLS-1$
+                    args.add("--threads=" + main.settingMaxWorkerThreads);  //$NON-NLS-1$
                 }
                 args.add(cloneDataFile);
-                args.addAll(Arrays.asList(new String[]{"-p", "is"}));   //$NON-NLS-1$ //$NON-NLS-2$
-                args.addAll(Arrays.asList(new String[]{"-f", "-o", fileMetricFile}));   //$NON-NLS-1$ //$NON-NLS-2$
-                args.addAll(Arrays.asList(new String[]{"-c", "-o", cloneSetMetricFile}));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-p", "is"));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-f", "-o", fileMetricFile));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-c", "-o", cloneSetMetricFile));   //$NON-NLS-1$ //$NON-NLS-2$
                 int r = ccfx.invokeCCFinderX(args.toArray(new String[0]));
                 if (r != 0) {
                     showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_METRICS"));  //$NON-NLS-1$
@@ -2205,11 +2199,11 @@ public class MainWindow {
                 final ArrayList<String> args = new ArrayList<String>();
                 args.add("M");  //$NON-NLS-1$
                 if (main.settingMaxWorkerThreads > 0) {
-                    args.add("--threads=" + String.valueOf(main.settingMaxWorkerThreads));  //$NON-NLS-1$
+                    args.add("--threads=" + main.settingMaxWorkerThreads);  //$NON-NLS-1$
                 }
                 args.add(cloneDataFile);
-                args.addAll(Arrays.asList(new String[]{"-f", "-o", metricFile}));   //$NON-NLS-1$ //$NON-NLS-2$
-                args.addAll(Arrays.asList(new String[]{"-p", "is"}));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-f", "-o", metricFile));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-p", "is"));   //$NON-NLS-1$ //$NON-NLS-2$
                 int r = ccfx.invokeCCFinderX(args.toArray(new String[0]));
                 if (r != 0) {
                     showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_FILE_METRICS")); //$NON-NLS-1$
@@ -2307,9 +2301,9 @@ public class MainWindow {
                 }
             } else {
                 if (totalValues[i] != null) {
-                    settingDialog.setTotalMinMaxAve(i, (long) (double) totalValues[i], (int) (double) minValues[i], (int) (double) maxValues[i], 0, aveValues[i]);
+                    settingDialog.setTotalMinMaxAve(i, (long) (double) totalValues[i], (int) minValues[i], (int) maxValues[i], 0, aveValues[i]);
                 } else {
-                    settingDialog.setTotalMinMaxAve(i, null, (int) (double) minValues[i], (int) (double) maxValues[i], 0, aveValues[i]);
+                    settingDialog.setTotalMinMaxAve(i, null, (int) minValues[i], (int) maxValues[i], 0, aveValues[i]);
                 }
             }
         }
@@ -2332,7 +2326,7 @@ public class MainWindow {
             if (floatingPointMap[i]) {
                 settingDialog.setMinMaxAve(i, (int) Math.floor(minValues[i] * 1000), (int) Math.ceil(maxValues[i] * 1000), 3, aveValues[i]);
             } else {
-                settingDialog.setMinMaxAve(i, (int) (double) minValues[i], (int) (double) maxValues[i], 0, aveValues[i]);
+                settingDialog.setMinMaxAve(i, (int) minValues[i], (int) maxValues[i], 0, aveValues[i]);
             }
         }
 
@@ -2366,11 +2360,11 @@ public class MainWindow {
                 final ArrayList<String> args = new ArrayList<String>();
                 args.add("M"); //$NON-NLS-1$
                 if (main.settingMaxWorkerThreads > 0) {
-                    args.add("--threads=" + String.valueOf(main.settingMaxWorkerThreads));  //$NON-NLS-1$
+                    args.add("--threads=" + main.settingMaxWorkerThreads);  //$NON-NLS-1$
                 }
                 args.add(cloneDataFile);
-                args.addAll(Arrays.asList(new String[]{"-c", "-o", metricFile}));   //$NON-NLS-1$ //$NON-NLS-2$
-                args.addAll(Arrays.asList(new String[]{"-p", "is"}));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-c", "-o", metricFile));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-p", "is"));   //$NON-NLS-1$ //$NON-NLS-2$
                 int r = ccfx.invokeCCFinderX(args.toArray(new String[0]));
                 if (r != 0) {
                     showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_CLONE_SET_METRICS")); //$NON-NLS-1$
@@ -2484,7 +2478,7 @@ public class MainWindow {
             }
         });
 
-        sash.setWeights(new int[]{3, 1, 2, 2, 4});
+        sash.setWeights(3, 1, 2, 2, 4);
     }
 
     private void buildMenu() {
@@ -3095,7 +3089,7 @@ public class MainWindow {
         shell.setMaximized(true);
         shell.setText(String.format("GemX %d.%d.%d.%d", gemx.constants.ApplicationVersion.verMajor,  //$NON-NLS-1$
                 gemx.constants.ApplicationVersion.verMinor1, gemx.constants.ApplicationVersion.verMinor2,
-                gemx.constants.ApplicationVersion.verFix).toString());
+                gemx.constants.ApplicationVersion.verFix));
         shell.setLayout(new GridLayout(1, true));
 
         shell.addShellListener(new ShellAdapter() {
@@ -3288,7 +3282,7 @@ public class MainWindow {
             }
 
             sashChildren = new CustomCTabFolder[]{sessionFolder, listFolder, mapFolder};
-            sash.setWeights(new int[]{1, 8, 16});
+            sash.setWeights(1, 8, 16);
         }
 
         buildStatusBar();
@@ -3476,7 +3470,7 @@ public class MainWindow {
      * showItem()���I�[�o�[���C�h���Ă���
      */
     private interface CustomCTabFolderSelectionListener {
-        public void selected(CustomCTabFolder selectedFolder);
+        void selected(CustomCTabFolder selectedFolder);
     }
 
     private static class Selection {
@@ -3508,11 +3502,11 @@ public class MainWindow {
     }
 
     private class EditMenuHandlerImpl extends EditMenuHandler {
-        private EditMenuHandler targetNone = new EditMenuHandler() {
+        private final EditMenuHandler targetNone = new EditMenuHandler() {
         };
-        private EditMenuHandler targetScopeHistory = new EditMenuHandler() {
+        private final EditMenuHandler targetScopeHistory = new EditMenuHandler() {
         };
-        private EditMenuHandler targetFileTable = new EditMenuHandler() {
+        private final EditMenuHandler targetFileTable = new EditMenuHandler() {
             @Override
             public void copy() {
                 fileTable.copyItemsToClipboard();
@@ -3548,7 +3542,7 @@ public class MainWindow {
                 fileTable.getTableWithCheckHelper().selectCheckedItems();
             }
         };
-        private EditMenuHandler targetCloneSetTable = new EditMenuHandler() {
+        private final EditMenuHandler targetCloneSetTable = new EditMenuHandler() {
             @Override
             public void copy() {
                 cloneSetTable.copyItemsToClipboard();
@@ -3584,9 +3578,9 @@ public class MainWindow {
                 cloneSetTable.getTableWithCheckHelper().selectCheckedItems();
             }
         };
-        private EditMenuHandler targetScatterPlotPane = new EditMenuHandler() {
+        private final EditMenuHandler targetScatterPlotPane = new EditMenuHandler() {
         };
-        private EditMenuHandler targetSourcePane = new EditMenuHandler() {
+        private final EditMenuHandler targetSourcePane = new EditMenuHandler() {
             @Override
             public void copy() {
                 sourcePane.copyTextToClipboard();
@@ -3597,7 +3591,7 @@ public class MainWindow {
                 sourcePane.selectEntireText();
             }
         };
-        private EditMenuHandler targetScrapbook = new EditMenuHandler() {
+        private final EditMenuHandler targetScrapbook = new EditMenuHandler() {
             @Override
             public void copy() {
                 theScrapbook.copyTextToClipboard();

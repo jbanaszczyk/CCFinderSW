@@ -3,11 +3,10 @@ package gemx.utility;
 import gemx.ccfinderx.CCFinderX;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class PrepReader {
-    public static void main(String[] args) throws FileNotFoundException, IOException, PrepReaderError {
+    public static void main(String[] args) throws IOException, PrepReaderError {
         {
             File inputFile = new File(args[0]);
             String postfix = args[1];
@@ -41,7 +40,7 @@ public class PrepReader {
         return value;
     }
 
-    public PrepToken[] read(String sourceFilePath, String postfix) throws FileNotFoundException, IOException, PrepReaderError {
+    public PrepToken[] read(String sourceFilePath, String postfix) throws IOException, PrepReaderError {
         byte[] buffer = CCFinderX.theInstance.openPrepFile(sourceFilePath, postfix);
         if (buffer == null) {
             throw new IOException();

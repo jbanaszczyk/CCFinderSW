@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public class MetricsCalculator {
     public static int calLNR(int first, int distance, TokenData[] td) {
-        boolean lifeDeath[] = new boolean[distance];
+        boolean[] lifeDeath = new boolean[distance];
         for (int i = 0; i < distance; i++) {
             lifeDeath[i] = true;
         }

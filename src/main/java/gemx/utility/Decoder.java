@@ -17,7 +17,7 @@ public class Decoder {
         while (i < strLen) {
             char c = str.charAt(i);
             if (0xd800 <= c && c <= 0xdbff) {
-                buf.append((char) ' ');
+                buf.append(' ');
                 i += 2;
             } else {
                 buf.append(c);

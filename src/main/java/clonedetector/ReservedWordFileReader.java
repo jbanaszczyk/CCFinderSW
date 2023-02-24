@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
  */
 public class ReservedWordFileReader {
 
-    private OptionReader pr;
+    private final OptionReader pr;
     private String filename = "";
 
     public ReservedWordFileReader(String language, OptionReader or) {
@@ -34,7 +34,7 @@ public class ReservedWordFileReader {
             }
         }
         System.out.println("Load ReservedWordList: " + inputFileName);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
             String str;
             while ((str = br.readLine()) != null) { // 改行は含まれない
                 rule.reservedWordList.add(str);

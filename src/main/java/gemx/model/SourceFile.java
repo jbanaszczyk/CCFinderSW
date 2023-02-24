@@ -12,10 +12,7 @@ public class SourceFile {
     }
 
     public boolean equals(SourceFile right) {
-        if (right.id == this.id && right.path.equals(this.path) && right.size == this.size) {
-            return true;
-        }
-        return false;
+        return right.id == this.id && right.path.equals(this.path) && right.size == this.size;
     }
 
     public boolean equals(Object o) {

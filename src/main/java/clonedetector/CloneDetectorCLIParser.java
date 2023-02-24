@@ -27,7 +27,7 @@ public class CloneDetectorCLIParser {
     private final String help = "help";
     private final String tks = "tks";
     private final String rnr = "rnr";
-    private OptionReader or;
+    private final OptionReader or;
     private boolean ccfinder = false;
     private boolean ccfinderx = false;
     private boolean ccfindersw = false;
@@ -233,19 +233,19 @@ public class CloneDetectorCLIParser {
                     System.out.println("charset is invalid");
                     throw new ParseException("");
                 }
-                if (cl.getOptionValue(charset).toLowerCase().equals("sjis")
-                        || cl.getOptionValue("charset").toLowerCase().equals("shift-jis")) {
+                if (cl.getOptionValue(charset).equalsIgnoreCase("sjis")
+                        || cl.getOptionValue("charset").equalsIgnoreCase("shift-jis")) {
                     System.out.println("charset: \"sjis\"");
                     or.setCharset("Shift-JIS");
-                } else if (cl.getOptionValue(charset).toLowerCase().equals("utf8")
-                        || cl.getOptionValue("charset").toLowerCase().equals("utf-8")) {
+                } else if (cl.getOptionValue(charset).equalsIgnoreCase("utf8")
+                        || cl.getOptionValue("charset").equalsIgnoreCase("utf-8")) {
                     System.out.println("charset: \"utf8\"");
                     or.setCharset("UTF-8");
-                } else if (cl.getOptionValue(charset).toLowerCase().equals("euc-jp")
-                        || cl.getOptionValue("charset").toLowerCase().equals("euc")) {
+                } else if (cl.getOptionValue(charset).equalsIgnoreCase("euc-jp")
+                        || cl.getOptionValue("charset").equalsIgnoreCase("euc")) {
                     System.out.println("charset: \"euc\"");
                     or.setCharset("EUC-JP");
-                } else if (cl.getOptionValue(charset).toLowerCase().equals("auto")) {
+                } else if (cl.getOptionValue(charset).equalsIgnoreCase("auto")) {
                     System.out.println("charset: \"auto\"");
                     or.setCharset("AUTO");
                 } else {
@@ -320,7 +320,7 @@ public class CloneDetectorCLIParser {
             PrintWriter pw = new PrintWriter(buf);
             helpFormatter.printHelp(pw, helpFormatter.getWidth(), "[D]" + "\n" + BAR, null, opts
                     , helpFormatter.getLeftPadding(), helpFormatter.getDescPadding(), null, false);
-            System.out.print(buf.toString());
+            System.out.print(buf);
             System.out.println(BAR);
             System.exit(1);
         }

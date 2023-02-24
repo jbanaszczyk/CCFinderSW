@@ -8,14 +8,14 @@ import org.eclipse.swt.widgets.Display;
 import java.util.HashMap;
 
 public class PlottingColors {
-    private static final Color colors[] = new Color[230];
-    private static final Color cloneAreaBackground[] = new Color[1];
-    private static final Color borderBackground[] = new Color[1];
-    private static final Color nocloneAreaColor[] = new Color[1];
-    private static final Color selectedFileColor[] = new Color[1];
-    private static final Color rulerBackground[] = new Color[1];
-    private static final Color maskedFileBackground[] = new Color[1];
-    private static final Color directoryNamePopupBackground[] = new Color[1];
+    private static final Color[] colors = new Color[230];
+    private static final Color[] cloneAreaBackground = new Color[1];
+    private static final Color[] borderBackground = new Color[1];
+    private static final Color[] nocloneAreaColor = new Color[1];
+    private static final Color[] selectedFileColor = new Color[1];
+    private static final Color[] rulerBackground = new Color[1];
+    private static final Color[] maskedFileBackground = new Color[1];
+    private static final Color[] directoryNamePopupBackground = new Color[1];
 
     private static final RGB[] defaultColors = new RGB[]{
             new RGB(115, 115, 230), new RGB(0, 0, 0), new RGB(200, 100, 100)

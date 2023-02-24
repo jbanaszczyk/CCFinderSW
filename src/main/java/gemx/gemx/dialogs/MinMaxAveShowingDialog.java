@@ -16,20 +16,20 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
 public class MinMaxAveShowingDialog {
-    private Shell parent;
-    private Shell shellC;
+    private final Shell parent;
+    private final Shell shellC;
 
-    private Clipboard clipboard;
+    private final Clipboard clipboard;
 
-    private Label[] labelNames;
-    private Label[] labelMins;
-    private Label[] labelAves;
-    private Label[] labelMaxs;
-    private int[] valueDigits;
-    private int[] valueMins;
-    private double[] valueAves;
-    private int[] valueMaxs;
-    private Button buttonCopy;
+    private final Label[] labelNames;
+    private final Label[] labelMins;
+    private final Label[] labelAves;
+    private final Label[] labelMaxs;
+    private final int[] valueDigits;
+    private final int[] valueMins;
+    private final double[] valueAves;
+    private final int[] valueMaxs;
+    private final Button buttonCopy;
 
     public MinMaxAveShowingDialog(Shell shell, Clipboard clipboard_, int countOfValues) {
         valueMins = new int[countOfValues];

@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.TableItem;
 import java.util.Arrays;
 
 public class TableWithCheckHelper {
-    private Table table;
+    private final Table table;
 
     public TableWithCheckHelper(Table table) {
         this.table = table;

@@ -25,14 +25,14 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class ClonesetTable implements CloneSelectionListener {
-    private Table table;
-    private TableWithCheckHelper tableWithCheckHelper;
+    private final Table table;
+    private final TableWithCheckHelper tableWithCheckHelper;
 
-    private MainWindow mainWindow;
-    private Shell shell;
-    private TableColumn[] cols;
+    private final MainWindow mainWindow;
+    private final Shell shell;
+    private final TableColumn[] cols;
 
-    private int maxCloneSetCount = 500000;
+    private final int maxCloneSetCount = 500000;
     private int indexAndMore;
     private long andMoreCloneSetCount;
     private CloneSet[] cloneSets = null;
@@ -251,9 +251,9 @@ public class ClonesetTable implements CloneSelectionListener {
             buffer.append(StringUtil.NewLineString);
             for (int i = 0; i < selectedIndex.length; ++i) {
                 int index = selectedIndex[i];
-                buffer.append(String.valueOf(cloneSets[index].id));
+                buffer.append(cloneSets[index].id);
                 buffer.append('\t');
-                buffer.append(String.valueOf(cloneSets[index].length));
+                buffer.append(cloneSets[index].length);
                 buffer.append(StringUtil.NewLineString);
             }
         }
@@ -308,13 +308,13 @@ public class ClonesetTable implements CloneSelectionListener {
         gc.setBackground(background);
     }
 
-    private void sortCloneIDsByMetric(CloneSet cloneSets[], int start, int end,
+    private void sortCloneIDsByMetric(CloneSet[] cloneSets, int start, int end,
                                       ClonesetMetricModel cloneSetMetricModel, int metricIndex,
                                       int order /* -1 up, 1 down */) {
         Arrays.sort(cloneSets, start, end, new CloneSetMetricComparator(cloneSetMetricModel, metricIndex, order));
     }
 
-    private void sortCloneIDsByLength(CloneSet cloneSets[], int start, int end,
+    private void sortCloneIDsByLength(CloneSet[] cloneSets, int start, int end,
                                       int order /* -1 up, 1 down */) {
         if (order == -1) {
             Arrays.sort(cloneSets, start, end, new Comparator<CloneSet>() {
@@ -331,7 +331,7 @@ public class ClonesetTable implements CloneSelectionListener {
         }
     }
 
-    private void sortCloneIDsByID(CloneSet cloneSets[], int start, int end,
+    private void sortCloneIDsByID(CloneSet[] cloneSets, int start, int end,
                                   int order /* -1 up, 1 down */) {
         if (order == -1) {
             Arrays.sort(cloneSets, start, end, new Comparator<CloneSet>() {
@@ -584,7 +584,6 @@ public class ClonesetTable implements CloneSelectionListener {
                         mes.setText("Warning - GemX"); //$NON-NLS-1$
                         mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET")); //$NON-NLS-1$
                         mes.open();
-                        return;
                     }
                 }
             });
@@ -607,7 +606,6 @@ public class ClonesetTable implements CloneSelectionListener {
                         mes.setText("Warning - GemX"); //$NON-NLS-1$
                         mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET")); //$NON-NLS-1$
                         mes.open();
-                        return;
                     }
                 }
             });
@@ -629,7 +627,6 @@ public class ClonesetTable implements CloneSelectionListener {
                         mes.setText("Warning - GemX"); //$NON-NLS-1$
                         mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET")); //$NON-NLS-1$
                         mes.open();
-                        return;
                     }
                 }
             });
@@ -640,7 +637,7 @@ public class ClonesetTable implements CloneSelectionListener {
         for (int i = 0; i < this.cloneSets.length; ++i) {
             TableItem item = table.getItem(i);
             if (i == indexAndMore) {
-                item.setText(0, "+" + String.valueOf(andMoreCloneSetCount) + " clone sets"); //$NON-NLS-1$ //$NON-NLS-2$
+                item.setText(0, "+" + andMoreCloneSetCount + " clone sets"); //$NON-NLS-1$ //$NON-NLS-2$
             } else {
                 CloneSet cs = cloneSets[i];
                 item.setText(0, String.valueOf(cs.id));
@@ -758,7 +755,7 @@ public class ClonesetTable implements CloneSelectionListener {
             }
 
             if (cloneSets != null) {
-                final String nullString = new String();
+                final String nullString = "";
                 int count = cloneSets.length;
                 for (int i = 0; i < count; ++i) {
                     TableItem item = table.getItem(i);
@@ -849,7 +846,6 @@ public class ClonesetTable implements CloneSelectionListener {
                 String text = data.text;
                 if (text.startsWith("#")) { //$NON-NLS-1$
                     searchingId(text);
-                    return;
                 }
             }
 
@@ -860,7 +856,6 @@ public class ClonesetTable implements CloneSelectionListener {
                 String text = data.text;
                 if (text.startsWith("#")) { //$NON-NLS-1$
                     searchingId(text);
-                    return;
                 }
             }
         };

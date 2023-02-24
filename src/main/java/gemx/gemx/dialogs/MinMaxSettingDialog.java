@@ -14,19 +14,19 @@ public class MinMaxSettingDialog {
     public static final int ActionAddCheckmark = 2;
     public static final int ActionSelect = 3;
     public static final int CountOfActions = ActionSelect;
-    private Shell parent;
-    private Shell shellC;
-    private Label[] labels;
-    private gemx.customwidgets.Spinner[] mins;
-    private gemx.customwidgets.Spinner[] maxs;
-    private boolean[] valueEditeds;
-    private Button okButton;
-    private Button cancelButton;
-    private Button[] actionButtons;
+    private final Shell parent;
+    private final Shell shellC;
+    private final Label[] labels;
+    private final gemx.customwidgets.Spinner[] mins;
+    private final gemx.customwidgets.Spinner[] maxs;
+    private final boolean[] valueEditeds;
+    private final Button okButton;
+    private final Button cancelButton;
+    private final Button[] actionButtons;
+    private final int[] valueMins;
+    private final int[] valueMaxs;
+    private final int[] valueDigits;
     private int result = SWT.CANCEL;
-    private int valueMins[];
-    private int valueMaxs[];
-    private int valueDigits[];
     private int action;
 
     public MinMaxSettingDialog(Shell shell, int countOfValues) {

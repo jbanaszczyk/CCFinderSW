@@ -9,7 +9,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TypedListener;
 
 public class Spinner extends Composite {
-    private org.eclipse.swt.widgets.Spinner spinner;
+    private final org.eclipse.swt.widgets.Spinner spinner;
 
     public Spinner(Composite parent, int style) {
         super(parent, style);

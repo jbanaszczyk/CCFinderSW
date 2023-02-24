@@ -28,17 +28,11 @@ public class CodeFragment implements Comparable<CodeFragment> {
             return d;
         }
         d = end - right.end;
-        if (d != 0) {
-            return d;
-        }
-        return 0;
+        return d;
     }
 
     public boolean equals(CodeFragment right) {
-        if (file == right.file && begin == right.begin && end == right.end) {
-            return true;
-        }
-        return false;
+        return file == right.file && begin == right.begin && end == right.end;
     }
 
     public int hashCode() {

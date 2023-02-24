@@ -4,11 +4,11 @@ import gemx.model.ClonesetMetricModel;
 import gemx.model.MetricsSummaryData;
 
 public class CloneSetMetricExtractor {
-    private ClonesetMetricModel model;
+    private final ClonesetMetricModel model;
+    private final int metricID;
     private double maxValue;
     private double minValue;
     private double w;
-    private int metricID;
 
     public CloneSetMetricExtractor(ClonesetMetricModel model, int metricID) {
         this.model = model;

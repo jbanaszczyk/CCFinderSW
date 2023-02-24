@@ -12,7 +12,7 @@ public class ExecCommandline {
             buf.append(" ");
             buf.append(s);
         }
-        System.err.println(buf.toString());
+        System.err.println(buf);
 
         Runtime rt = Runtime.getRuntime();
         try {

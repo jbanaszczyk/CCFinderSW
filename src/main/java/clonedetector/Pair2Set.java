@@ -8,7 +8,7 @@ import java.util.TreeSet;
  * クローンペアからクローンセットの情報を計算するクラス
  */
 public class Pair2Set {
-    private ArrayList<PlaceAndRoad> placeAndRoadList = new ArrayList<>();
+    private final ArrayList<PlaceAndRoad> placeAndRoadList = new ArrayList<>();
 
     private static int compareDistanceForBack(int[] s, int[] t) {
         if (s[2] < t[2])

@@ -54,17 +54,17 @@ public class PrepToken {
 
     @Override
     public String toString() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append("<"); //$NON-NLS-1$
-        buffer.append(beginIndex);
-        buffer.append(","); //$NON-NLS-1$
-        buffer.append(endIndex);
+
+        String buffer = "<" + //$NON-NLS-1$
+                beginIndex +
+                "," + //$NON-NLS-1$
+                endIndex +
 
 //debug
 //		buffer.append(","); //$NON-NLS-1$
 //		buffer.append(str);
-        buffer.append(">"); //$NON-NLS-1$
+                ">"; //$NON-NLS-1$
 
-        return buffer.toString();
+        return buffer;
     }
 }

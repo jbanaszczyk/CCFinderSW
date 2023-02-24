@@ -13,13 +13,13 @@ import org.eclipse.swt.widgets.Shell;
 public class CcfxOptionsPanel { // package internal
     public static final int PreprocessorForcingModeNone = 0;
     public static final int PreprocessorForcingModeAlways = 2;
+    private final Button/* Check */ preprocessorForced = null;
     private gemx.customwidgets.Spinner minCloneLength = null;
     private gemx.customwidgets.Spinner minTKS = null;
     private Combo shaperLevel = null;
     private Button usePMatch = null;
     private Button usePrescreening = null;
     private int preprocessorForcingMode = PreprocessorForcingModeNone;
-    private Button/* Check */ preprocessorForced = null;
     private Combo forcedPreprocessor;
     private Label preprocessorForcedLabel = null;
 

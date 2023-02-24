@@ -13,11 +13,11 @@ import org.eclipse.swt.widgets.Shell;
 import java.util.ArrayList;
 
 public class ParentDirectorySelectDialog {
-    private Shell parent;
-    private Shell shellC;
+    private final Shell parent;
+    private final Shell shellC;
 
-    private Button okButton;
-    private Button cancelButton;
+    private final Button okButton;
+    private final Button cancelButton;
 
     private String value = null;
     private int result;

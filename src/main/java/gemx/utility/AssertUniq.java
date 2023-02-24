@@ -7,9 +7,7 @@ public class AssertUniq {
         }
         int lastElement = ary[0];
         for (int i = 1; i < ary.length; ++i) {
-            if (!(ary[i] > lastElement)) {
-                assert false;
-            }
+            assert ary[i] > lastElement;
             lastElement = ary[i];
         }
     }

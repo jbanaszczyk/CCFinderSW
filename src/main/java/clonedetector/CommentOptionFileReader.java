@@ -14,9 +14,9 @@ import static common.TokenName.*;
  */
 public class CommentOptionFileReader {
 
+    private final String filename;
     String language;
     OptionReader or;
-    private String filename;
 
     public CommentOptionFileReader(String language, OptionReader or) {
         this.language = language;
@@ -44,27 +44,27 @@ public class CommentOptionFileReader {
             String str;
             while ((str = br.readLine()) != null) { // 改行は含まれない
                 boolean notCommentOut = true;
-                if (str.substring(0, 1).equals("#") || str.substring(0, 1).equals("%")) {
-                    if (str.substring(0, 1).equals("%")) {
+                if (str.charAt(0) == '#' || str.charAt(0) == '%') {
+                    if (str.charAt(0) == '%') {
                         notCommentOut = false;
                     }
 
-                    if (str.substring(1, 6).equals("start") && str.length() < 7) {
+                    if (str.startsWith("start", 1) && str.length() < 7) {
                         CommentRule x = new CommentRule(START,
                                 br.readLine());
                         if (notCommentOut) rule.commentRuleList.add(x);
-                    } else if (str.substring(1, 6).equals("prior")
-                            || (str.substring(1, 8).equals("literal") && str.length() < 9)) {
+                    } else if (str.startsWith("prior", 1)
+                            || (str.startsWith("literal", 1) && str.length() < 9)) {
                         CommentRule x = new CommentRule(PRIOR,
                                 br.readLine(),
                                 br.readLine());
                         if (notCommentOut) rule.literalRuleList.add(x);
-                    } else if (str.substring(1, 9).equals("startend") && str.length() < 10) {
+                    } else if (str.startsWith("startend", 1) && str.length() < 10) {
                         CommentRule x = new CommentRule(START_END,
                                 br.readLine(),
                                 br.readLine());
                         if (notCommentOut) rule.commentRuleList.add(x);
-                    } else if (str.substring(1, 10).equals("extension")) {
+                    } else if (str.startsWith("extension", 1)) {
                         if (notCommentOut) {
                             String x = br.readLine();
                             or.extensionList.add(x);
@@ -73,29 +73,29 @@ public class CommentOptionFileReader {
                             y.add(x);
                             or.extensionMap.add(y);
                         }
-                    } else if (str.substring(1, 10).equals("linestart") && str.length() < 11) {
+                    } else if (str.startsWith("linestart", 1) && str.length() < 11) {
                         CommentRule x = new CommentRule(LINE_START,
                                 br.readLine());
                         if (notCommentOut) rule.commentRuleList_Line.add(x);
-                    } else if (str.substring(1, 13).equals("startendnest")) {
+                    } else if (str.startsWith("startendnest", 1)) {
                         CommentRule x = new CommentRule(START_END,
                                 br.readLine(),
                                 br.readLine(),
                                 true);
                         rule.doNest = true;
                         if (notCommentOut) rule.commentRuleList.add(x);
-                    } else if (str.substring(1, 13).equals("linestartend")) {
+                    } else if (str.startsWith("linestartend", 1)) {
                         CommentRule x = new CommentRule(LINE_START_END,
                                 br.readLine(),
                                 br.readLine());
                         if (notCommentOut) rule.commentRuleList_Line.add(x);
-                    } else if (str.substring(1, 13).equals("linecontinue")) {
+                    } else if (str.startsWith("linecontinue", 1)) {
                         String x = br.readLine();
                         if (notCommentOut) rule.lineContinue = x;
-                    } else if (str.substring(1, 14).equals("variableregex")) {
+                    } else if (str.startsWith("variableregex", 1)) {
                         String x = br.readLine();
                         if (notCommentOut) or.setVariableRegex(x);
-                    } else if (str.substring(1, 16).equals("literalverbatim")) {
+                    } else if (str.startsWith("literalverbatim", 1)) {
                         CommentRule x = new CommentRule(PRIOR,
                                 br.readLine(),
                                 br.readLine(),

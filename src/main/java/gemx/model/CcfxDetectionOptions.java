@@ -7,11 +7,11 @@ import gemx.utility.StringUtil;
 import java.util.ArrayList;
 
 public class CcfxDetectionOptions {
-    static private String filedNameOfMinLengthOfClone = "b";
-    static private String fieldNameOfShaperLevel = "s";
-    static private String fieldNameOfUseParameterUnification = "u";
-    static private String fieldNameOfMinTokenSetSize = "t";
-    static private String filedNameofPostfix = "preprocessed_file_postfix";
+    static private final String filedNameOfMinLengthOfClone = "b";
+    static private final String fieldNameOfShaperLevel = "s";
+    static private final String fieldNameOfUseParameterUnification = "u";
+    static private final String fieldNameOfMinTokenSetSize = "t";
+    static private final String filedNameofPostfix = "preprocessed_file_postfix";
 
     protected ArrayList<Pair<String, String>> keyValues;
 

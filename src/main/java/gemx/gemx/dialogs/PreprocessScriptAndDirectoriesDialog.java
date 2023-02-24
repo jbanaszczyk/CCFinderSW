@@ -14,11 +14,11 @@ import org.eclipse.swt.widgets.*;
 import java.io.File;
 
 public class PreprocessScriptAndDirectoriesDialog {
-    private Shell parent;
-    private Shell shellC;
-    private Combo comboPreprocessScript;
+    private final Shell parent;
+    private final Shell shellC;
+    private final Combo comboPreprocessScript;
+    private final List directoriesList;
     private String resStringPreprocessScript;
-    private List directoriesList;
     private String lastDirectory;
     private String[] resDirectories;
     private boolean valueValid;
@@ -70,7 +70,6 @@ public class PreprocessScriptAndDirectoriesDialog {
             Button addButton = new Button(shellC, SWT.PUSH);
             {
                 GridData gridData = new GridData(GridData.FILL | GridData.HORIZONTAL_ALIGN_END);
-                ;
                 gridData.widthHint = 150;
                 addButton.setLayoutData(gridData);
             }

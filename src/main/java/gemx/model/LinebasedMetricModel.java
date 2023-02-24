@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class LinebasedMetricModel {
     private static final String[] predefinedMetricNames = new String[]{
@@ -38,7 +39,7 @@ public class LinebasedMetricModel {
 
     public void readLinebasedMetricFile(String path, int maxFileID) throws DataFileReadError, IOException {
         this.maxFileID = maxFileID;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF8")); //$NON-NLS-1$
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
         String line;
         line = reader.readLine();
         String supposedTitleLine = "FID" + "\t" + StringUtil.join(LinebasedMetricModel.getFieldNames(), "\t");
@@ -49,9 +50,7 @@ public class LinebasedMetricModel {
         String[] ss = StringUtil.split(line, '\t');
         fields = ss.length - 1;
         metricNames = new String[fields];
-        for (int i = 0; i < fields; ++i) {
-            metricNames[i] = ss[i + 1];
-        }
+        System.arraycopy(ss, 1, metricNames, 0, fields);
 
         values = new double[(maxFileID + 1) * fields];
         isValidValue = new boolean[maxFileID + 1];

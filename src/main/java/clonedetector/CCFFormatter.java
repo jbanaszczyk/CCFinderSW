@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class CCFFormatter {
-    private String language;
-    private int[] lineCountList;
-    private int[] tokenCountList;
-    private ArrayList<String> filePathList;
-    private ArrayList<String> fileNameList;
-    private ClonePairData cpd;
+    private final String language;
+    private final int[] lineCountList;
+    private final int[] tokenCountList;
+    private final ArrayList<String> filePathList;
+    private final ArrayList<String> fileNameList;
+    private final ClonePairData cpd;
 
-    private NGramFinder nf;
-    private String filename;
-    private String toolName;
-    private int threshold;
+    private final NGramFinder nf;
+    private final String filename;
+    private final String toolName;
+    private final int threshold;
 
     public CCFFormatter(FileData fileData, NGramFinder nf, OptionReader or, ClonePairData cpd) {
         lineCountList = fileData.lineCountList;
@@ -39,7 +39,7 @@ public class CCFFormatter {
     public void outputCCF() {
         String filename = this.filename + ".txt";
         System.out.println("ccfinder file = " + filename);
-        StringBuffer buf = new StringBuffer("");
+        StringBuffer buf = new StringBuffer();
 
         // オプション部
         buf.append("#version: ").append(toolName).append("\n");

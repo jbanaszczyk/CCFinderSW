@@ -19,9 +19,9 @@ import java.util.stream.IntStream;
  * 各ファイルのPreProcessを呼ぶ役割
  */
 public class Lexer {
+    private final FileData fd;
+    private final String language;
     public OptionReader or;
-    private FileData fd;
-    private String language;
 
     public Lexer(OptionReader or, FileData filedata) {
         this.or = or;

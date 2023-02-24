@@ -11,12 +11,12 @@ import static common.TokenName.*;
 
 public class PreProcessEase {
 
+    private final String variableRegex = "[0-9a-zA-Z_]+";
+    private final String reservedRegex;
     public int nowLine;// 行数
     public ArrayList<Token> tokenList = new ArrayList<>();
     public ArrayList<Pre> preList = new ArrayList<>();
     private int lastNewLine = 0;
-    private String variableRegex = "[0-9a-zA-Z_]+";
-    private String reservedRegex;
     private Pattern p = null;
 
     public PreProcessEase(String reservedRegex, String strRegex) {

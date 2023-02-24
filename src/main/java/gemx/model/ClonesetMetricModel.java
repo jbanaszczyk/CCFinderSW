@@ -8,6 +8,7 @@ import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 
 public class ClonesetMetricModel {
     private static final String[] predefinedMetricNames = new String[]{
@@ -51,7 +52,7 @@ public class ClonesetMetricModel {
             cloneSetDataStore.truncate(0);
         }
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF8")); //$NON-NLS-1$
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
         String line;
         line = reader.readLine();
         String supposedTitleLine = "CID" + "\t" + StringUtil.join(ClonesetMetricModel.getFieldNames(), "\t");
@@ -62,9 +63,7 @@ public class ClonesetMetricModel {
         String[] ss = StringUtil.split(line, '\t');
         fields = ss.length - 1;
         metricNames = new String[fields];
-        for (int i = 0; i < fields; ++i) {
-            metricNames[i] = ss[i + 1];
-        }
+        System.arraycopy(ss, 1, metricNames, 0, fields);
         isFloatingPoints = new boolean[fields];
         for (int i = 0; i < fields; ++i) {
             isFloatingPoints[i] = false;
@@ -84,7 +83,7 @@ public class ClonesetMetricModel {
                 cloneSetDataStore.position(pos);
                 clearBuffer.rewind();
                 cloneSetDataStore.write(clearBuffer);
-                pos += 8 * fields;
+                pos += 8L * fields;
             }
         }
         double[] values = new double[fields];

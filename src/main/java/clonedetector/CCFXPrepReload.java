@@ -11,9 +11,9 @@ import static common.TokenName.*;
 
 public class CCFXPrepReload {
 
+    private final String directoryName;
+    private final String language;
     public ArrayList<Token> tokenList = new ArrayList<>();
-    private String directoryName;
-    private String language;
 
     public CCFXPrepReload(String dn, String language) {
         directoryName = dn;
@@ -61,20 +61,20 @@ public class CCFXPrepReload {
             String value;
             String three = tab[2];
             int type;
-            if (three.length() > 3 && three.substring(0, 3).equals("id|")) {
+            if (three.length() > 3 && three.startsWith("id|")) {
                 type = IDENTIFIER;
                 value = three.substring(3);
-            } else if (three.length() > 2 && three.substring(0, 2).equals("r_")) {
+            } else if (three.length() > 2 && three.startsWith("r_")) {
                 type = RESERVE;
                 value = three.substring(2);
-            } else if (three.length() > 2 && three.substring(0, 2).equals("l_")) {
+            } else if (three.length() > 2 && three.startsWith("l_")) {
                 if (three.substring(0, three.indexOf("|")).equals("l_string")) {
                     type = STRING;
                 } else {
                     type = NUMBER;
                 }
                 value = three.substring(2);
-            } else if (three.length() > 2 && three.substring(0, 2).equals("s_")) {
+            } else if (three.length() > 2 && three.startsWith("s_")) {
                 type = SYMBOL;
                 value = three.substring(2);
             } else {

@@ -33,7 +33,7 @@ public class PrintProgress {
             return;
         }
         progressX++;
-        while (progressX >= percent * max / 100) {
+        while (progressX >= (long) percent * max / 100) {
             percent++;
             if (percent >= 100) {
                 break;

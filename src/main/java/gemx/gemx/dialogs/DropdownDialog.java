@@ -14,10 +14,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
 public class DropdownDialog {
-    private Shell parent;
-    private Shell shellC;
-    private Label label;
-    private Combo combo;
+    private final Shell parent;
+    private final Shell shellC;
+    private final Label label;
+    private final Combo combo;
     private String resString;
 
     public DropdownDialog(Shell shell) {

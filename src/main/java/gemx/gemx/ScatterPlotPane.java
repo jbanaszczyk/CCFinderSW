@@ -22,23 +22,24 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class ScatterPlotPane implements FileSelectionListener, CloneSelectionListener {
+    private final Composite sc;
+    private final ScrolledComposite drawPanel;
+    private final Menu popupMenu;
+    private final Button ckFileBoundary;
+    private final Button ckFileGap;
+    private final Button ckDirectoryBox;
+    private final Combo cmColoringMetricName;
+    private final Button ckCloneSpace;
+    private final Display display;
+    private final String strNotApplicable = "N/A"; //$NON-NLS-1$
     protected MainWindow mainWindow;
     protected Canvas canvas;
     boolean directoryLabelShownInLowerRight;
-    private Composite sc;
-    private ScrolledComposite drawPanel;
-    private Menu popupMenu;
-    private Button ckFileBoundary;
-    private Button ckFileGap;
-    private Button ckDirectoryBox;
-    private Combo cmColoringMetricName;
-    private Button ckCloneSpace;
     private boolean showCloneSpace;
     private Image image;
     private int imageBaseSize;
     private int imageEnlarge;
     private DirectoryBoxPosition[] directoryBoxPositions;
-    private Display display;
     private long[] fileStartPos;
     private Point curMousePosition;
     private Point dragStart;
@@ -54,7 +55,6 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
     private boolean showFileGap = true;
     private boolean showDirectoryBox = true;
     private int coloringMetric = -1; // -1 means not colored with any metric
-    private String strNotApplicable = "N/A"; //$NON-NLS-1$
 
     public ScatterPlotPane(Composite parent, int maxSize, boolean bAddResetScopeItemToContextMenu,
                            MainWindow mainWindow) {
@@ -167,7 +167,6 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
                 boolean rightClick = e.button == 3;
                 if (rightClick) {
                     canvas.setMenu(popupMenu);
-                    return;
                 } else if (e.button == 1) {
                     canvas.forceFocus();
                     dragStart = new Point(e.x, e.y);

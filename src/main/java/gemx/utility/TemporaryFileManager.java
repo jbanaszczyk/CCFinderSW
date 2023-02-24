@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.Calendar;
 
 public class TemporaryFileManager {
-    private static String baseString;
+    private static final String baseString;
     private static int count = 0;
     private static String tempDirPath;
 
@@ -47,7 +47,7 @@ public class TemporaryFileManager {
         String fname;
         synchronized (TemporaryFileManager.class) {
             ++count;
-            fname = String.format("%s-%s-%d%s", prefix, baseString, new Integer(count), extension);
+            fname = String.format("%s-%s-%d%s", prefix, baseString, Integer.valueOf(count), extension);
         }
         String path = "";
         if (tempDirPath != null) {

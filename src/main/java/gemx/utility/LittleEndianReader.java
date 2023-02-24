@@ -4,10 +4,10 @@ import gnu.trove.TByteArrayList;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 
 public class LittleEndianReader {
     private final byte[] buffer4 = new byte[4];
@@ -69,12 +69,7 @@ public class LittleEndianReader {
             byte[] ary = bbuffer1.array();
             if (ary[0] == terminatingByte) {
                 byte[] a = buf.toNativeArray();
-                try {
-                    return new String(a, "UTF-8"); //$NON-NLS-1$
-                } catch (UnsupportedEncodingException e) {
-                    assert false;
-                    return ""; //$NON-NLS-1$
-                }
+                return new String(a, StandardCharsets.UTF_8); //$NON-NLS-1$
             }
             buf.add(ary[0]);
         }
@@ -133,12 +128,7 @@ public class LittleEndianReader {
             }
             if ((byte) b == terminatingByte) {
                 byte[] a = buf.toNativeArray();
-                try {
-                    return new String(a, "UTF-8"); //$NON-NLS-1$
-                } catch (UnsupportedEncodingException e) {
-                    assert false;
-                    return ""; //$NON-NLS-1$
-                }
+                return new String(a, StandardCharsets.UTF_8); //$NON-NLS-1$
             }
             buf.add((byte) b);
         }

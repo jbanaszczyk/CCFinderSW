@@ -4,12 +4,12 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FileUtils {
-    public static void fileCopy(String fromFile, String toFile) throws FileNotFoundException, IOException {
+    public static void fileCopy(String fromFile, String toFile) throws IOException {
         final int BUFSIZE = 4096;
 
         FileInputStream in = new FileInputStream(fromFile);
         FileOutputStream out = new FileOutputStream(toFile);
-        byte buff[] = new byte[BUFSIZE];
+        byte[] buff = new byte[BUFSIZE];
         int len;
 
         while ((len = in.read(buff, 0, BUFSIZE)) != -1) {

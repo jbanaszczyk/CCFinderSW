@@ -103,8 +103,8 @@ public class MetricModelsHolder {
     }
 
     private static class FileMetricReader implements Runnable {
-        private String metricFile;
-        private int maxFileID;
+        private final String metricFile;
+        private final int maxFileID;
         private FileMetricModel fmModel;
 
         public FileMetricReader(String metricFile, int maxFileID) {
@@ -127,8 +127,8 @@ public class MetricModelsHolder {
     }
 
     private static class ClonesetMetricReader implements Runnable {
-        private String metricFile;
-        private long maxCloneSetID;
+        private final String metricFile;
+        private final long maxCloneSetID;
         private ClonesetMetricModel cmModel;
 
         public ClonesetMetricReader(String metricFile, long maxCloneSetID) {

@@ -10,15 +10,15 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 
 public class CCFXFormatter {
-    private String language;
-    private int[] tokenCountList;
-    private ArrayList<String> fileNameList;
-    private String directoryNameAbsolute;
-    private ClonePairData cpd;
+    private final String language;
+    private final int[] tokenCountList;
+    private final ArrayList<String> fileNameList;
+    private final String directoryNameAbsolute;
+    private final ClonePairData cpd;
 
-    private NGramFinder nf;
-    private String filename;
-    private int threshold;
+    private final NGramFinder nf;
+    private final String filename;
+    private final int threshold;
 
     public CCFXFormatter(FileData fileData, NGramFinder nf, OptionReader or, ClonePairData cpd) {
         tokenCountList = fileData.tokenCountList;

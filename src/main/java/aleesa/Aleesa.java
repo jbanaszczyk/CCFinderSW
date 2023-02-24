@@ -24,24 +24,24 @@ import java.util.regex.Pattern;
  */
 
 public class Aleesa {
-    private static String variableRegex = "[0-9a-zA-Z_]";
+    private static final String variableRegex = "[0-9a-zA-Z_]";
+    private final LinkedHashSet<String> keywordList = new LinkedHashSet<>();
+    private final ArrayList<String> fragmentList = new ArrayList<>();
+    private final LinkedHashMap<String, ArrayList<String>> lexerExpList = new LinkedHashMap<>();
+    private final StringBuilder builderSkip = new StringBuilder();
+    private final StringBuilder builderKeyWord = new StringBuilder();
+    // (\[[0-9a-zA-Z_]+]|'[0-9a-zA-Z_]+'|[0-9a-zA-Z_]|[()|])+
+    private final LinkedHashMap<String, ArrayList<String>> stringList = new LinkedHashMap<>();
+    private final StringBuilder builderString = new StringBuilder();
+    private final ArrayList<String> filePathList = new ArrayList<>();
+    private final String specialRegex =
+            "(\\[" + variableRegex + "+]|"
+                    + "'" + variableRegex + "+'|"
+                    + variableRegex + "|[()|])+";
     public boolean isRecursive = false;
     public String skipRegex = "";
     public String reservedRegex = "";
     public String strRegex = "";
-    private LinkedHashSet<String> keywordList = new LinkedHashSet<>();
-    private ArrayList<String> fragmentList = new ArrayList<>();
-    private LinkedHashMap<String, ArrayList<String>> lexerExpList = new LinkedHashMap<>();
-    private StringBuilder builderSkip = new StringBuilder();
-    private StringBuilder builderKeyWord = new StringBuilder();
-    // (\[[0-9a-zA-Z_]+]|'[0-9a-zA-Z_]+'|[0-9a-zA-Z_]|[()|])+
-    private LinkedHashMap<String, ArrayList<String>> stringList = new LinkedHashMap<>();
-    private StringBuilder builderString = new StringBuilder();
-    private ArrayList<String> filePathList = new ArrayList<>();
-    private String specialRegex =
-            "(\\[" + variableRegex + "+]|"
-                    + "'" + variableRegex + "+'|"
-                    + variableRegex + "|[()|])+";
     private String language = null;
 
     public void getGrammar(String g4DirectoryPath) {
@@ -123,7 +123,7 @@ public class Aleesa {
         ArrayList<String> newKeyList = new ArrayList<>();
         for (String x : stringList.keySet()) {
             for (String y : stringList.get(x)) {
-                if (lexerExpList.keySet().contains(y)) {
+                if (lexerExpList.containsKey(y)) {
                     newKeyList.add(y);
                 }
             }
@@ -137,17 +137,16 @@ public class Aleesa {
             ArrayList<String> keyList = new ArrayList<>();
             keyList.add(x);
             buildExpressionToSkip(keyList, x, stringList.get(x), buf);
-            builderString.append(buf.toString());
+            builderString.append(buf);
             builderString.append("|");
         }
     }
 
     private void explore(RuleContext ctx, int indentation, boolean isFragment) {
         String ruleName = ANTLRv4Parser.ruleNames[ctx.getRuleIndex()];
-        if (!(ctx instanceof ANTLRv4Parser.GrammarSpecContext)) {
+        if (!(ctx instanceof ANTLRv4Parser.GrammarSpecContext gtc)) {
             //general
         } else {
-            ANTLRv4Parser.GrammarSpecContext gtc = (ANTLRv4Parser.GrammarSpecContext) ctx;
             indentation--;
         }
 
@@ -158,8 +157,7 @@ public class Aleesa {
 
         for (int i = 0; i < ctx.getChildCount(); i++) {
             ParseTree element = ctx.getChild(i);
-            if (element instanceof ANTLRv4Parser.LexerRuleSpecContext) {
-                ANTLRv4Parser.LexerRuleSpecContext x = (ANTLRv4Parser.LexerRuleSpecContext) element;
+            if (element instanceof ANTLRv4Parser.LexerRuleSpecContext x) {
                 if (x.lexerRuleBlock() == null) {
                     continue;
                 }
@@ -168,8 +166,7 @@ public class Aleesa {
                     fragmentList.add(x.TOKEN_REF().getText());
                 }
                 explore((RuleContext) element, indentation + 1, isFragment || x.FRAGMENT() != null);
-            } else if (element instanceof ANTLRv4Parser.ParserRuleSpecContext) {
-                ANTLRv4Parser.ParserRuleSpecContext x = (ANTLRv4Parser.ParserRuleSpecContext) element;
+            } else if (element instanceof ANTLRv4Parser.ParserRuleSpecContext x) {
                 explore((RuleContext) element, indentation + 1, isFragment);
             } else {
                 if (element instanceof RuleContext) {
@@ -237,15 +234,11 @@ public class Aleesa {
         Pattern p2 = Pattern.compile(".*[sS][tT][rR][iI][nN][gG].*");
         Pattern p3 = Pattern.compile("(\\[[0-9a-zA-Z_]+]|'[0-9a-zA-Z_]+'|[0-9a-zA-Z_]|[()|])+");
         for (Map.Entry<String, ArrayList<String>> entry : lexerExpList.entrySet()) {
-            boolean skip = false;
-            if (entry.getValue().get(entry.getValue().size() - 1).equals("->skip")
+            boolean skip = entry.getValue().get(entry.getValue().size() - 1).equals("->skip")
                     || entry.getValue().get(entry.getValue().size() - 1).equals("->channel(HIDDEN)")
                     || ((entry.getKey().toLowerCase().contains("comment")
                     || p.matcher(entry.getValue().get(entry.getValue().size() - 1)).find()) &&
-                    !isCommentInArrayList(entry.getValue()))
-            ) {
-                skip = true;
-            }
+                    !isCommentInArrayList(entry.getValue()));
 
             for (int i = 0; i < entry.getValue().size(); i++) {
                 if (entry.getValue().get(i).matches("->.*")) {

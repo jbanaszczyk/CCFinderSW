@@ -19,6 +19,14 @@ import static common.TokenName.getNewHash;
  */
 public class NGramFinder {
 
+    /**
+     * クローン検出のトークン数のしきい値
+     */
+    private final int THRESHOLD;
+    /**
+     * ユニークリスト
+     */
+    private final ArrayList<ArrayList<Integer>> uniqueList;
     public int N;
     /**
      * ハッシュでソートする(uniqueを作るために用いる，uniqueを作ったらcountソートに戻す)
@@ -39,17 +47,9 @@ public class NGramFinder {
     public int[][] pairArray;
     OptionReader or;
     /**
-     * クローン検出のトークン数のしきい値
-     */
-    private int THRESHOLD;
-    /**
      * 検出範囲についてのオプション
      */
     private int detectionRange = 0;
-    /**
-     * ユニークリスト
-     */
-    private ArrayList<ArrayList<Integer>> uniqueList;
 
     public NGramFinder(OptionReader or) {
         this.or = or;

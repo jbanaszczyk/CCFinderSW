@@ -8,31 +8,31 @@ import org.eclipse.swt.widgets.Display;
 import java.util.HashMap;
 
 public class TextColors {
-    private static RGB defaultWhite = new RGB(255, 255, 255);
-    private static RGB defaultBlack = new RGB(0, 0, 0);
-    private static RGB defaultClonePairColor = new RGB(225, 225, 225);
-    private static RGB defaultSelectedClonePairColor = new RGB(225, 247, 250);
-    private static RGB defaultReservedWordColor = new RGB(120, 0, 0);
-    private static RGB defaultNeglectedTextColor = new RGB(0, 160, 0);
+    private static final RGB defaultWhite = new RGB(255, 255, 255);
+    private static final RGB defaultBlack = new RGB(0, 0, 0);
+    private static final RGB defaultClonePairColor = new RGB(225, 225, 225);
+    private static final RGB defaultSelectedClonePairColor = new RGB(225, 247, 250);
+    private static final RGB defaultReservedWordColor = new RGB(120, 0, 0);
+    private static final RGB defaultNeglectedTextColor = new RGB(0, 160, 0);
 
-    private static RGB defaultRulerScrollviewFrameColor = new RGB(255, 255, 0);
-    private static RGB defaultRulerScrollviewDraggingFrameColor = new RGB(208, 208, 0);
-    private static RGB defaultRulerWhite = new RGB(255, 255, 255);
-    private static RGB defaultRulerBackgroundColor = new RGB(0x70, 0x6a, 0x5a); // Negishi Iro
-    private static RGB defaultRulerGray = new RGB(192, 192, 192);
+    private static final RGB defaultRulerScrollviewFrameColor = new RGB(255, 255, 0);
+    private static final RGB defaultRulerScrollviewDraggingFrameColor = new RGB(208, 208, 0);
+    private static final RGB defaultRulerWhite = new RGB(255, 255, 255);
+    private static final RGB defaultRulerBackgroundColor = new RGB(0x70, 0x6a, 0x5a); // Negishi Iro
+    private static final RGB defaultRulerGray = new RGB(192, 192, 192);
 
-    private static Color[] white = new Color[1];
-    private static Color[] black = new Color[1];
-    private static Color[] clonePairColor = new Color[1];
-    private static Color[] selectedClonePairColor = new Color[1];
-    private static Color[] reservedWordColor = new Color[1];
-    private static Color[] neglectedTextColor = new Color[1];
+    private static final Color[] white = new Color[1];
+    private static final Color[] black = new Color[1];
+    private static final Color[] clonePairColor = new Color[1];
+    private static final Color[] selectedClonePairColor = new Color[1];
+    private static final Color[] reservedWordColor = new Color[1];
+    private static final Color[] neglectedTextColor = new Color[1];
 
-    private static Color[] rulerScrollviewFrameColor = new Color[1];
-    private static Color[] rulerScrollviewDraggingFrameColor = new Color[1];
-    private static Color[] rulerWhite = new Color[1];
-    private static Color[] rulerBackgroundColor = new Color[1];
-    private static Color[] rulerGray = new Color[1];
+    private static final Color[] rulerScrollviewFrameColor = new Color[1];
+    private static final Color[] rulerScrollviewDraggingFrameColor = new Color[1];
+    private static final Color[] rulerWhite = new Color[1];
+    private static final Color[] rulerBackgroundColor = new Color[1];
+    private static final Color[] rulerGray = new Color[1];
 
     public static Color getWhite() {
         return white[0];

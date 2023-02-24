@@ -66,7 +66,7 @@ public class OptionReader {
         }
         String optionFileDirPath = searchCommentReservedDirectory(path.getParent().getParent().toString());
         System.out.println("---List---");
-        if (language.toLowerCase().equals("auto")) {
+        if (language.equalsIgnoreCase("auto")) {
             searchCommentOption(optionFileDirPath);
         } else {
             corwLauncher(optionFileDirPath, language);

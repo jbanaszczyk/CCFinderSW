@@ -14,14 +14,14 @@ import java.nio.charset.StandardCharsets;
 
 public class RigelJSONFormatter {
 
-    private FileData fd;
-    private NGramFinder nf;
-    private String filename;
-    private String directoryPath;
-    private String language;
-    private boolean jsonIndent;
-    private int threshold;
-    private ClonePairData cpd;
+    private final FileData fd;
+    private final NGramFinder nf;
+    private final String filename;
+    private final String directoryPath;
+    private final String language;
+    private final boolean jsonIndent;
+    private final int threshold;
+    private final ClonePairData cpd;
 
     public RigelJSONFormatter(FileData fd, NGramFinder nf, OptionReader or, ClonePairData cpd) {
         this.fd = fd;

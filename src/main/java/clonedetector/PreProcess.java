@@ -13,6 +13,20 @@ import java.util.regex.Pattern;
 import static common.TokenName.*;
 
 public class PreProcess {
+    private final String filename;
+    private final OptionReader or;
+    private final boolean doEscape;
+    /* isComment() で使用するグローバル変数 */
+    private final ArrayList<CommentRule> ruleList;
+    private final ArrayList<CommentRule> ruleList_Line;
+    private final ArrayList<CommentRule> literalList;
+    private final ArrayList<String> reservedWordList;
+    private final int commentRuleSize;
+    private final int commentRuleSize_Line;
+    private final int literalRuleSize;
+    private final boolean spaceIndent;
+    //private String variableRegex;
+    private final Pattern p;
     /**
      * tokenList Tokenのリスト
      */
@@ -22,25 +36,12 @@ public class PreProcess {
      */
     public ArrayList<Pre> preList = new ArrayList<>();
     int nowLine;// 行数
-    private String filename;
-    private OptionReader or;
-    private boolean doEscape, lineendEscape = true;
-    /* isComment() で使用するグローバル変数 */
-    private ArrayList<CommentRule> ruleList;
-    private ArrayList<CommentRule> ruleList_Line;
-    private ArrayList<CommentRule> literalList;
-    private ArrayList<String> reservedWordList;
-    private int commentRuleSize;
-    private int commentRuleSize_Line;
-    private int literalRuleSize;
+    private boolean lineendEscape = true;
     private int startLength = 0;
     private int endLength = 0;
     private String commentStart;
     private String commentEnd;
     private int commentType;
-    private boolean spaceIndent;
-    //private String variableRegex;
-    private Pattern p;
     private boolean doZero = false;
     /**
      * ZeroToken のためのグローバル変数
@@ -270,7 +271,7 @@ public class PreProcess {
                         tmpToTrue();
                         i = tmpIndex;
                         break;
-                    } else if (doEscape && str.substring(i, i + 1).equals("\\")) {
+                    } else if (doEscape && str.charAt(i) == '\\') {
                         i++;
                     } else if (i + endLength == str.length()) {
                         System.out.println("Syntax Error <Literal> " + filename);

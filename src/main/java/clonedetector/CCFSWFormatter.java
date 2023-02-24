@@ -17,16 +17,16 @@ import java.util.HashMap;
  */
 public class CCFSWFormatter {
 
-    private FileData fd;
-    private NGramFinder nf;
-    private String filename;
-    private String toolName;
-    private String directoryPath;
-    private String language;
-    private int threshold;
-    private String charset;
-    private HashMap<String, LangRuleConstructor> languageRuleMap;
-    private ClonePairData cpd;
+    private final FileData fd;
+    private final NGramFinder nf;
+    private final String filename;
+    private final String toolName;
+    private final String directoryPath;
+    private final String language;
+    private final int threshold;
+    private final String charset;
+    private final HashMap<String, LangRuleConstructor> languageRuleMap;
+    private final ClonePairData cpd;
 
     public CCFSWFormatter(FileData fd, NGramFinder nf, OptionReader or, ClonePairData cpd) {
         this.fd = fd;

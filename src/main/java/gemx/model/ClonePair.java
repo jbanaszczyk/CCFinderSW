@@ -62,9 +62,7 @@ public class ClonePair implements Comparable<ClonePair> {
     public boolean equals(ClonePair right) {
         if (leftFile == right.leftFile && leftBegin == right.leftBegin && leftEnd == right.leftEnd) {
             if (rightFile == right.rightFile && rightBegin == right.rightBegin && rightEnd == right.rightEnd) {
-                if (classID == right.classID) {
-                    return true;
-                }
+                return classID == right.classID;
             }
         }
         return false;

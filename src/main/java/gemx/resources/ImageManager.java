@@ -4,7 +4,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
 public class ImageManager {
-    private static java.util.HashMap<String, Image> table = new java.util.HashMap<String, Image>();
+    private static final java.util.HashMap<String, Image> table = new java.util.HashMap<String, Image>();
 
     public static Image loadImage(Display display, String filename) {
         if (table.containsKey(filename)) {

@@ -27,7 +27,7 @@ public class MetricsSummaryData {
             line = reader.readLine();
         }
 
-        final String statisticFieldNames[] = new String[]{"total", "ave.", "min.", "max."};
+        final String[] statisticFieldNames = new String[]{"total", "ave.", "min.", "max."};
         {
             if (line == null) {
                 line = reader.readLine();

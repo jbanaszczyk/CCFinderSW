@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Properties;
 
@@ -46,7 +47,7 @@ public class Main {
     private static String propertyFile = "gemx.properties"; //$NON-NLS-1$
 
     static {
-        String path = gemx.ccfinderx.CCFinderX.theInstance.getApplicationDataPath();
+        String path = CCFinderX.getApplicationDataPath();
         if (path.length() > 0) {
             propertyFile = path + java.io.File.separator + "gemx.properties"; //$NON-NLS-1$
         }
@@ -74,7 +75,7 @@ public class Main {
     private static boolean parseBooleanLikeThing(String str) {
         try {
             int i = Integer.parseInt(str);
-            return i == 0 ? false : true;
+            return i != 0;
         } catch (NumberFormatException e) {
             boolean b = Boolean.parseBoolean(str);
             return b;
@@ -90,9 +91,7 @@ public class Main {
         }
 
         if (!dir.exists()) {
-            if (!dir.mkdirs()) {
-                return false;
-            }
+            return dir.mkdirs();
         }
 
         return true;
@@ -104,6 +103,7 @@ public class Main {
             String argi = args[i];
             if (argi.equals("-open")) {
                 cloneDataFile = args[1];
+                break;
             }
         }
         if (cloneDataFile != null) {
@@ -114,7 +114,7 @@ public class Main {
     private static String readColorConfigFile() {
         final String fileName = CCFinderX.getApplicationDataPath() + "/colors.json"; //$NON-NLS-1$
         try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "UTF-8")); //$NON-NLS-1$
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8)); //$NON-NLS-1$
             StringBuilder builder = new StringBuilder();
             String line;
             while ((line = in.readLine()) != null) {
@@ -320,7 +320,7 @@ public class Main {
             if (!makeDirectoryIfNotExist(propertyFile)) {
                 MessageBox box1 = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
                 box1.setText("Error - GemX"); //$NON-NLS-1$
-                box1.setMessage(String.format("Fail to make directory for property file '%s'", propertyFile.toString()));
+                box1.setMessage(String.format("Fail to make directory for property file '%s'", propertyFile));
                 box1.open();
                 System.exit(1);
             }
@@ -372,7 +372,7 @@ public class Main {
             if (!makeDirectoryIfNotExist(propertyFile)) {
                 MessageBox box1 = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
                 box1.setText("Error - GemX"); //$NON-NLS-1$
-                box1.setMessage(String.format("Fail to make directory for property file '%s'", propertyFile.toString()));
+                box1.setMessage(String.format("Fail to make directory for property file '%s'", propertyFile));
                 box1.open();
                 System.exit(1);
             }
@@ -387,7 +387,7 @@ public class Main {
 }
 
 class InitializationTask implements Runnable {
-    private Display display;
+    private final Display display;
 
     public InitializationTask(Display display) {
         this.display = display;

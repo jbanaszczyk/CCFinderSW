@@ -3,7 +3,11 @@ package gemx.utility;
 import gnu.trove.TIntArrayList;
 import gnu.trove.TLongArrayList;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 public class ArrayUtil {
     public static long[] slice(long[] array, int begin, int end) {
@@ -57,12 +61,12 @@ public class ArrayUtil {
         return sliced;
     }
 
-    public static TIntArrayList readIntList(String path) throws FileNotFoundException,
+    public static TIntArrayList readIntList(String path) throws
             IOException, NumberFormatErrorAtLineOfFile {
         TIntArrayList ary = new TIntArrayList();
 
         long lineNumber = 0;
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8")); //$NON-NLS-1$
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
         String line;
         while ((line = in.readLine()) != null) {
             ++lineNumber;
@@ -79,12 +83,12 @@ public class ArrayUtil {
         return ary;
     }
 
-    public static TLongArrayList readLongList(String path) throws FileNotFoundException,
+    public static TLongArrayList readLongList(String path) throws
             IOException, NumberFormatErrorAtLineOfFile {
         TLongArrayList ary = new TLongArrayList();
 
         long lineNumber = 0;
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8")); //$NON-NLS-1$
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
         String line;
         while ((line = in.readLine()) != null) {
             ++lineNumber;
@@ -101,10 +105,10 @@ public class ArrayUtil {
         return ary;
     }
 
-    public static void iterateOnIntList(String path, IterateOnIntListClosure closure) throws FileNotFoundException,
+    public static void iterateOnIntList(String path, IterateOnIntListClosure closure) throws
             IOException, NumberFormatErrorAtLineOfFile {
         long lineNumber = 0;
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8")); //$NON-NLS-1$
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
         String line;
         while ((line = in.readLine()) != null) {
             ++lineNumber;
@@ -119,10 +123,10 @@ public class ArrayUtil {
         in.close();
     }
 
-    public static void iterateOnLongList(String path, IterateOnLongListClosure closure) throws FileNotFoundException,
+    public static void iterateOnLongList(String path, IterateOnLongListClosure closure) throws
             IOException, NumberFormatErrorAtLineOfFile {
         long lineNumber = 0;
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8")); //$NON-NLS-1$
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
         String line;
         while ((line = in.readLine()) != null) {
             ++lineNumber;
@@ -137,12 +141,12 @@ public class ArrayUtil {
         in.close();
     }
 
-    public static interface IterateOnIntListClosure {
-        public void action(int value);
+    public interface IterateOnIntListClosure {
+        void action(int value);
     }
 
-    public static interface IterateOnLongListClosure {
-        public void action(long value);
+    public interface IterateOnLongListClosure {
+        void action(long value);
     }
 
     public static class NumberFormatErrorAtLineOfFile extends NumberFormatException {

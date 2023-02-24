@@ -62,6 +62,6 @@ public class JsonHelper {
             }
             rgbs.add(rgb);
         }
-        return (RGB[]) rgbs.toArray(new RGB[0]);
+        return rgbs.toArray(new RGB[0]);
     }
 }

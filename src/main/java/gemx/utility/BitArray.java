@@ -1,7 +1,7 @@
 package gemx.utility;
 
 public final class BitArray implements Cloneable {
-    private static final int bitCountPatterns[];
+    private static final int[] bitCountPatterns;
 
     static {
         bitCountPatterns = new int[0x100];
@@ -34,7 +34,7 @@ public final class BitArray implements Cloneable {
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         test3();
         test2();
         test1();
@@ -97,8 +97,8 @@ public final class BitArray implements Cloneable {
         long lap2 = cal2.getTimeInMillis();
         long lap3 = cal3.getTimeInMillis();
 
-        System.out.println("BitArray: " + String.valueOf(lap2 - lap1) + " milli-sec.");
-        System.out.println("boolean[]: " + String.valueOf(lap3 - lap2) + " milli-sec.");
+        System.out.println("BitArray: " + (lap2 - lap1) + " milli-sec.");
+        System.out.println("boolean[]: " + (lap3 - lap2) + " milli-sec.");
     }
 
     private static int findMismatchIndex(BitArray bita, boolean[] boola) {
@@ -136,8 +136,8 @@ public final class BitArray implements Cloneable {
                 if (mismatchIndex >= 0) {
                     boolean valueBit = bita.getAt(mismatchIndex);
                     boolean valueBool = boola[mismatchIndex];
-                    System.out.println("Failed. index = " + String.valueOf(mismatchIndex)
-                            + ", valueBit = " + String.valueOf(valueBit) + ", valueBool = " + String.valueOf(valueBool));
+                    System.out.println("Failed. index = " + mismatchIndex
+                            + ", valueBit = " + valueBit + ", valueBool = " + valueBool);
                     System.exit(1);
                 }
 
@@ -150,7 +150,7 @@ public final class BitArray implements Cloneable {
                 }
                 if (bita.count() != bitCount) {
                     System.out.println("Failed. bita.count() = " + bita.count()
-                            + ", bitCount = " + String.valueOf(bitCount));
+                            + ", bitCount = " + bitCount);
                     System.exit(1);
                 }
 
@@ -160,12 +160,12 @@ public final class BitArray implements Cloneable {
                 while (index >= 0) {
                     ++bitCount2;
                     for (int j = lastIndex; j < index; ++j) {
-                        if (boola[j] == true) {
+                        if (boola[j]) {
                             System.out.println("Failed. invalid value of bita.find() #1");
                             System.exit(1);
                         }
                     }
-                    if (boola[index] != true) {
+                    if (!boola[index]) {
                         System.out.println("Failed. invalid value of bita.find() #2");
                         System.exit(1);
                     }
@@ -196,8 +196,8 @@ public final class BitArray implements Cloneable {
                 if (mismatchIndex >= 0) {
                     boolean valueBit = bita.getAt(mismatchIndex);
                     boolean valueBool = boola[mismatchIndex];
-                    System.out.println("Failed. index = " + String.valueOf(mismatchIndex)
-                            + ", valueBit = " + String.valueOf(valueBit) + ", valueBool = " + String.valueOf(valueBool));
+                    System.out.println("Failed. index = " + mismatchIndex
+                            + ", valueBit = " + valueBit + ", valueBool = " + valueBool);
                     System.exit(1);
                 }
             }
@@ -224,9 +224,7 @@ public final class BitArray implements Cloneable {
 
     public Object clone() {
         final BitArray c = new BitArray(this.size);
-        for (int i = 0; i < this.body.length; ++i) {
-            c.body[i] = this.body[i];
-        }
+        System.arraycopy(this.body, 0, c.body, 0, this.body.length);
         return c;
     }
 

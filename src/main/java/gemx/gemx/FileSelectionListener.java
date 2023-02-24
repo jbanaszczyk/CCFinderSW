@@ -1,5 +1,5 @@
 package gemx.gemx;
 
 public interface FileSelectionListener {
-    public void setSelection(int[] fileIndex);
+    void setSelection(int[] fileIndex);
 }

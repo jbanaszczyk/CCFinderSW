@@ -138,7 +138,7 @@ public class Model {
 
     public ArrayList<String> getFileRemarkFromFileID(int fileID) {
         if (sourceFileRemarks.contains(fileID)) {
-            return (ArrayList<String>) sourceFileRemarks.get(fileID);
+            return sourceFileRemarks.get(fileID);
         } else {
             return null;
         }
@@ -629,7 +629,7 @@ public class Model {
                             remarks = new ArrayList<String>();
                             sourceFileRemarks.put(fileId, remarks);
                         } else {
-                            remarks = (ArrayList<String>) sourceFileRemarks.get(fileId);
+                            remarks = sourceFileRemarks.get(fileId);
                         }
                         remarks.add(remarkText);
                     }

@@ -10,9 +10,9 @@ import static common.TokenName.*;
 
 public class CCFXPrepOutput {
 
-    private String directoryName;
-    private ArrayList<Pre> preList;
-    private String language;
+    private final String directoryName;
+    private final ArrayList<Pre> preList;
+    private final String language;
 
     public CCFXPrepOutput(String dn, ArrayList<Pre> preList, String language) {
         directoryName = dn;

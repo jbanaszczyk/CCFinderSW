@@ -1,19 +1,19 @@
 package gemx.gemx;
 
 public interface ITextRuler extends TextPaneScrollListener {
-    public abstract boolean isVisible();
+    boolean isVisible();
 
-    public abstract void setVisible(boolean visible);
+    void setVisible(boolean visible);
 
-    public abstract void setTextPane(MultipleTextPane pane);
+    void setTextPane(MultipleTextPane pane);
 
-    public abstract void textScrolled();
+    void textScrolled();
 
-    public abstract void update();
+    void update();
 
-    public abstract void updateViewLocationDisplay();
+    void updateViewLocationDisplay();
 
-    public abstract int getWidth();
+    int getWidth();
 
-    public void changeFocusedTextPane(int index);
+    void changeFocusedTextPane(int index);
 }
