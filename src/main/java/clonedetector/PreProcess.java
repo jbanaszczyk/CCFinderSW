@@ -16,7 +16,7 @@ public class PreProcess {
     private final String filename;
     private final OptionReader or;
     private final boolean doEscape;
-    /* isComment() で使用するグローバル変数 */
+    /* isComment() global variables used in */
     private final ArrayList<CommentRule> ruleList;
     private final ArrayList<CommentRule> ruleList_Line;
     private final ArrayList<CommentRule> literalList;
@@ -28,14 +28,14 @@ public class PreProcess {
     //private String variableRegex;
     private final Pattern p;
     /**
-     * tokenList Tokenのリスト
+     * tokenList Token list of
      */
     public ArrayList<Token> tokenList;
     /**
-     * preList ccfxprepのリスト
+     * preList ccfxprep list of
      */
     public ArrayList<Pre> preList = new ArrayList<>();
-    int nowLine;// 行数
+    int nowLine;// Number of lines
     private boolean lineendEscape = true;
     private int startLength = 0;
     private int endLength = 0;
@@ -44,7 +44,7 @@ public class PreProcess {
     private int commentType;
     private boolean doZero = false;
     /**
-     * ZeroToken のためのグローバル変数
+     * ZeroToken global variables for
      */
     private int braceCount = 0;
     private int parenCount = 0;
@@ -90,7 +90,7 @@ public class PreProcess {
      * called by Lexer.java
      */
     void readFile() {
-        //ソースコード読み込み
+        // Read source code
         String str = "";
         try {
             str = JudgeCharset.readAll(filename, or.getCharset());
@@ -102,9 +102,9 @@ public class PreProcess {
     }
 
     /**
-     * トークン分割
+     * Token split
      *
-     * @param str ソースコード（ファイルそのまま）
+     * @param str Source code (file as is)
      */
     private void tokenize(String str) {
         int i = 0;
@@ -128,7 +128,7 @@ public class PreProcess {
                 space = true;
                 indentNum = 0;
             }
-            // 空白タブ文字無視
+            // Ignore blank tab characters
             if (c == '\u0020' || c == '\t' || c == '\u00A0' || c == '\u3000') {
                 i++;
                 if (space) indentNum += c == '\t' ? 4 : 1;
@@ -146,18 +146,18 @@ public class PreProcess {
                     }
                 }
 
-                // 行コメント
+                // line comment
                 if (space && i != (tmpIndex = isLINE(str, i))) {
                     i = tmpIndex;
                 }
 
-                // 継続文字
+                // continuation character
                 else if (i != (tmpIndex = isEscapeAndLine(str, i))) {
                     tmpToTrue();
                     i = tmpIndex;
                 }
 
-                // 改行文字
+                // newline character
                 else if (i != (tmpIndex = isNewLine(str, i))) {
                     tmpToTrue();
                     i = tmpIndex;
@@ -175,7 +175,7 @@ public class PreProcess {
                     tokenRegister(tmpStr, startLine, startClm, nowLine, i - lastNewLine, startIndex, i, STRING);
                 }
 
-                // 英数字
+                // alphanumeric character
                 else if (p.matcher(str.substring(i, i + 1)).matches()) {
                     i++;
                     while (i < str.length()) {
@@ -193,7 +193,7 @@ public class PreProcess {
                             Character.isDigit(strTmp.charAt(0)) ? NUMBER : reservedWordList.contains(strTmp) ? RESERVE : IDENTIFIER);
                 }
 
-                //それ以外（記号など）
+                // Others (symbols, etc.)
                 else {
                     if ((int) c != 65279) {
                         tokenRegister(str.substring(startIndex, startIndex + 1), startLine, startClm, nowLine, i - lastNewLine, startIndex, i + 1, SYMBOL);
@@ -321,10 +321,10 @@ public class PreProcess {
                 continue;
             }
 
-            if (commentType == START) {// 単一行コメント
+            if (commentType == START) {// single line comment
                 i = commentSTART(str, i);
                 break;
-            } else if (commentType == START_END) {// 複数行コメント
+            } else if (commentType == START_END) {// multi-line comment
                 i = commentSTARTEND(str, i, rule);
                 break;
             }
@@ -390,10 +390,10 @@ public class PreProcess {
                 continue;
             }
 
-            if (commentType == LINE_START) {// 単一行コメント
+            if (commentType == LINE_START) {// single line comment
                 i = commentLINESTART(str, i);
                 break;
-            } else if (commentType == LINE_START_END) {// 複数行コメント
+            } else if (commentType == LINE_START_END) {// multi-line comment
                 i = commentLINESTARTEND(str, i);
                 break;
             }
@@ -437,11 +437,11 @@ public class PreProcess {
     }
 
     /**
-     * ブロックを簡単に認識して長さのないトークンとして埋め込んでいる
-     * cond 条件文の開始
-     * loop ループ文の開始
-     * func 関数の開始
-     * brace カッコの無いif文に対するカッコの補完
+     * Easily recognizes blocks and embeds them as lengthless tokens
+     * cond Start of conditional statement
+     * loop Start of loop statement
+     * func start of function
+     * brace Parentheses completion for if statements without parentheses
      */
     private void zeroTokenCheck(String str, int line, int clm, int sum) {
         if (beforeToken.equals("if")) {

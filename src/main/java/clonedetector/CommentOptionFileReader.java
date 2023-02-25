@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static common.TokenName.*;
 
 /**
- * コメントファイルを読み込むクラス
+ * Class that reads comment files
  */
 public class CommentOptionFileReader {
 
@@ -42,7 +42,7 @@ public class CommentOptionFileReader {
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
             String str;
-            while ((str = br.readLine()) != null) { // 改行は含まれない
+            while ((str = br.readLine()) != null) { // does not contain line breaks
                 boolean notCommentOut = true;
                 if (str.charAt(0) == '#' || str.charAt(0) == '%') {
                     if (str.charAt(0) == '%') {

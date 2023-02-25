@@ -24,7 +24,7 @@ public class PreprocessScriptAndDirectoriesDialog {
     private boolean valueValid;
 
     public PreprocessScriptAndDirectoriesDialog(Shell shell) {
-        resStringPreprocessScript = ""; //$NON-NLS-1$
+        resStringPreprocessScript = "";
         resDirectories = new String[0];
         valueValid = false;
 
@@ -42,7 +42,7 @@ public class PreprocessScriptAndDirectoriesDialog {
 
         {
             Label labelPreprocessScript = new Label(shellC, SWT.NULL);
-            labelPreprocessScript.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_PREPROCESS_SCRIPT")); //$NON-NLS-1$
+            labelPreprocessScript.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_PREPROCESS_SCRIPT"));
 
             comboPreprocessScript = new Combo(shellC, SWT.DROP_DOWN);
             {
@@ -65,7 +65,7 @@ public class PreprocessScriptAndDirectoriesDialog {
 
         {
             Label directoriesLabel = new Label(shellC, SWT.NULL);
-            directoriesLabel.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_TARGET_DIRECTORY_LIST")); //$NON-NLS-1$
+            directoriesLabel.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_TARGET_DIRECTORY_LIST"));
 
             Button addButton = new Button(shellC, SWT.PUSH);
             {
@@ -73,7 +73,7 @@ public class PreprocessScriptAndDirectoriesDialog {
                 gridData.widthHint = 150;
                 addButton.setLayoutData(gridData);
             }
-            addButton.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_ADD_DIRECTORY")); //$NON-NLS-1$
+            addButton.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_ADD_DIRECTORY"));
             addButton.addSelectionListener(new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
@@ -81,8 +81,8 @@ public class PreprocessScriptAndDirectoriesDialog {
                     if (lastDirectory != null) {
                         dialog.setFilterPath(lastDirectory);
                     }
-                    dialog.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_GEMX_SELECT_TARGET_DIRECTORY")); //$NON-NLS-1$
-                    //dialog.setMessage(Messages.getString("gemx.MainWindow.S_SELECT_A_ROOT_DIRECTORY_OF_THE_TARGET_SOURCE_FILES")); //$NON-NLS-1$
+                    dialog.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_GEMX_SELECT_TARGET_DIRECTORY"));
+                    //dialog.setMessage(Messages.getString("gemx.MainWindow.S_SELECT_A_ROOT_DIRECTORY_OF_THE_TARGET_SOURCE_FILES")); 
 
                     String path = dialog.open();
 
@@ -109,7 +109,7 @@ public class PreprocessScriptAndDirectoriesDialog {
             directoriesList.setMenu(pmenu);
             {
                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_REMOVE")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_REMOVE"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -135,8 +135,8 @@ public class PreprocessScriptAndDirectoriesDialog {
                     for (String d : directories) {
                         if (!new File(d).isDirectory()) {
                             MessageBox mes = new MessageBox(shellC, SWT.OK | SWT.ICON_ERROR);
-                            mes.setText("Error - GemX"); //$NON-NLS-1$
-                            mes.setMessage(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_DROPPED_ITEM_IS_NOT_DIRECTORY")); //$NON-NLS-1$
+                            mes.setText("Error - GemX");
+                            mes.setMessage(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_DROPPED_ITEM_IS_NOT_DIRECTORY"));
                             mes.open();
                             return;
                         }
@@ -169,15 +169,15 @@ public class PreprocessScriptAndDirectoriesDialog {
                 GridData gridData = new GridData(GridData.FILL);
                 gridData.widthHint = 100;
                 button1.setLayoutData(gridData);
-                button1.setText(Messages.getString("gemx.MainWindow.S_NEXT")); //$NON-NLS-1$
+                button1.setText(Messages.getString("gemx.MainWindow.S_NEXT"));
                 button1.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         resStringPreprocessScript = comboPreprocessScript.getText();
                         resDirectories = directoriesList.getItems();
                         if (resDirectories == null || resDirectories.length == 0) {
                             MessageBox mes = new MessageBox(shellC, SWT.OK | SWT.ICON_ERROR);
-                            mes.setText("Error - GemX"); //$NON-NLS-1$
-                            mes.setMessage(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_NO_DIRECTORIES_ARE_SELECTED")); //$NON-NLS-1$
+                            mes.setText("Error - GemX");
+                            mes.setMessage(Messages.getString("gemx.PreprocessScriptAndDirectoriesDialog.S_NO_DIRECTORIES_ARE_SELECTED"));
                             mes.open();
                             return;
                         }
@@ -192,10 +192,10 @@ public class PreprocessScriptAndDirectoriesDialog {
                 GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
                 gridData.widthHint = 100;
                 button2.setLayoutData(gridData);
-                button2.setText(Messages.getString("gemx.MainWindow.S_CANCEL")); //$NON-NLS-1$
+                button2.setText(Messages.getString("gemx.MainWindow.S_CANCEL"));
                 button2.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
-                        resStringPreprocessScript = ""; //$NON-NLS-1$
+                        resStringPreprocessScript = "";
                         resDirectories = new String[0];
                         valueValid = false;
                         shellC.dispose();

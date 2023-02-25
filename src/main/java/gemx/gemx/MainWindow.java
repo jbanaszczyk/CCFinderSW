@@ -46,9 +46,9 @@ class CCFinderXHelper {
             return preprocessorList.clone();
         }
 
-        int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"F", "-p", "-o", tempFileName1}); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"F", "-p", "-o", tempFileName1});
         if (r != 0) {
-            mainWindow.showErrorMessage("error in invocation of ccfx."); //$NON-NLS-1$
+            mainWindow.showErrorMessage("error in invocation of ccfx.");
             return null;
         }
         TemporaryFileManager.registerFileToBeRemoved(tempFileName1);
@@ -57,7 +57,7 @@ class CCFinderXHelper {
         try {
             preprocessors = gemx.utility.FileUtils.readLines(tempFileName1);
         } catch (IOException e) {
-            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_READING_PREPROCESSOR_LIST")); //$NON-NLS-1$
+            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_READING_PREPROCESSOR_LIST"));
             return null;
         }
 
@@ -93,35 +93,35 @@ class CCFinderXHelper {
 
         assert preprocessScript != null;
 
-        options.add("D"); //$NON-NLS-1$
+        options.add("D");
         options.add(preprocessScript);
-        options.addAll(Arrays.asList("-i", fileListPath)); //$NON-NLS-1$
+        options.addAll(Arrays.asList("-i", fileListPath));
         if (encodingName != null && encodingName.length() > 0) {
-            options.addAll(Arrays.asList("-c", encodingName)); //$NON-NLS-1$
+            options.addAll(Arrays.asList("-c", encodingName));
         }
-        options.addAll(Arrays.asList("-b", String.valueOf(minCloneLength))); //$NON-NLS-1$
-        options.addAll(Arrays.asList("-t", String.valueOf(minTKS))); //$NON-NLS-1$
+        options.addAll(Arrays.asList("-b", String.valueOf(minCloneLength)));
+        options.addAll(Arrays.asList("-t", String.valueOf(minTKS)));
         if (shaperLevel >= 0) {
-            options.addAll(Arrays.asList("-s", String.valueOf(shaperLevel))); //$NON-NLS-1$
+            options.addAll(Arrays.asList("-s", String.valueOf(shaperLevel)));
         }
-        options.addAll(Arrays.asList("-u", usePMatch ? "+" : "-")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        options.addAll(Arrays.asList("-u", usePMatch ? "+" : "-"));
         for (String p : preprocessFileDirectories) {
-            options.addAll(Arrays.asList("-n", p)); //$NON-NLS-1$
+            options.addAll(Arrays.asList("-n", p));
         }
-        options.addAll(Arrays.asList("-k",  //$NON-NLS-1$
-                chunkSize != 0 ? chunkSize + "M" : "0")); //$NON-NLS-1$ //$NON-NLS-2$
+        options.addAll(Arrays.asList("-k",
+                chunkSize != 0 ? chunkSize + "M" : "0"));
         if (maxWorkerThreads > 0) {
-            options.add("--threads=" + maxWorkerThreads); //$NON-NLS-1$
+            options.add("--threads=" + maxWorkerThreads);
         }
-        options.add("-v"); //$NON-NLS-1$
+        options.add("-v");
 
         return options;
     }
 
     public String[] getExtensionsRelatingToPreprocessScript(String preprocessorName) {
-        int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"F", preprocessorName, "-e", "-o", tempFileName1}); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"F", preprocessorName, "-e", "-o", tempFileName1});
         if (r != 0) {
-            mainWindow.showErrorMessage("error in invocation of ccfx."); //$NON-NLS-1$
+            mainWindow.showErrorMessage("error in invocation of ccfx.");
             return null;
         }
         TemporaryFileManager.registerFileToBeRemoved(tempFileName1);
@@ -130,7 +130,7 @@ class CCFinderXHelper {
         try {
             extensions = gemx.utility.FileUtils.readLines(tempFileName1);
         } catch (IOException e) {
-            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_READING_PREPROCESSOR_LIST")); //$NON-NLS-1$
+            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_READING_PREPROCESSOR_LIST"));
             return null;
         }
 
@@ -147,37 +147,37 @@ class CCFinderXHelper {
         // do preprocessing
         {
             ArrayList<String> options = new ArrayList<String>();
-            options.add("D"); //$NON-NLS-1$
+            options.add("D");
             options.add(preprocessor);
             if (preprocessFileDirectoires != null) {
                 for (String d : preprocessFileDirectoires) {
-                    options.addAll(Arrays.asList("-n", d)); //$NON-NLS-1$
+                    options.addAll(Arrays.asList("-n", d));
                 }
             }
-            options.addAll(Arrays.asList("-p", "-i", fileListFile)); //$NON-NLS-1$ //$NON-NLS-2$
+            options.addAll(Arrays.asList("-p", "-i", fileListFile));
             if (encodingName != null && encodingName.length() > 0) {
-                options.addAll(Arrays.asList("-c", encodingName)); //$NON-NLS-1$
+                options.addAll(Arrays.asList("-c", encodingName));
             }
             if (maxWorkerThreads > 0) {
-                options.add("--threads=" + maxWorkerThreads); //$NON-NLS-1$
+                options.add("--threads=" + maxWorkerThreads);
             }
-            options.add("-v"); //$NON-NLS-1$
+            options.add("-v");
             CCFinderX.theInstance.invokeCCFinderX(options.toArray(new String[0]));
         }
 
         String dirPath = exeDir;
-        String scriptPath = dirPath + File.separator + "scripts" + File.separator + "prescreening.py"; //$NON-NLS-1$ //$NON-NLS-2$
+        String scriptPath = dirPath + File.separator + "scripts" + File.separator + "prescreening.py";
         ArrayList<String> args = new ArrayList<String>();
 
         args.add(gemx.utility.PythonVersionChecker.thePythonInterpreterPath);
         args.add(scriptPath);
         args.add(preprocessor);
-        args.addAll(Arrays.asList("-i", fileListFile)); //$NON-NLS-1$
-        args.addAll(Arrays.asList("-o", maskedFileList)); //$NON-NLS-1$
+        args.addAll(Arrays.asList("-i", fileListFile));
+        args.addAll(Arrays.asList("-o", maskedFileList));
         if (encodingName != null && encodingName.length() > 0) {
-            args.addAll(Arrays.asList("-c", encodingName)); //$NON-NLS-1$
+            args.addAll(Arrays.asList("-c", encodingName));
         }
-        //options.add("-v"); //$NON-NLS-1$
+        //options.add("-v"); 
 
         int retCode = ExecCommandline.execCommandline(args, true);
     }
@@ -252,7 +252,7 @@ public class MainWindow {
 
         ArrayList<String> preprocessFileDirectories = new ArrayList<String>();
         for (String d : dirs) {
-            File p = new File(d + File.separator + ".ccfxprepdir");  //$NON-NLS-1$
+            File p = new File(d + File.separator + ".ccfxprepdir");
             if (p.exists() && p.isDirectory()) {
                 preprocessFileDirectories.add(p.toString());
             }
@@ -279,27 +279,27 @@ public class MainWindow {
 
     public void showErrorMessage(String message) {
         final MessageBox mes = new MessageBox(shell, SWT.OK | SWT.ICON_ERROR);
-        mes.setText("Error - GemX"); //$NON-NLS-1$
+        mes.setText("Error - GemX");
         mes.setMessage(message);
         mes.open();
     }
 
     public int showConfirmationMessage(int status, String message) {
         final MessageBox mes = new MessageBox(shell, status);
-        mes.setText("Confirmation - GemX"); //$NON-NLS-1$
+        mes.setText("Confirmation - GemX");
         mes.setMessage(message);
         return mes.open();
     }
 
     private void do_save_clone_data_as() {
         if (scopeHistory == null || scopeHistory.size() == 0) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DATA_TO_BE_SAVED")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DATA_TO_BE_SAVED"));
             return;
         }
 
         FileDialog dialog = new FileDialog(shell, SWT.SAVE);
-        String[] exts = new String[]{"*.ccfxd", "*.icetd"}; //$NON-NLS-1$ //$NON-NLS-2$
-        String[] extNames = new String[]{Messages.getString("gemx.MainWindow.S_CLONE_DATA_FILE")}; //$NON-NLS-1$
+        String[] exts = new String[]{"*.ccfxd", "*.icetd"};
+        String[] extNames = new String[]{Messages.getString("gemx.MainWindow.S_CLONE_DATA_FILE")};
         dialog.setFilterExtensions(exts);
         dialog.setFilterNames(extNames);
 
@@ -308,17 +308,17 @@ public class MainWindow {
         String dir = dialog.getFilterPath();
         String[] files = dialog.getFileNames();
         if (files.length >= 2) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_CLONE_DATA_FILE")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_CLONE_DATA_FILE"));
         } else if (files.length == 1) {
             String path = dir + java.io.File.separator + files[0];
             if (new File(path).exists()) {
                 if (showConfirmationMessage(SWT.YES | SWT.NO | SWT.ICON_QUESTION,
-                        Messages.getString("gemx.MainWindow.S_THE_NAMED_FILE_ALREADY_EXISTS_OVERWRITE_IT_P")) != SWT.YES) { //$NON-NLS-1$
+                        Messages.getString("gemx.MainWindow.S_THE_NAMED_FILE_ALREADY_EXISTS_OVERWRITE_IT_P")) != SWT.YES) {
                     return;
                 }
             }
             try {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_WRITING_CLONE_DATA_FILE")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_WRITING_CLONE_DATA_FILE"));
 
                 ScopeHistoryItem shi = scopeHistory.get(scopeHistory.size() - 1);
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
@@ -328,23 +328,23 @@ public class MainWindow {
                     tmcc.dispose();
                 }
             } catch (java.io.IOException e) {
-                showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_WRITING_CLONE_DATA_FILE") //$NON-NLS-1$
+                showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_WRITING_CLONE_DATA_FILE")
                         + path);
             } finally {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
             }
         }
     }
 
     private void do_save_file_list_as() {
         if (scopeHistory == null || scopeHistory.size() == 0) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DATA_TO_BE_SAVED")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DATA_TO_BE_SAVED"));
             return;
         }
 
         FileDialog dialog = new FileDialog(shell, SWT.SAVE);
-        String[] exts = new String[]{"*.*"}; //$NON-NLS-1$
-        String[] extNames = new String[]{Messages.getString("gemx.MainWindow.S_FILE_LIST")}; //$NON-NLS-1$
+        String[] exts = new String[]{"*.*"};
+        String[] extNames = new String[]{Messages.getString("gemx.MainWindow.S_FILE_LIST")};
         dialog.setFilterExtensions(exts);
         dialog.setFilterNames(extNames);
 
@@ -353,25 +353,25 @@ public class MainWindow {
         String dir = dialog.getFilterPath();
         String[] files = dialog.getFileNames();
         if (files.length >= 2) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE"));
         } else if (files.length == 1) {
             String path = dir + java.io.File.separator + files[0];
             if (new File(path).exists()) {
                 if (showConfirmationMessage(SWT.YES | SWT.NO | SWT.ICON_QUESTION,
-                        Messages.getString("gemx.MainWindow.S_THE_NAMED_FILE_ALREADY_EXISTS_OVERWRITE_IT_P")) != SWT.YES) { //$NON-NLS-1$
+                        Messages.getString("gemx.MainWindow.S_THE_NAMED_FILE_ALREADY_EXISTS_OVERWRITE_IT_P")) != SWT.YES) {
                     return;
                 }
             }
 
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_WRITING_FILE_LIST")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_WRITING_FILE_LIST"));
             try {
                 ScopeHistoryItem shi = scopeHistory.get(scopeHistory.size() - 1);
-                int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"P", shi.cloneDataFile, "-ln", "-o", path}); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"P", shi.cloneDataFile, "-ln", "-o", path});
                 if (r != 0) {
-                    showErrorMessage("error in invocation of ccfx."); //$NON-NLS-1$
+                    showErrorMessage("error in invocation of ccfx.");
                 }
             } finally {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
             }
         } else {
         }
@@ -382,13 +382,13 @@ public class MainWindow {
             return;
 
         if (scopeHistory == null || scopeHistory.size() == 0) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DATA_TO_BE_SAVED")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DATA_TO_BE_SAVED"));
             return;
         }
 
         FileDialog dialog = new FileDialog(shell, SWT.SAVE);
-        String[] exts = new String[]{"*.png"}; //$NON-NLS-1$
-        String[] extNames = new String[]{"Png file (*.png)"}; //$NON-NLS-1$
+        String[] exts = new String[]{"*.png"};
+        String[] extNames = new String[]{"Png file (*.png)"};
         dialog.setFilterExtensions(exts);
         dialog.setFilterNames(extNames);
 
@@ -397,23 +397,23 @@ public class MainWindow {
         String dir = dialog.getFilterPath();
         String[] files = dialog.getFileNames();
         if (files.length >= 2) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE"));
         } else if (files.length == 1) {
             String path = dir + java.io.File.separator + files[0];
             if (new File(path).exists()) {
                 if (showConfirmationMessage(SWT.YES | SWT.NO | SWT.ICON_QUESTION,
-                        Messages.getString("gemx.MainWindow.S_THE_NAMED_FILE_ALREADY_EXISTS_OVERWRITE_IT_P")) != SWT.YES) { //$NON-NLS-1$
+                        Messages.getString("gemx.MainWindow.S_THE_NAMED_FILE_ALREADY_EXISTS_OVERWRITE_IT_P")) != SWT.YES) {
                     return;
                 }
             }
 
-            statusBar.setText("> Writing the scatter-plot image to a file"); //$NON-NLS-1$
+            statusBar.setText("> Writing the scatter-plot image to a file");
             try {
                 this.scatterPlotPane.saveImage(path);
             } catch (IOException e) {
-                showErrorMessage("error in writing an image file"); //$NON-NLS-1$
+                showErrorMessage("error in writing an image file");
             } finally {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
             }
         } else {
         }
@@ -433,7 +433,7 @@ public class MainWindow {
     private void do_re_detect_clones() {
         try {
             if (scopeHistory == null || scopeHistory.size() == 0) {
-                showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DATA_TO_BE_SAVED")); //$NON-NLS-1$
+                showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DATA_TO_BE_SAVED"));
                 return;
             }
 
@@ -448,14 +448,14 @@ public class MainWindow {
             CcfxDetectionOptions detectionOptions = currentScope.getDetectionOption();
 
             String path = tempFileName1;
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_WRITING_FILE_LIST")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_WRITING_FILE_LIST"));
 
             TemporaryFileManager.registerFileToBeRemoved(tempFileName1);
 
             ScopeHistoryItem shi = scopeHistory.get(scopeHistory.size() - 1);
-            int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"P", shi.cloneDataFile, "-ln", "-o", path}); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            int r = CCFinderX.theInstance.invokeCCFinderX(new String[]{"P", shi.cloneDataFile, "-ln", "-o", path});
             if (r != 0) {
-                showErrorMessage("error in invocation of ccfx."); //$NON-NLS-1$
+                showErrorMessage("error in invocation of ccfx.");
                 return;
             }
 
@@ -463,7 +463,7 @@ public class MainWindow {
             String preprocessor = currentScope.getPreprocessScript();
 
             // identify preprocess file directories
-            String[] preprocessFileDirectories = detectionOptions.get("n"); //$NON-NLS-1$
+            String[] preprocessFileDirectories = detectionOptions.get("n");
 
             // set other options
             CcfxDetectionOptions ops = detectionOptions;
@@ -480,7 +480,7 @@ public class MainWindow {
                 for (int i = 0; i < preprocessors.length; ++i) {
                     dialog.addForcedPreprocessorItem(preprocessors[i]);
                 }
-                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONE_RE_DETECTION")); //$NON-NLS-1$
+                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONE_RE_DETECTION"));
                 dialog.setForcedPreprocessor(preprocessor);
                 dialog.setIdentifiedSourceFiles(fileCount);
                 dialog.setMinimumCloneLength(minCloneLength);
@@ -521,7 +521,7 @@ public class MainWindow {
 
             String fileListName = null;
             if (usePrescreening) {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_PRESCREENING")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_PRESCREENING"));
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
                 try {
                     ccfxhelper.doPrescreening(tempFileName2, tempFileName1, preprocessor, encodingName,
@@ -529,7 +529,7 @@ public class MainWindow {
                     usePrescreening = true;
                     fileListName = tempFileName2;
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_ERROR_IN_INVOKING_PRESCREENING_FILTER"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_ERROR_IN_INVOKING_PRESCREENING_FILTER"));
                     return;
                 } finally {
                     tmcc.dispose();
@@ -539,8 +539,8 @@ public class MainWindow {
             }
 
             // detect clones
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_DETECTING_CLONES")); //$NON-NLS-1$
-            if (!moveToBackupFile(theCloneDataFileName)) { //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_DETECTING_CLONES"));
+            if (!moveToBackupFile(theCloneDataFileName)) {
                 return;
             }
             {
@@ -549,7 +549,7 @@ public class MainWindow {
                         main.settingChunkSize, main.settingMaxWorkerThreads, preprocessFileDirectories);
                 options.addAll(Arrays.asList("-o", theCloneDataFileName));
                 if (usePrescreening) {
-                    options.addAll(Arrays.asList("-mr", "masked")); //$NON-NLS-1$ //$NON-NLS-2$
+                    options.addAll(Arrays.asList("-mr", "masked"));
                 }
 
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
@@ -561,14 +561,14 @@ public class MainWindow {
             }
             TemporaryFileManager.registerFileToBeRemoved(fileListName);
         } finally {
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         }
 
         // update clone data
         do_open_clone_data_file_i(theCloneDataFileName);
 
         if (this.cloneSetTable.isCloneSetSizeTooLarge()) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_DETECTED_CLONES_TOO_MANY")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_DETECTED_CLONES_TOO_MANY"));
         }
 
         if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
@@ -584,7 +584,7 @@ public class MainWindow {
     }
 
     private boolean moveToBackupFile(String fileName) {
-        if (fileName.endsWith(".bak")) { //$NON-NLS-1$
+        if (fileName.endsWith(".bak")) {
             throw new AssertionError();
         }
 
@@ -593,12 +593,12 @@ public class MainWindow {
             return true; // no need to backup
         }
 
-        String backupFileName = fileName + ".bak"; //$NON-NLS-1$
+        String backupFileName = fileName + ".bak";
         File f = new File(backupFileName);
         int i = 0;
         while (f.exists()) {
             ++i;
-            f = new File(fileName + ".bak" + String.format("%03d", i)); //$NON-NLS-1$ //$NON-NLS-2$
+            f = new File(fileName + ".bak" + String.format("%03d", i));
         }
         boolean done = false;
         try {
@@ -609,7 +609,7 @@ public class MainWindow {
         }
         if (!done) {
             int r = this.showConfirmationMessage(SWT.OK | SWT.CANCEL,
-                    String.format(Messages.getString("gemx.MainWindow.S_FAIL_TO_MAKE_BACKUP_FILE_WILL_YOU_DELETE_IT"), fileName)); //$NON-NLS-1$
+                    String.format(Messages.getString("gemx.MainWindow.S_FAIL_TO_MAKE_BACKUP_FILE_WILL_YOU_DELETE_IT"), fileName));
             if (r == SWT.OK) {
                 original.delete();
                 done = true;
@@ -626,7 +626,7 @@ public class MainWindow {
 
             {
                 PreprocessScriptAndDirectoriesDialog dialog = new PreprocessScriptAndDirectoriesDialog(shell);
-                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONEDETECTION_STEP1"));   //$NON-NLS-1$
+                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONEDETECTION_STEP1"));
 
                 if (lastDirectoryByDoDetectClones != null) {
                     dialog.setLastDirectory(lastDirectoryByDoDetectClones);
@@ -673,19 +673,19 @@ public class MainWindow {
             }
 
             // identify source files
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_SEARCHING_SOURCE_FILES")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_SEARCHING_SOURCE_FILES"));
             {
                 ArrayList<String> args = new ArrayList<String>();
-                args.add("F");  //$NON-NLS-1$
+                args.add("F");
                 args.add(preprocessor);
-                args.addAll(Arrays.asList("-o", tempFileName1));  //$NON-NLS-1$
+                args.addAll(Arrays.asList("-o", tempFileName1));
                 Collections.addAll(args, directories);
 
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
                 try {
                     int r = CCFinderX.theInstance.invokeCCFinderX(args.toArray(new String[0]));
                     if (r != 0) {
-                        showErrorMessage("error in invocation of ccfx."); //$NON-NLS-1$
+                        showErrorMessage("error in invocation of ccfx.");
                         return;
                     }
                 } finally {
@@ -697,11 +697,11 @@ public class MainWindow {
             try {
                 files = gemx.utility.FileUtils.readLines(tempFileName1);
             } catch (IOException e) {
-                showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_READING_FILE_LIST")); //$NON-NLS-1$
+                showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_READING_FILE_LIST"));
                 return;
             }
             if (files.size() == 0) {
-                showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_SOURCE_FILES_ARE_FOUND")); //$NON-NLS-1$
+                showErrorMessage(Messages.getString("gemx.MainWindow.S_NO_SOURCE_FILES_ARE_FOUND"));
                 return;
             }
 
@@ -712,7 +712,7 @@ public class MainWindow {
             }
 
             // set other options
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_WAITING"));  //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_WAITING"));
             if (lastMinCloneLengthByDoDetectClones == -1) {
                 lastMinCloneLengthByDoDetectClones = main.settingMinimumCloneLength;
             }
@@ -735,7 +735,7 @@ public class MainWindow {
             boolean usePrescreening = lastUsePrescreening.booleanValue();
             {
                 CloneDetectionOptionDialog dialog = new CloneDetectionOptionDialog(shell);
-                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONEDETECTION_STEP3"));   //$NON-NLS-1$
+                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONEDETECTION_STEP3"));
                 dialog.setPreprocessor(preprocessor);
                 dialog.setIdentifiedSourceFiles(files.size());
                 dialog.setMinimumCloneLength(minCloneLength);
@@ -779,10 +779,10 @@ public class MainWindow {
                         writer.newLine();
                     }
                 } catch (FileNotFoundException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_INVOKING_CCFX")); //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_INVOKING_CCFX"));
                     return;
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_INVOKING_CCFX")); //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_INVOKING_CCFX"));
                     return;
                 } finally {
                     try {
@@ -798,7 +798,7 @@ public class MainWindow {
             String encodingName = main.settingEncoding;
             String fileListName = null;
             if (usePrescreening) {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_PRESCREENING"));  //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_PRESCREENING"));
                 TemporaryMouseCursorChanger wcm = new TemporaryMouseCursorChanger(shell);
                 try {
                     ccfxhelper.doPrescreening(tempFileName2, tempFileName1, preprocessor, encodingName,
@@ -806,7 +806,7 @@ public class MainWindow {
                     usePrescreening = true;
                     fileListName = tempFileName2;
                 } catch (IOException e) {
-                    showErrorMessage("error in invoking prescreening filter"); //$NON-NLS-1$
+                    showErrorMessage("error in invoking prescreening filter");
                     return;
                 } finally {
                     wcm.dispose();
@@ -816,8 +816,8 @@ public class MainWindow {
             }
 
             // detect clones
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_DETECTING_CLONES")); //$NON-NLS-1$
-            if (!moveToBackupFile(theCloneDataFileName)) {  //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_DETECTING_CLONES"));
+            if (!moveToBackupFile(theCloneDataFileName)) {
                 return;
             }
             {
@@ -827,7 +827,7 @@ public class MainWindow {
                         preprocessFileDirectories);
                 options.addAll(Arrays.asList("-o", theCloneDataFileName));
                 if (usePrescreening) {
-                    options.addAll(Arrays.asList("-mr", "masked"));   //$NON-NLS-1$ //$NON-NLS-2$
+                    options.addAll(Arrays.asList("-mr", "masked"));
                 }
 
                 TemporaryMouseCursorChanger wcm = new TemporaryMouseCursorChanger(shell);
@@ -839,15 +839,15 @@ public class MainWindow {
             }
             TemporaryFileManager.registerFileToBeRemoved(fileListName);
         } finally {
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
             update_info_bars();
         }
 
         // update clone data
-        do_open_clone_data_file_i(theCloneDataFileName); //$NON-NLS-1$
+        do_open_clone_data_file_i(theCloneDataFileName);
 
         if (this.cloneSetTable.isCloneSetSizeTooLarge()) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_DETECTED_CLONES_TOO_MANY")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_DETECTED_CLONES_TOO_MANY"));
         }
 
         if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
@@ -864,21 +864,21 @@ public class MainWindow {
 
     public void doDetectClonesFromFileList(boolean isFileListInClipboard) {
         try {
-            String fileListPath = ""; //$NON-NLS-1$
+            String fileListPath = "";
             if (!isFileListInClipboard) {
                 FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-                String[] exts = new String[]{"*.*"}; //$NON-NLS-1$
-                String[] extNames = new String[]{Messages.getString("gemx.MainWindow.S_FILE_LIST")}; //$NON-NLS-1$
+                String[] exts = new String[]{"*.*"};
+                String[] extNames = new String[]{Messages.getString("gemx.MainWindow.S_FILE_LIST")};
                 dialog.setFilterExtensions(exts);
                 dialog.setFilterNames(extNames);
-                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONEDETECTION_FROMFILELIST_STEP1")); //$NON-NLS-1$
+                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONEDETECTION_FROMFILELIST_STEP1"));
 
                 dialog.open();
 
                 String dir = dialog.getFilterPath();
                 String[] files = dialog.getFileNames();
                 if (files.length >= 2) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE_LIST")); //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_FILE_LIST"));
                     return;
                 } else if (files.length == 1) {
                     fileListPath = dir + java.io.File.separator + files[0];
@@ -896,10 +896,10 @@ public class MainWindow {
                     writer = new BufferedWriter(new FileWriter(tempFileName3));
                     writer.write(data);
                 } catch (FileNotFoundException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_CANNOT_WRITE_TO_A_TEMPORARY_FILE")); //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_CANNOT_WRITE_TO_A_TEMPORARY_FILE"));
                     return;
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_CANNOT_WRITE_TO_A_TEMPORARY_FILE")); //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_CANNOT_WRITE_TO_A_TEMPORARY_FILE"));
                     return;
                 } finally {
                     try {
@@ -930,7 +930,7 @@ public class MainWindow {
                         }
                     }
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_IO_ERROR_IN_READING_FILELIST"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_IO_ERROR_IN_READING_FILELIST"));
                     return;
                 }
                 preprocessFileDirectories = lookupPreprocessFileDirectories(files.toArray(new String[0]));
@@ -970,7 +970,7 @@ public class MainWindow {
                 for (int i = 0; i < preprocessors.length; ++i) {
                     dialog.addForcedPreprocessorItem(preprocessors[i]);
                 }
-                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONEDETECTION_FROMFILELIST_STEP2"));   //$NON-NLS-1$
+                dialog.setText(Messages.getString("gemx.MainWindow.S_CLONEDETECTION_FROMFILELIST_STEP2"));
                 dialog.setFileListPath(fileListPath);
                 dialog.setForcedPreprocessor(preprocessor);
                 dialog.setMinimumCloneLength(minCloneLength);
@@ -1005,7 +1005,7 @@ public class MainWindow {
                 }
                 preprocessor = dialog.getForcedPreprocessor();
                 if (preprocessor == null || preprocessor.length() == 0) {
-                    showErrorMessage("Preprocess script is not specified"); //$NON-NLS-1$
+                    showErrorMessage("Preprocess script is not specified");
                     return;
                 }
                 lastPreprocessorByDoDetectClones = preprocessor;
@@ -1015,7 +1015,7 @@ public class MainWindow {
             String encodingName = main.settingEncoding;
             String fileListName = null;
             if (usePrescreening) {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_PRESCREENING"));  //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_PRESCREENING"));
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
                 try {
                     ccfxhelper.doPrescreening(tempFileName1, fileListPath, preprocessor, encodingName,
@@ -1024,7 +1024,7 @@ public class MainWindow {
                     usePrescreening = true;
                     fileListName = tempFileName1;
                 } catch (IOException e) {
-                    showErrorMessage("error in invoking prescreening filter"); //$NON-NLS-1$
+                    showErrorMessage("error in invoking prescreening filter");
                     return;
                 } finally {
                     tmcc.dispose();
@@ -1033,8 +1033,8 @@ public class MainWindow {
                 fileListName = fileListPath;
             }
 
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_DETECTING_CLONES")); //$NON-NLS-1$
-            if (!moveToBackupFile(theCloneDataFileName)) {  //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_DETECTING_CLONES"));
+            if (!moveToBackupFile(theCloneDataFileName)) {
                 return;
             }
             {
@@ -1045,13 +1045,13 @@ public class MainWindow {
                 options.addAll(Arrays.asList("-o", theCloneDataFileName));
 
                 if (usePrescreening) {
-                    options.addAll(Arrays.asList("-mr", "masked"));   //$NON-NLS-1$ //$NON-NLS-2$
+                    options.addAll(Arrays.asList("-mr", "masked"));
                 }
 
                 TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
                 try {
                     if (CCFinderX.theInstance.invokeCCFinderX(options.toArray(new String[0])) != 0) {
-                        showErrorMessage("Some error occurred in clone detection"); //$NON-NLS-1$
+                        showErrorMessage("Some error occurred in clone detection");
                         return;
                     }
                 } finally {
@@ -1059,14 +1059,14 @@ public class MainWindow {
                 }
             }
         } finally {
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         }
 
         // update clone data
-        do_open_clone_data_file_i(theCloneDataFileName); //$NON-NLS-1$
+        do_open_clone_data_file_i(theCloneDataFileName);
 
         if (this.cloneSetTable.isCloneSetSizeTooLarge()) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_DETECTED_CLONES_TOO_MANY")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_DETECTED_CLONES_TOO_MANY"));
         }
 
         if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
@@ -1084,7 +1084,7 @@ public class MainWindow {
     public void do_open_clone_data_file_i(String path) {
         TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
         try {
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE"));
             CCFinderX.theInstance.clearPrepFileCacheState();
 
             rootModel.readCloneDataFile(path);
@@ -1101,26 +1101,26 @@ public class MainWindow {
             update_model(rootModel);
             theScrapbook.clearData();
 
-            this.addScopeHistoryItem("File: " + path, currentScope.getFileCount(), currentScope.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("File: " + path, currentScope.getFileCount(), currentScope.getCloneSetCount(), true);
 
             metricModels.dispose();
             metricModels = new MetricModelsHolder(this);
         } catch (java.io.IOException e) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_READING_A_CLONE_DATA_FILE") //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_FILE_IO_ERROR_IN_READING_A_CLONE_DATA_FILE")
                     + path);
         } catch (DataFileReadError e) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_A_CLONE_DATA_FILE") + path); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_A_CLONE_DATA_FILE") + path);
         } finally {
             tmcc.dispose();
         }
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         update_info_bars();
     }
 
     private void do_open_clone_data_file() {
         FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-        String[] exts = new String[]{"*.ccfxd", "*.icetd"}; //$NON-NLS-1$ //$NON-NLS-2$
-        String[] extNames = new String[]{Messages.getString("gemx.MainWindow.S_CLONE_DATA_FILE")}; //$NON-NLS-1$
+        String[] exts = new String[]{"*.ccfxd", "*.icetd"};
+        String[] extNames = new String[]{Messages.getString("gemx.MainWindow.S_CLONE_DATA_FILE")};
         dialog.setFilterExtensions(exts);
         dialog.setFilterNames(extNames);
 
@@ -1129,13 +1129,13 @@ public class MainWindow {
         String dir = dialog.getFilterPath();
         String[] files = dialog.getFileNames();
         if (files.length >= 2) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_CLONE_DATA_FILE")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_SPECIFY_ONE_CLONE_DATA_FILE"));
         } else if (files.length == 1) {
             String path = dir + java.io.File.separator + files[0];
             do_open_clone_data_file_i(path);
 
             if (this.cloneSetTable.isCloneSetSizeTooLarge()) {
-                showErrorMessage(Messages.getString("gemx.MainWindow.S_DETECTED_CLONES_TOO_MANY"));  //$NON-NLS-1$
+                showErrorMessage(Messages.getString("gemx.MainWindow.S_DETECTED_CLONES_TOO_MANY"));
             }
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
@@ -1180,7 +1180,7 @@ public class MainWindow {
         if (prepIndex >= 0) {
             dialog.setPreprocessor(preprocessors[prepIndex]);
         } else {
-            dialog.setPreprocessor(""); //$NON-NLS-1$
+            dialog.setPreprocessor("");
         }
         dialog.setChunkSize(main.settingChunkSize);
         dialog.setEncoding(main.settingEncoding);
@@ -1266,19 +1266,19 @@ public class MainWindow {
             currentSelectedFileIndices = null;
             currentSelectedCloneSetIDs = null;
 
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE"));
             fileTable.updateModel(currentScope);
 
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_SCATTER_PLOT_PANE")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_SCATTER_PLOT_PANE"));
             scatterPlotPane.updateModel(currentScope);
 
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE"));
             cloneSetTable.updateModel(currentScope);
 
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_SOURCE_PANE")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_SOURCE_PANE"));
             sourcePane.updateModel(currentScope, main.settingAllFileViewModeEnabled);
 
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         } finally {
             tmcc.dispose();
         }
@@ -1299,12 +1299,12 @@ public class MainWindow {
         assert selectedIndices != null;
         if (selectedIndices.length == 0) {
             MessageBox mes = new MessageBox(shell, SWT.OK | SWT.ICON_WARNING);
-            mes.setText("Warning - GemX"); //$NON-NLS-1$
-            mes.setMessage(Messages.getString("gemx.MainWindow.S_NO_FILES_ARE_SELECTED")); //$NON-NLS-1$
+            mes.setText("Warning - GemX");
+            mes.setMessage(Messages.getString("gemx.MainWindow.S_NO_FILES_ARE_SELECTED"));
             mes.open();
             return;
         }
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE"));
         Model newModel = currentScope.fitScopeToFiles(selectedIndices);
 
         if (newModel != null && newModel.getFileCount() > 0) {
@@ -1316,7 +1316,7 @@ public class MainWindow {
             ScopeHistoryItem shi = new ScopeHistoryItem();
             shi.cloneDataFile = newModel.getCloneDataFilePath();
             scopeHistory.add(shi);
-            this.addScopeHistoryItem("Fit File: " + selectedIndices.length, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("Fit File: " + selectedIndices.length, newModel.getFileCount(), newModel.getCloneSetCount(), true);
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                 this.add_both_file_and_clone_set_metrics();
@@ -1337,12 +1337,12 @@ public class MainWindow {
         assert selectedIndex != null;
         if (selectedIndex.length == 0) {
             MessageBox mes = new MessageBox(shell, SWT.OK | SWT.ICON_WARNING);
-            mes.setText("Warning - GemX"); //$NON-NLS-1$
-            mes.setMessage(Messages.getString("gemx.MainWindow.S_NO_FILES_ARE_SELECTED")); //$NON-NLS-1$
+            mes.setText("Warning - GemX");
+            mes.setMessage(Messages.getString("gemx.MainWindow.S_NO_FILES_ARE_SELECTED"));
             mes.open();
             return;
         }
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE"));
         Model newModel = currentScope.fitScopeToFilesExceptFor(selectedIndex);
 
         if (newModel != null && newModel.getFileCount() > 0) {
@@ -1354,7 +1354,7 @@ public class MainWindow {
             ScopeHistoryItem shi = new ScopeHistoryItem();
             shi.cloneDataFile = newModel.getCloneDataFilePath();
             scopeHistory.add(shi);
-            this.addScopeHistoryItem("Fit File Except: " + selectedIndex.length, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("Fit File Except: " + selectedIndex.length, newModel.getFileCount(), newModel.getCloneSetCount(), true);
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                 this.add_both_file_and_clone_set_metrics();
@@ -1383,12 +1383,12 @@ public class MainWindow {
                 String recoveredModelFilePath = shi.cloneDataFile;
                 Model recoveredModel = new Model();
                 try {
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE"));
                     recoveredModel.readCloneDataFile(recoveredModelFilePath);
                 } catch (IOException e) {
                     MessageBox box1 = new MessageBox(shell, SWT.OK | SWT.ICON_ERROR);
-                    box1.setText("Error - GemX"); //$NON-NLS-1$
-                    box1.setMessage(String.format(Messages.getString("gemx.MainWindow.S_CANNOT_READ_FILE"), recoveredModelFilePath)); //$NON-NLS-1$
+                    box1.setText("Error - GemX");
+                    box1.setMessage(String.format(Messages.getString("gemx.MainWindow.S_CANNOT_READ_FILE"), recoveredModelFilePath));
                     box1.open();
                 }
                 update_model(recoveredModel);
@@ -1397,22 +1397,22 @@ public class MainWindow {
 
                 if (shi.fileMetricFile != null) {
                     metricModels.readFileMetricFile(shi.fileMetricFile, this.currentScope.getMaxFileID());
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE"));
                     fileTable.addFileMetricModel(metricModels.getFileMetricModel());
                 }
 
                 if (shi.cloneSetMetricFile != null) {
                     metricModels.readCloneSetMetricFile(shi.cloneSetMetricFile, this.currentScope.getMaxCloneSetID());
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE"));
                     cloneSetTable.addCloneSetMetricModel(metricModels.getCloneSetMetricModel());
                     scatterPlotPane.updateModel(currentScope, metricModels.getCloneSetMetricModel());
                 }
 
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_RECOVERING_SELECTIONS")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_RECOVERING_SELECTIONS"));
                 load_selection(sel);
                 update_info_bars();
             } finally {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
 
                 scopeHistoryList.remove(1, scopeHistoryList.getItemCount() - 1);
                 setScopeHistoryMark(0);
@@ -1421,11 +1421,11 @@ public class MainWindow {
     }
 
     private void update_info_bars() {
-        preprocessorBar.setText(String.format("PS: %s", currentScope.getPreprocessScript())); //$NON-NLS-1$
-        fileInfoBar.setText(String.format("#Files: %d (%d)",  //$NON-NLS-1$
+        preprocessorBar.setText(String.format("PS: %s", currentScope.getPreprocessScript()));
+        fileInfoBar.setText(String.format("#Files: %d (%d)",
                 currentScope.getFileCount(),
                 (currentSelectedFileIndices != null ? currentSelectedFileIndices.length : 0)));
-        cloneSetInfoBar.setText(String.format("#Clone Sets: %d (%d)", //$NON-NLS-1$
+        cloneSetInfoBar.setText(String.format("#Clone Sets: %d (%d)",
                 currentScope.getCloneSetCount(),
                 (currentSelectedCloneSetIDs != null ? currentSelectedCloneSetIDs.length : 0)));
     }
@@ -1462,12 +1462,12 @@ public class MainWindow {
                 String recoveredModelFilePath = shi.cloneDataFile;
                 Model recoveredModel = new Model();
                 try {
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE"));
                     recoveredModel.readCloneDataFile(recoveredModelFilePath);
                 } catch (IOException e) {
                     MessageBox box1 = new MessageBox(shell, SWT.OK | SWT.ICON_ERROR);
-                    box1.setText("Error - GemX"); //$NON-NLS-1$
-                    box1.setMessage(String.format(Messages.getString("gemx.MainWindow.S_CANNOT_READ_FILE"), recoveredModelFilePath)); //$NON-NLS-1$
+                    box1.setText("Error - GemX");
+                    box1.setMessage(String.format(Messages.getString("gemx.MainWindow.S_CANNOT_READ_FILE"), recoveredModelFilePath));
                     box1.open();
                 }
                 update_model(recoveredModel);
@@ -1476,22 +1476,22 @@ public class MainWindow {
 
                 if (shi.fileMetricFile != null) {
                     metricModels.readFileMetricFile(shi.fileMetricFile, this.currentScope.getMaxFileID());
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE"));
                     fileTable.addFileMetricModel(metricModels.getFileMetricModel());
                 }
 
                 if (shi.cloneSetMetricFile != null) {
                     metricModels.readCloneSetMetricFile(shi.cloneSetMetricFile, this.currentScope.getMaxCloneSetID());
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE"));
                     cloneSetTable.addCloneSetMetricModel(metricModels.getCloneSetMetricModel());
                     scatterPlotPane.updateModel(currentScope, metricModels.getCloneSetMetricModel());
                 }
 
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_RECOVERING_SELECTIONS")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_RECOVERING_SELECTIONS"));
                 load_selection(sel);
                 update_info_bars();
             } finally {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
 
                 int index = scopeHistoryList.getItemCount() - 1;
                 scopeHistoryList.remove(index);
@@ -1544,7 +1544,7 @@ public class MainWindow {
         lastShowingCloneSetIDByShowCloneCode = cloneSetID;
         lastShowingClonePairIndexByShowCloneCode = -1;
 
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_TOKEN_SEQUENCE")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_TOKEN_SEQUENCE"));
         try {
             long[] cloneSetIDs = new long[]{cloneSetID};
             ClonePair[] pairs = currentScope.getClonePairsOfCloneSets(cloneSetIDs);
@@ -1557,7 +1557,7 @@ public class MainWindow {
             }
 
         } finally {
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         }
     }
 
@@ -1569,7 +1569,7 @@ public class MainWindow {
             lastShowingClonePairIndexByShowCloneCode = 0;
         }
 
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_TOKEN_SEQUENCE")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_TOKEN_SEQUENCE"));
         try {
             long[] cloneSetIDs = new long[]{cloneSetID};
             ClonePair[] pairs = currentScope.getClonePairsOfCloneSets(cloneSetIDs);
@@ -1585,7 +1585,7 @@ public class MainWindow {
             }
 
         } finally {
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         }
     }
 
@@ -1646,7 +1646,7 @@ public class MainWindow {
         }
         if (metricModels.getFileMetricModel() == null) {
             if (showConfirmationMessage(SWT.OK | SWT.CANCEL | SWT.ICON_QUESTION,
-                    Messages.getString("gemx.MainWindow.S_CALCULATE_FILE_METRICS_P")) != SWT.OK) { //$NON-NLS-1$
+                    Messages.getString("gemx.MainWindow.S_CALCULATE_FILE_METRICS_P")) != SWT.OK) {
                 return;
             }
             add_file_metrics();
@@ -1660,7 +1660,7 @@ public class MainWindow {
         double[] minValues = summaryData.getMinValues();
         double[] maxValues = summaryData.getMaxValues();
         MinMaxSettingDialog settingDialog = new MinMaxSettingDialog(shell, fileMetricModel.getFieldCount());
-        settingDialog.setText(Messages.getString("gemx.MainWindow.S_SPECIFY_FILE_METRIC_RANGES_GEMX")); //$NON-NLS-1$
+        settingDialog.setText(Messages.getString("gemx.MainWindow.S_SPECIFY_FILE_METRIC_RANGES_GEMX"));
 
         for (int i = 0; i < minValues.length; ++i) {
             settingDialog.setName(i, fileMetricModel.getMetricName(i));
@@ -1680,14 +1680,14 @@ public class MainWindow {
         for (int i = 0; i < minValues.length; ++i) {
             if (settingDialog.getValueEdited(i)) {
                 String name = fileMetricModel.getMetricName(i);
-                usedMetricsStr.append(" "); //$NON-NLS-1$
+                usedMetricsStr.append(" ");
                 usedMetricsStr.append(name);
                 if (fileMetricModel.isFlotingPoint(i)) {
                     makeExpr(expressions, name, settingDialog.getMinimum(i) / 1000.0, settingDialog.getMaximum(i) / 1000.0);
                 } else {
                     makeExpr(expressions, name, settingDialog.getMinimum(i), settingDialog.getMaximum(i));
                 }
-                expressions.add("and"); //$NON-NLS-1$
+                expressions.add("and");
             }
         }
         if (expressions.size() == 0) { // no filtering to be performed
@@ -1699,11 +1699,11 @@ public class MainWindow {
         String metricFile = sht.fileMetricFile;
 
         Picosel picosel = new Picosel();
-        String commandLine = picosel.setCommandLine(metricFile, tempFileName2, "FID", expressions.toArray(new String[0])); //$NON-NLS-1$
-        System.err.println("> " + commandLine); //$NON-NLS-1$
+        String commandLine = picosel.setCommandLine(metricFile, tempFileName2, "FID", expressions.toArray(new String[0]));
+        System.err.println("> " + commandLine);
         int result = picosel.invokePicosel();
         if (result != 0) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_PERFORM_FILTERING_FILES")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_PERFORM_FILTERING_FILES"));
             return;
         }
         TemporaryFileManager.registerFileToBeRemoved(tempFileName2);
@@ -1711,7 +1711,7 @@ public class MainWindow {
         int action = settingDialog.getAction();
         switch (action) {
             case MinMaxSettingDialog.ActionMakeScope: {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE"));
                 Model newModel = currentScope.fitScopeToFileIDs(tempFileName2);
 
                 if (newModel != null && newModel.getFileCount() > 0) {
@@ -1723,7 +1723,7 @@ public class MainWindow {
                     ScopeHistoryItem shi = new ScopeHistoryItem();
                     shi.cloneDataFile = newModel.getCloneDataFilePath();
                     scopeHistory.add(shi);
-                    this.addScopeHistoryItem("Filtering File: " + usedMetricsStr, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+                    this.addScopeHistoryItem("Filtering File: " + usedMetricsStr, newModel.getFileCount(), newModel.getCloneSetCount(), true);
 
                     if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                         this.add_both_file_and_clone_set_metrics();
@@ -1745,13 +1745,13 @@ public class MainWindow {
                 try {
                     ary = ArrayUtil.readIntList(tempFileName2);
                 } catch (FileNotFoundException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 } catch (gemx.utility.ArrayUtil.NumberFormatErrorAtLineOfFile e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 }
                 fileTable.addCheckmarks(fileTable.getIndicesFromFileIDs(ary.toNativeArray()));
@@ -1762,13 +1762,13 @@ public class MainWindow {
                 try {
                     ary = ArrayUtil.readIntList(tempFileName2);
                 } catch (FileNotFoundException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 } catch (gemx.utility.ArrayUtil.NumberFormatErrorAtLineOfFile e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 }
                 this.setFileSelection(fileTable.getIndicesFromFileIDs(ary.toNativeArray()), null);
@@ -1785,7 +1785,7 @@ public class MainWindow {
         }
         if (metricModels.getCloneSetMetricModel() == null) {
             if (showConfirmationMessage(SWT.OK | SWT.CANCEL | SWT.ICON_QUESTION,
-                    Messages.getString("gemx.MainWindow.S_CALCULATE_CLONE_SET_METRICS_P")) != SWT.OK) { //$NON-NLS-1$
+                    Messages.getString("gemx.MainWindow.S_CALCULATE_CLONE_SET_METRICS_P")) != SWT.OK) {
                 return;
             }
             add_clone_set_metrics();
@@ -1799,7 +1799,7 @@ public class MainWindow {
         double[] minValues = summaryData.getMinValues();
         double[] maxValues = summaryData.getMaxValues();
         MinMaxSettingDialog settingDialog = new MinMaxSettingDialog(shell, cloneSetMetricModel.getFieldCount());
-        settingDialog.setText(Messages.getString("gemx.MainWindow.S_SPECIFY_CLONE_SET_METRIC_RANGES")); //$NON-NLS-1$
+        settingDialog.setText(Messages.getString("gemx.MainWindow.S_SPECIFY_CLONE_SET_METRIC_RANGES"));
         for (int i = 0; i < minValues.length; ++i) {
             settingDialog.setName(i, cloneSetMetricModel.getMetricName(i));
             if (cloneSetMetricModel.isFlotingPoint(i)) {
@@ -1818,14 +1818,14 @@ public class MainWindow {
         for (int i = 0; i < minValues.length; ++i) {
             if (settingDialog.getValueEdited(i)) {
                 String name = cloneSetMetricModel.getMetricName(i);
-                usedMetricsStr.append(" "); //$NON-NLS-1$
+                usedMetricsStr.append(" ");
                 usedMetricsStr.append(name);
                 if (cloneSetMetricModel.isFlotingPoint(i)) {
                     makeExpr(expressions, name, settingDialog.getMinimum(i) / 1000.0, settingDialog.getMaximum(i) / 1000.0);
                 } else {
                     makeExpr(expressions, name, settingDialog.getMinimum(i), settingDialog.getMaximum(i));
                 }
-                expressions.add("and"); //$NON-NLS-1$
+                expressions.add("and");
             }
         }
         if (expressions.size() == 0) { // no filtering to be performed
@@ -1837,11 +1837,11 @@ public class MainWindow {
         String metricFile = sht.cloneSetMetricFile;
 
         Picosel picosel = new Picosel();
-        String commandLine = picosel.setCommandLine(metricFile, tempFileName2, "CID", expressions.toArray(new String[0])); //$NON-NLS-1$
-        System.err.println("> " + commandLine); //$NON-NLS-1$
+        String commandLine = picosel.setCommandLine(metricFile, tempFileName2, "CID", expressions.toArray(new String[0]));
+        System.err.println("> " + commandLine);
         int result = picosel.invokePicosel();
         if (result != 0) {
-            showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_PERFORM_FILTERING_CLONE_SETS")); //$NON-NLS-1$
+            showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_PERFORM_FILTERING_CLONE_SETS"));
             return;
         }
         TemporaryFileManager.registerFileToBeRemoved(tempFileName2);
@@ -1849,7 +1849,7 @@ public class MainWindow {
         final int action = settingDialog.getAction();
         switch (action) {
             case MinMaxSettingDialog.ActionMakeScope: {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE"));
                 Model newModel = currentScope.fitScopeToClones(tempFileName2);
 
                 if (newModel != null && newModel.getFileCount() > 0) {
@@ -1861,7 +1861,7 @@ public class MainWindow {
                     ScopeHistoryItem shi = new ScopeHistoryItem();
                     shi.cloneDataFile = newModel.getCloneDataFilePath();
                     scopeHistory.add(shi);
-                    this.addScopeHistoryItem("Filtering Clone Set: " + usedMetricsStr, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+                    this.addScopeHistoryItem("Filtering Clone Set: " + usedMetricsStr, newModel.getFileCount(), newModel.getCloneSetCount(), true);
 
                     if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                         this.add_both_file_and_clone_set_metrics();
@@ -1883,13 +1883,13 @@ public class MainWindow {
                 try {
                     ary = ArrayUtil.readLongList(tempFileName2);
                 } catch (FileNotFoundException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 } catch (gemx.utility.ArrayUtil.NumberFormatErrorAtLineOfFile e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 }
                 cloneSetTable.addCheckmarks(ary.toNativeArray());
@@ -1900,13 +1900,13 @@ public class MainWindow {
                 try {
                     ary = ArrayUtil.readLongList(tempFileName2);
                 } catch (FileNotFoundException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 } catch (gemx.utility.ArrayUtil.NumberFormatErrorAtLineOfFile e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAIL_TO_OPEN_TEMPORARY_FILE"));
                     return;
                 }
                 this.setCloneSelection(ary.toNativeArray(), null);
@@ -1918,9 +1918,9 @@ public class MainWindow {
     }
 
     private <T> void makeExpr(ArrayList<String> expressions, String columnName, T min, T max) {
-        expressions.addAll(Arrays.asList(columnName, ".ge.", String.valueOf(min),  //$NON-NLS-1$
-                "and",  //$NON-NLS-1$
-                columnName, ".le.", String.valueOf(max)  //$NON-NLS-1$
+        expressions.addAll(Arrays.asList(columnName, ".ge.", String.valueOf(min),
+                "and",
+                columnName, ".le.", String.valueOf(max)
         ));
     }
 
@@ -1939,12 +1939,12 @@ public class MainWindow {
         assert cloneClassIDs != null;
         if (cloneClassIDs.length == 0) {
             MessageBox mes = new MessageBox(shell, SWT.OK | SWT.ICON_WARNING);
-            mes.setText("Warning - GemX"); //$NON-NLS-1$
-            mes.setMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_IDS_ARE_SELECTED")); //$NON-NLS-1$
+            mes.setText("Warning - GemX");
+            mes.setMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_IDS_ARE_SELECTED"));
             mes.open();
             return;
         }
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE"));
         Model newModel = currentScope.fitScopeToClones(cloneClassIDs);
 
         if (newModel != null && newModel.getFileCount() > 0) {
@@ -1956,7 +1956,7 @@ public class MainWindow {
             ScopeHistoryItem shi = new ScopeHistoryItem();
             shi.cloneDataFile = newModel.getCloneDataFilePath();
             scopeHistory.add(shi);
-            this.addScopeHistoryItem("Fit Clone: " + cloneClassIDs.length, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("Fit Clone: " + cloneClassIDs.length, newModel.getFileCount(), newModel.getCloneSetCount(), true);
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                 this.add_both_file_and_clone_set_metrics();
@@ -1977,12 +1977,12 @@ public class MainWindow {
         assert cloneClassIDs != null;
         if (cloneClassIDs.length == 0) {
             MessageBox mes = new MessageBox(shell, SWT.OK | SWT.ICON_WARNING);
-            mes.setText("Warning - GemX"); //$NON-NLS-1$
-            mes.setMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DS_ARE_SELECTED")); //$NON-NLS-1$
+            mes.setText("Warning - GemX");
+            mes.setMessage(Messages.getString("gemx.MainWindow.S_NO_CLONE_DS_ARE_SELECTED"));
             mes.open();
             return;
         }
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_NEW_SCOPE"));
         Model newModel = currentScope.fitScopeToClonesExceptFor(cloneClassIDs);
 
         if (newModel != null && newModel.getFileCount() > 0) {
@@ -1994,7 +1994,7 @@ public class MainWindow {
             ScopeHistoryItem shi = new ScopeHistoryItem();
             shi.cloneDataFile = newModel.getCloneDataFilePath();
             scopeHistory.add(shi);
-            this.addScopeHistoryItem("Fit Clone Excpet: " + cloneClassIDs.length, newModel.getFileCount(), newModel.getCloneSetCount(), true); //$NON-NLS-1$
+            this.addScopeHistoryItem("Fit Clone Excpet: " + cloneClassIDs.length, newModel.getFileCount(), newModel.getCloneSetCount(), true);
 
             if (main.settingCalcFileMetricAlways && main.settingCalcCloneMetricAlways) {
                 this.add_both_file_and_clone_set_metrics();
@@ -2033,12 +2033,12 @@ public class MainWindow {
     }
 
     public void setFileSelection(int[] selectedIndices, FileSelectionListener src) {
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_RETRIVING_FILE_DATA")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_RETRIVING_FILE_DATA"));
 
         lastShowingCloneSetIDByShowCloneCode = -1;
         setFileSelection_i(selectedIndices, src);
 
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         update_info_bars();
     }
 
@@ -2110,7 +2110,7 @@ public class MainWindow {
 
     public void setCloneSelectionByFlieAndOffset(int xFile, int xBeginPos,
                                                  int xEndPos, int yFile, int yBeginPos, int yEndPos) {
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_CLONE_SETS")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_CLONE_SETS"));
 
         gnu.trove.TLongArrayList list = new gnu.trove.TLongArrayList();
 
@@ -2134,31 +2134,31 @@ public class MainWindow {
 
         setCloneSelection_i(ary, null);
 
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
     }
 
     private void add_both_file_and_clone_set_metrics() {
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_BOTH_FILE_AND_CLONESET_METRICS"));  //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_BOTH_FILE_AND_CLONESET_METRICS"));
         TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
         try {
             String cloneDataFile = currentScope.getCloneDataFilePath();
             if (cloneDataFile != null && cloneDataFile.length() > 0) {
-                String fileMetricFile = cloneDataFile + ".fm.tmp"; //$NON-NLS-1$
-                String cloneSetMetricFile = cloneDataFile + ".cm.tmp"; //$NON-NLS-1$
+                String fileMetricFile = cloneDataFile + ".fm.tmp";
+                String cloneSetMetricFile = cloneDataFile + ".cm.tmp";
 
                 final CCFinderX ccfx = CCFinderX.theInstance;
                 final ArrayList<String> args = new ArrayList<String>();
-                args.add("M"); //$NON-NLS-1$
+                args.add("M");
                 if (main.settingMaxWorkerThreads > 0) {
-                    args.add("--threads=" + main.settingMaxWorkerThreads);  //$NON-NLS-1$
+                    args.add("--threads=" + main.settingMaxWorkerThreads);
                 }
                 args.add(cloneDataFile);
-                args.addAll(Arrays.asList("-p", "is"));   //$NON-NLS-1$ //$NON-NLS-2$
-                args.addAll(Arrays.asList("-f", "-o", fileMetricFile));   //$NON-NLS-1$ //$NON-NLS-2$
-                args.addAll(Arrays.asList("-c", "-o", cloneSetMetricFile));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-p", "is"));
+                args.addAll(Arrays.asList("-f", "-o", fileMetricFile));
+                args.addAll(Arrays.asList("-c", "-o", cloneSetMetricFile));
                 int r = ccfx.invokeCCFinderX(args.toArray(new String[0]));
                 if (r != 0) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_METRICS"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_METRICS"));
                     return;
                 }
                 TemporaryFileManager.registerFileToBeRemoved(fileMetricFile);
@@ -2166,14 +2166,14 @@ public class MainWindow {
                 metricModels.readFileMetricFileAndCloneSetMetricFile(fileMetricFile, this.currentScope.getMaxFileID(),
                         cloneSetMetricFile, MainWindow.this.currentScope.getMaxCloneSetID());
 
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE"));
 
                 fileTable.addFileMetricModel(metricModels.getFileMetricModel());
 
                 ScopeHistoryItem shi = scopeHistory.get(scopeHistory.size() - 1);
                 shi.fileMetricFile = fileMetricFile;
 
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE"));
 
                 ClonesetMetricModel cloneSetMetricModel = metricModels.getCloneSetMetricModel();
                 cloneSetTable.addCloneSetMetricModel(cloneSetMetricModel);
@@ -2184,36 +2184,36 @@ public class MainWindow {
             }
         } finally {
             tmcc.dispose();
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         }
     }
 
     private void add_file_metrics() {
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_FILE_METRICS")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_FILE_METRICS"));
         TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
         try {
             String cloneDataFile = currentScope.getCloneDataFilePath();
             if (cloneDataFile != null && cloneDataFile.length() > 0) {
-                String metricFile = cloneDataFile + ".fm.tmp"; //$NON-NLS-1$
+                String metricFile = cloneDataFile + ".fm.tmp";
                 final CCFinderX ccfx = CCFinderX.theInstance;
                 final ArrayList<String> args = new ArrayList<String>();
-                args.add("M");  //$NON-NLS-1$
+                args.add("M");
                 if (main.settingMaxWorkerThreads > 0) {
-                    args.add("--threads=" + main.settingMaxWorkerThreads);  //$NON-NLS-1$
+                    args.add("--threads=" + main.settingMaxWorkerThreads);
                 }
                 args.add(cloneDataFile);
-                args.addAll(Arrays.asList("-f", "-o", metricFile));   //$NON-NLS-1$ //$NON-NLS-2$
-                args.addAll(Arrays.asList("-p", "is"));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-f", "-o", metricFile));
+                args.addAll(Arrays.asList("-p", "is"));
                 int r = ccfx.invokeCCFinderX(args.toArray(new String[0]));
                 if (r != 0) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_FILE_METRICS")); //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_FILE_METRICS"));
                     return;
                 }
                 TemporaryFileManager.registerFileToBeRemoved(metricFile);
 
                 metricModels.readFileMetricFile(metricFile, this.currentScope.getMaxFileID());
 
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE"));
 
                 fileTable.addFileMetricModel(metricModels.getFileMetricModel());
 
@@ -2222,7 +2222,7 @@ public class MainWindow {
             }
         } finally {
             tmcc.dispose();
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         }
     }
 
@@ -2241,22 +2241,22 @@ public class MainWindow {
     }
 
     public void showLinebasedMetrics() {
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_LINE_BASED_METRICS"));  //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_LINE_BASED_METRICS"));
         try {
             String cloneDataFile = currentScope.getCloneDataFilePath();
             if (cloneDataFile != null && cloneDataFile.length() > 0) {
-                String metricFile = cloneDataFile + ".lm.tmp"; //$NON-NLS-1$
+                String metricFile = cloneDataFile + ".lm.tmp";
                 final CCFinderX ccfx = CCFinderX.theInstance;
                 final String[] args = {
-                        "M", //$NON-NLS-1$
+                        "M",
                         cloneDataFile,
-                        "-w", //$NON-NLS-1$
-                        "-o", metricFile, //$NON-NLS-1$
-                        "-p", "is", //$NON-NLS-1$ //$NON-NLS-2$
+                        "-w",
+                        "-o", metricFile,
+                        "-p", "is",
                 };
                 int r = ccfx.invokeCCFinderX(args);
                 if (r != 0) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_LINE_BASD_METRICS"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_LINE_BASD_METRICS"));
                     return;
                 }
                 TemporaryFileManager.registerFileToBeRemoved(metricFile);
@@ -2265,7 +2265,7 @@ public class MainWindow {
                 try {
                     model.readLinebasedMetricFile(metricFile, this.currentScope.getMaxFileID());
                 } catch (IOException e) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_READING_LINE_BASD_METRICS"));  //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_READING_LINE_BASD_METRICS"));
                     return;
                 }
 
@@ -2273,10 +2273,10 @@ public class MainWindow {
                 boolean[] floatingPointMap = model.getFlotingPointValueMap();
                 MetricsSummaryData summaryData = model.getSummaryData();
 
-                show_metrics_summary_values_with_total(Messages.getString("gemx.MainWindow.S_LINE_BASED_METRICS"), metricNames, floatingPointMap, summaryData);  //$NON-NLS-1$
+                show_metrics_summary_values_with_total(Messages.getString("gemx.MainWindow.S_LINE_BASED_METRICS"), metricNames, floatingPointMap, summaryData);
             }
         } finally {
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         }
     }
 
@@ -2346,34 +2346,34 @@ public class MainWindow {
         boolean[] floatingPointMap = fileMetricModel.getFlotingPointValueMap();
         MetricsSummaryData summaryData = fileMetricModel.getSummaryData();
 
-        show_metrics_summary_values(Messages.getString("gemx.MainWindow.S_FILE_METRICS"), metricNames, floatingPointMap, summaryData); //$NON-NLS-1$
+        show_metrics_summary_values(Messages.getString("gemx.MainWindow.S_FILE_METRICS"), metricNames, floatingPointMap, summaryData);
     }
 
     private void add_clone_set_metrics() {
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_CLONE_SET_METRICS")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_CALCULATING_CLONE_SET_METRICS"));
         TemporaryMouseCursorChanger tmcc = new TemporaryMouseCursorChanger(shell);
         try {
             String cloneDataFile = currentScope.getCloneDataFilePath();
             if (cloneDataFile != null && cloneDataFile.length() > 0) {
-                String metricFile = cloneDataFile + ".cm.tmp"; //$NON-NLS-1$
+                String metricFile = cloneDataFile + ".cm.tmp";
                 final CCFinderX ccfx = CCFinderX.theInstance;
                 final ArrayList<String> args = new ArrayList<String>();
-                args.add("M"); //$NON-NLS-1$
+                args.add("M");
                 if (main.settingMaxWorkerThreads > 0) {
-                    args.add("--threads=" + main.settingMaxWorkerThreads);  //$NON-NLS-1$
+                    args.add("--threads=" + main.settingMaxWorkerThreads);
                 }
                 args.add(cloneDataFile);
-                args.addAll(Arrays.asList("-c", "-o", metricFile));   //$NON-NLS-1$ //$NON-NLS-2$
-                args.addAll(Arrays.asList("-p", "is"));   //$NON-NLS-1$ //$NON-NLS-2$
+                args.addAll(Arrays.asList("-c", "-o", metricFile));
+                args.addAll(Arrays.asList("-p", "is"));
                 int r = ccfx.invokeCCFinderX(args.toArray(new String[0]));
                 if (r != 0) {
-                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_CLONE_SET_METRICS")); //$NON-NLS-1$
+                    showErrorMessage(Messages.getString("gemx.MainWindow.S_FAILURE_IN_CALCULATING_CLONE_SET_METRICS"));
                 }
                 TemporaryFileManager.registerFileToBeRemoved(metricFile);
 
                 metricModels.readCloneSetMetricFile(metricFile, MainWindow.this.currentScope.getMaxCloneSetID());
 
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE"));
 
                 ClonesetMetricModel cloneSetMetricModel = metricModels.getCloneSetMetricModel();
                 cloneSetTable.addCloneSetMetricModel(cloneSetMetricModel);
@@ -2385,7 +2385,7 @@ public class MainWindow {
             }
         } finally {
             tmcc.dispose();
-            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+            statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
         }
     }
 
@@ -2403,7 +2403,7 @@ public class MainWindow {
         boolean[] floatingPointMap = cloneSetMetricModel.getFlotingPointValueMap();
         MetricsSummaryData summaryData = cloneSetMetricModel.getSummaryData();
 
-        show_metrics_summary_values(Messages.getString("gemx.MainWindow.S_CLONE_SET_METRICS"), metricNames, floatingPointMap, summaryData); //$NON-NLS-1$
+        show_metrics_summary_values(Messages.getString("gemx.MainWindow.S_CLONE_SET_METRICS"), metricNames, floatingPointMap, summaryData);
     }
 
     private void buildStatusBar() {
@@ -2424,7 +2424,7 @@ public class MainWindow {
             gridData.horizontalAlignment = GridData.FILL;
             statusBar.setLayoutData(gridData);
         }
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_INITIALIZED")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_INITIALIZED"));
 
         preprocessorBar = new Label(sash, SWT.LEFT);
         {
@@ -2433,7 +2433,7 @@ public class MainWindow {
             gridData.widthHint = 80;
             preprocessorBar.setLayoutData(gridData);
         }
-        preprocessorBar.setText("PS: -"); //$NON-NLS-1$
+        preprocessorBar.setText("PS: -");
 
         fileInfoBar = new Label(sash, SWT.LEFT);
         {
@@ -2442,7 +2442,7 @@ public class MainWindow {
             gridData.widthHint = 250;
             fileInfoBar.setLayoutData(gridData);
         }
-        fileInfoBar.setText("#Files: -"); //$NON-NLS-1$
+        fileInfoBar.setText("#Files: -");
 
         cloneSetInfoBar = new Label(sash, SWT.LEFT);
         {
@@ -2451,7 +2451,7 @@ public class MainWindow {
             gridData.widthHint = 250;
             cloneSetInfoBar.setLayoutData(gridData);
         }
-        cloneSetInfoBar.setText("#Clone Sets: -"); //$NON-NLS-1$
+        cloneSetInfoBar.setText("#Clone Sets: -");
 
         searchBox = new Searchbox(sash, SWT.NONE);
         searchBox.setLayoutData(new GridData(GridData.GRAB_HORIZONTAL));
@@ -2487,13 +2487,13 @@ public class MainWindow {
 
         {
             MenuItem mItemFile = new MenuItem(menubar, SWT.CASCADE);
-            mItemFile.setText(Messages.getString("gemx.MainWindow.M_FILE")); //$NON-NLS-1$
+            mItemFile.setText(Messages.getString("gemx.MainWindow.M_FILE"));
 
             Menu menuFile = new Menu(mItemFile);
             mItemFile.setMenu(menuFile);
 
             MenuItem mItemDetect = new MenuItem(menuFile, SWT.PUSH);
-            mItemDetect.setText(Messages.getString("gemx.MainWindow.M_DETECT_CLONES")); //$NON-NLS-1$
+            mItemDetect.setText(Messages.getString("gemx.MainWindow.M_DETECT_CLONES"));
             mItemDetect.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     do_detect_clones();
@@ -2501,7 +2501,7 @@ public class MainWindow {
             });
 
             MenuItem mItemReDetect = new MenuItem(menuFile, SWT.PUSH);
-            mItemReDetect.setText(Messages.getString("gemx.MainWindow.M_RE_DETECT_CLONES")); //$NON-NLS-1$
+            mItemReDetect.setText(Messages.getString("gemx.MainWindow.M_RE_DETECT_CLONES"));
             mItemReDetect.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     do_re_detect_clones();
@@ -2509,7 +2509,7 @@ public class MainWindow {
             });
 
             MenuItem mItemDetectForFileList = new MenuItem(menuFile, SWT.PUSH);
-            mItemDetectForFileList.setText(Messages.getString("gemx.MainWindow.M_DETECT_CLONES_FROM_FILE_LIST")); //$NON-NLS-1$
+            mItemDetectForFileList.setText(Messages.getString("gemx.MainWindow.M_DETECT_CLONES_FROM_FILE_LIST"));
             mItemDetectForFileList.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     doDetectClonesFromFileList(false);
@@ -2517,7 +2517,7 @@ public class MainWindow {
             });
 
             MenuItem mItemDetectForFilesInClipboard = new MenuItem(menuFile, SWT.PUSH);
-            mItemDetectForFilesInClipboard.setText(Messages.getString("gemx.MainWindow.M_DETECT_CLONES_FROM_FILES_IN_CLIPBOARD")); //$NON-NLS-1$
+            mItemDetectForFilesInClipboard.setText(Messages.getString("gemx.MainWindow.M_DETECT_CLONES_FROM_FILES_IN_CLIPBOARD"));
             mItemDetectForFilesInClipboard.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     doDetectClonesFromFileList(true);
@@ -2527,7 +2527,7 @@ public class MainWindow {
             new MenuItem(menuFile, SWT.SEPARATOR);
 
             MenuItem mItemOpen = new MenuItem(menuFile, SWT.PUSH);
-            mItemOpen.setText(Messages.getString("gemx.MainWindow.M_OPEN_CLONE_DATA")); //$NON-NLS-1$
+            mItemOpen.setText(Messages.getString("gemx.MainWindow.M_OPEN_CLONE_DATA"));
             mItemOpen.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     do_open_clone_data_file();
@@ -2535,7 +2535,7 @@ public class MainWindow {
             });
 
             MenuItem mItemSave = new MenuItem(menuFile, SWT.PUSH);
-            mItemSave.setText(Messages.getString("gemx.MainWindow.M_SAVE_CURRENT_SCOPE_AS")); //$NON-NLS-1$
+            mItemSave.setText(Messages.getString("gemx.MainWindow.M_SAVE_CURRENT_SCOPE_AS"));
             mItemSave.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     do_save_clone_data_as();
@@ -2545,7 +2545,7 @@ public class MainWindow {
             new MenuItem(menuFile, SWT.SEPARATOR);
 
             MenuItem mSaveFileList = new MenuItem(menuFile, SWT.PUSH);
-            mSaveFileList.setText(Messages.getString("gemx.MainWindow.M_SAVE_FILE_LIST_AS")); //$NON-NLS-1$
+            mSaveFileList.setText(Messages.getString("gemx.MainWindow.M_SAVE_FILE_LIST_AS"));
             mSaveFileList.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     do_save_file_list_as();
@@ -2565,7 +2565,7 @@ public class MainWindow {
             new MenuItem(menuFile, SWT.SEPARATOR);
 
             MenuItem mItemExit = new MenuItem(menuFile, SWT.PUSH);
-            mItemExit.setText(Messages.getString("gemx.MainWindow.M_EXIT")); //$NON-NLS-1$
+            mItemExit.setText(Messages.getString("gemx.MainWindow.M_EXIT"));
             mItemExit.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     MainWindow.this.do_exit();
@@ -2574,14 +2574,14 @@ public class MainWindow {
         }
         {
             MenuItem mItemEdit = new MenuItem(menubar, SWT.CASCADE);
-            mItemEdit.setText(Messages.getString("gemx.MainWindow.M_EDIT")); //$NON-NLS-1$
+            mItemEdit.setText(Messages.getString("gemx.MainWindow.M_EDIT"));
 
             Menu menuEdit = new Menu(mItemEdit);
             mItemEdit.setMenu(menuEdit);
 
             {
                 MenuItem pitem = new MenuItem(menuEdit, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_FIND"));  //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_FIND"));
                 pitem.setAccelerator(SWT.CTRL | 'F');
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
@@ -2593,7 +2593,7 @@ public class MainWindow {
             new MenuItem(menuEdit, SWT.SEPARATOR);
             {
                 MenuItem pitem = new MenuItem(menuEdit, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_COPY_CTRL_C")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_COPY_CTRL_C"));
                 pitem.setAccelerator(SWT.CTRL | 'C');
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
@@ -2605,7 +2605,7 @@ public class MainWindow {
             new MenuItem(menuEdit, SWT.SEPARATOR);
             {
                 MenuItem pitem = new MenuItem(menuEdit, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_SELECTALL_CTRL_A")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_SELECTALL_CTRL_A"));
                 pitem.setAccelerator(SWT.CTRL | 'A');
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
@@ -2617,7 +2617,7 @@ public class MainWindow {
             new MenuItem(menuEdit, SWT.SEPARATOR);
             {
                 MenuItem pitem = new MenuItem(menuEdit, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_ADD_CHECK_MARKS_TO_SELCTED_ITEMS"));  //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_ADD_CHECK_MARKS_TO_SELCTED_ITEMS"));
                 pitem.setAccelerator(SWT.CTRL | 'M');
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
@@ -2628,7 +2628,7 @@ public class MainWindow {
             }
             {
                 MenuItem pitem = new MenuItem(menuEdit, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_REMOVE_CHECK_MARKS_FROM_SELECTED_ITEMS"));  //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_REMOVE_CHECK_MARKS_FROM_SELECTED_ITEMS"));
                 pitem.setAccelerator(SWT.CTRL | SWT.SHIFT | 'M');
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
@@ -2640,7 +2640,7 @@ public class MainWindow {
             new MenuItem(menuEdit, SWT.SEPARATOR);
             {
                 MenuItem pitem = new MenuItem(menuEdit, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_INVERT_CHECK_MARKS"));  //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_INVERT_CHECK_MARKS"));
                 pitem.setAccelerator(SWT.CTRL | 'I');
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
@@ -2651,7 +2651,7 @@ public class MainWindow {
             }
             {
                 MenuItem pitem = new MenuItem(menuEdit, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_CLEAR_CHECK_MARKS"));  //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_CLEAR_CHECK_MARKS"));
                 pitem.setAccelerator(SWT.CTRL | SWT.SHIFT | 'I');
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
@@ -2663,7 +2663,7 @@ public class MainWindow {
             new MenuItem(menuEdit, SWT.SEPARATOR);
             {
                 MenuItem pitem = new MenuItem(menuEdit, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_SELECT_CHECKED_ITEMS"));  //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_SELECT_CHECKED_ITEMS"));
                 pitem.setAccelerator(SWT.CTRL | 'S');
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
@@ -2675,14 +2675,14 @@ public class MainWindow {
         }
         {
             MenuItem mItemScope = new MenuItem(menubar, SWT.CASCADE);
-            mItemScope.setText(Messages.getString("gemx.MainWindow.M_SCOPE")); //$NON-NLS-1$
+            mItemScope.setText(Messages.getString("gemx.MainWindow.M_SCOPE"));
 
             Menu menuScope = new Menu(mItemScope);
             mItemScope.setMenu(menuScope);
 
             {
                 MenuItem pitem = new MenuItem(menuScope, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_SELECTED_FILES")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_SELECTED_FILES"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -2692,7 +2692,7 @@ public class MainWindow {
             }
 //			{
 //				MenuItem pitem = new MenuItem(menuScope, SWT.PUSH);
-//				pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_FILES_EXCEPT_FOR_SELECTED_ONES")); //$NON-NLS-1$
+//				pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_FILES_EXCEPT_FOR_SELECTED_ONES")); 
 //				pitem.setSelection(true);
 //				pitem.addSelectionListener(new SelectionAdapter() {
 //					public void widgetSelected(SelectionEvent e) {
@@ -2702,7 +2702,7 @@ public class MainWindow {
 //			}
             {
                 MenuItem pitem = new MenuItem(menuScope, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_SET_SCOPE_TO_CHECKED_FILES"));  //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_SET_SCOPE_TO_CHECKED_FILES"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -2715,7 +2715,7 @@ public class MainWindow {
 
             {
                 MenuItem pitem = new MenuItem(menuScope, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_SELECTED_CLONE_SETS")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_SELECTED_CLONE_SETS"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -2725,7 +2725,7 @@ public class MainWindow {
             }
 //			{
 //				MenuItem pitem = new MenuItem(menuScope, SWT.PUSH);
-//				pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_CLONES_EXCEPT_FOR_SELECTED_ONES")); //$NON-NLS-1$
+//				pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_CLONES_EXCEPT_FOR_SELECTED_ONES")); 
 //				pitem.setSelection(true);
 //				pitem.addSelectionListener(new SelectionAdapter() {
 //					public void widgetSelected(SelectionEvent e) {
@@ -2735,7 +2735,7 @@ public class MainWindow {
 //			}
             {
                 MenuItem pitem = new MenuItem(menuScope, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_CHECKED_CLONES"));  //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.MainWindow.M_FIT_SCOPE_TO_CHECKED_CLONES"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -2748,7 +2748,7 @@ public class MainWindow {
 
             {
                 MenuItem mItemPop = new MenuItem(menuScope, SWT.PUSH);
-                mItemPop.setText(Messages.getString("gemx.MainWindow.M_POP_SCOPE")); //$NON-NLS-1$
+                mItemPop.setText(Messages.getString("gemx.MainWindow.M_POP_SCOPE"));
                 mItemPop.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.resetScope();
@@ -2758,7 +2758,7 @@ public class MainWindow {
 
             {
                 MenuItem mItemReset = new MenuItem(menuScope, SWT.PUSH);
-                mItemReset.setText(Messages.getString("gemx.MainWindow.M_RESET_SCOPE")); //$NON-NLS-1$
+                mItemReset.setText(Messages.getString("gemx.MainWindow.M_RESET_SCOPE"));
                 mItemReset.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.resetScope();
@@ -2768,14 +2768,14 @@ public class MainWindow {
         }
         {
             MenuItem mItemMetric = new MenuItem(menubar, SWT.CASCADE);
-            mItemMetric.setText(Messages.getString("gemx.MainWindow.M_METRICS")); //$NON-NLS-1$
+            mItemMetric.setText(Messages.getString("gemx.MainWindow.M_METRICS"));
 
             Menu menuMetric = new Menu(mItemMetric);
             mItemMetric.setMenu(menuMetric);
 
             {
                 MenuItem mItemBothMetrics = new MenuItem(menuMetric, SWT.PUSH);
-                mItemBothMetrics.setText(Messages.getString("gemx.MainWindow.M_ADD_BOTH_FILE_AND_CLONESET_METRICS_TO_TABLES"));  //$NON-NLS-1$
+                mItemBothMetrics.setText(Messages.getString("gemx.MainWindow.M_ADD_BOTH_FILE_AND_CLONESET_METRICS_TO_TABLES"));
                 mItemBothMetrics.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.addBothFileAndCloneSetMetrics();
@@ -2787,7 +2787,7 @@ public class MainWindow {
 
             {
                 MenuItem mItemFileMetrics = new MenuItem(menuMetric, SWT.PUSH);
-                mItemFileMetrics.setText(Messages.getString("gemx.MainWindow.M_ADD_FILE_METRICS")); //$NON-NLS-1$
+                mItemFileMetrics.setText(Messages.getString("gemx.MainWindow.M_ADD_FILE_METRICS"));
                 mItemFileMetrics.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.addFileMetrics();
@@ -2797,7 +2797,7 @@ public class MainWindow {
 
             {
                 MenuItem mItemFileFilteringByMetric = new MenuItem(menuMetric, SWT.PUSH);
-                mItemFileFilteringByMetric.setText(Messages.getString("gemx.MainWindow.M_FILTER_FILE_BY_METRIC")); //$NON-NLS-1$
+                mItemFileFilteringByMetric.setText(Messages.getString("gemx.MainWindow.M_FILTER_FILE_BY_METRIC"));
                 mItemFileFilteringByMetric.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.doFilteringFilesByMetrics();
@@ -2808,7 +2808,7 @@ public class MainWindow {
             new MenuItem(menuMetric, SWT.SEPARATOR);
 
             MenuItem mItemCloneSetMetrics = new MenuItem(menuMetric, SWT.PUSH);
-            mItemCloneSetMetrics.setText(Messages.getString("gemx.MainWindow.M_ADD_CLONE_SET_METRICS")); //$NON-NLS-1$
+            mItemCloneSetMetrics.setText(Messages.getString("gemx.MainWindow.M_ADD_CLONE_SET_METRICS"));
             mItemCloneSetMetrics.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     MainWindow.this.addCloneSetMetrics();
@@ -2817,7 +2817,7 @@ public class MainWindow {
 
             {
                 MenuItem mItemCloneSetFilteringByMetric = new MenuItem(menuMetric, SWT.PUSH);
-                mItemCloneSetFilteringByMetric.setText(Messages.getString("gemx.MainWindow.M_FILTER_CLONE_SET_BY_METRIC")); //$NON-NLS-1$
+                mItemCloneSetFilteringByMetric.setText(Messages.getString("gemx.MainWindow.M_FILTER_CLONE_SET_BY_METRIC"));
                 mItemCloneSetFilteringByMetric.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.doFilteringCloneSetByMetrics();
@@ -2829,7 +2829,7 @@ public class MainWindow {
 
             {
                 MenuItem mItemLinebasedMetrics = new MenuItem(menuMetric, SWT.PUSH);
-                mItemLinebasedMetrics.setText(Messages.getString("gemx.MainWindow.M_SHOW_LINE_BASD_METRICS"));  //$NON-NLS-1$
+                mItemLinebasedMetrics.setText(Messages.getString("gemx.MainWindow.M_SHOW_LINE_BASD_METRICS"));
                 mItemLinebasedMetrics.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.showLinebasedMetrics();
@@ -2839,14 +2839,14 @@ public class MainWindow {
         }
         {
             MenuItem mItemHelp = new MenuItem(menubar, SWT.CASCADE);
-            mItemHelp.setText(Messages.getString("gemx.MainWindow.M_SETTINGS")); //$NON-NLS-1$
+            mItemHelp.setText(Messages.getString("gemx.MainWindow.M_SETTINGS"));
 
             Menu menuHelp = new Menu(mItemHelp);
             mItemHelp.setMenu(menuHelp);
 
             {
                 MenuItem mItem = new MenuItem(menuHelp, SWT.PUSH);
-                mItem.setText(Messages.getString("gemx.MainWindow.M_CCFX_SETTINGS")); //$NON-NLS-1$
+                mItem.setText(Messages.getString("gemx.MainWindow.M_CCFX_SETTINGS"));
                 mItem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.doCcfxSettingsDialog();
@@ -2855,7 +2855,7 @@ public class MainWindow {
             }
             {
                 MenuItem mItem = new MenuItem(menuHelp, SWT.PUSH);
-                mItem.setText(Messages.getString("gemx.MainWindow.M_GEMX_SETTINGS")); //$NON-NLS-1$
+                mItem.setText(Messages.getString("gemx.MainWindow.M_GEMX_SETTINGS"));
                 mItem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.doGemxSettingsDialog();
@@ -2865,14 +2865,14 @@ public class MainWindow {
         }
         {
             MenuItem mItemView = new MenuItem(menubar, SWT.CASCADE);
-            mItemView.setText(Messages.getString("gemx.MainWindow.M_VIEW"));  //$NON-NLS-1$
+            mItemView.setText(Messages.getString("gemx.MainWindow.M_VIEW"));
 
             Menu menuView = new Menu(mItemView);
             mItemView.setMenu(menuView);
 
             {
                 MenuItem mItemFocusHistory = new MenuItem(menuView, SWT.PUSH);
-                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_SCOPE"));  //$NON-NLS-1$
+                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_SCOPE"));
                 mItemFocusHistory.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.setFocusToControl(SC_SCOPE_HISTORY_LIST);
@@ -2881,7 +2881,7 @@ public class MainWindow {
             }
             {
                 MenuItem mItemFocusHistory = new MenuItem(menuView, SWT.PUSH);
-                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_FILE_TABLE"));  //$NON-NLS-1$
+                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_FILE_TABLE"));
                 mItemFocusHistory.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.setFocusToControl(SC_FILE_TABLE);
@@ -2890,7 +2890,7 @@ public class MainWindow {
             }
             {
                 MenuItem mItemFocusHistory = new MenuItem(menuView, SWT.PUSH);
-                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_CLONESET_TABLE"));  //$NON-NLS-1$
+                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_CLONESET_TABLE"));
                 mItemFocusHistory.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.setFocusToControl(SC_CLONE_SET_TABLE);
@@ -2899,7 +2899,7 @@ public class MainWindow {
             }
             {
                 MenuItem mItemFocusHistory = new MenuItem(menuView, SWT.PUSH);
-                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_SCATTER_PLOT"));  //$NON-NLS-1$
+                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_SCATTER_PLOT"));
                 mItemFocusHistory.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.setFocusToControl(SC_SCATTER_PLOT_PANE);
@@ -2908,7 +2908,7 @@ public class MainWindow {
             }
             {
                 MenuItem mItemFocusHistory = new MenuItem(menuView, SWT.PUSH);
-                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_SOURCE_TEXT"));  //$NON-NLS-1$
+                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_SOURCE_TEXT"));
                 mItemFocusHistory.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.setFocusToControl(SC_SOURCE_PANE);
@@ -2917,7 +2917,7 @@ public class MainWindow {
             }
             {
                 MenuItem mItemFocusHistory = new MenuItem(menuView, SWT.PUSH);
-                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_SCRAPBOOK"));  //$NON-NLS-1$
+                mItemFocusHistory.setText(Messages.getString("gemx.MainWindow.M_VIEW_SCRAPBOOK"));
                 mItemFocusHistory.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.setFocusToControl(SC_SCRAPBOOK);
@@ -2927,24 +2927,24 @@ public class MainWindow {
         }
         {
             MenuItem mItemHelp = new MenuItem(menubar, SWT.CASCADE);
-            mItemHelp.setText(Messages.getString("gemx.MainWindow.M_HELP")); //$NON-NLS-1$
+            mItemHelp.setText(Messages.getString("gemx.MainWindow.M_HELP"));
 
             Menu menuHelp = new Menu(mItemHelp);
             mItemHelp.setMenu(menuHelp);
 
             {
                 MenuItem mItemDocument = new MenuItem(menuHelp, SWT.PUSH);
-                mItemDocument.setText(Messages.getString("gemx.MainWindow.M_DOCUMENT_PAGE")); //$NON-NLS-1$
+                mItemDocument.setText(Messages.getString("gemx.MainWindow.M_DOCUMENT_PAGE"));
                 mItemDocument.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
-                        CCFinderX.theInstance.openOfficialSiteDocumentPage(Messages.getString("gemx.MainWindow.S_DOCUMENT_PAGE_LANG"), ""); //$NON-NLS-1$
+                        CCFinderX.theInstance.openOfficialSiteDocumentPage(Messages.getString("gemx.MainWindow.S_DOCUMENT_PAGE_LANG"), "");
                     }
                 });
             }
 
             {
                 MenuItem mItemAbout = new MenuItem(menuHelp, SWT.PUSH);
-                mItemAbout.setText(Messages.getString("gemx.MainWindow.M_ABOUT")); //$NON-NLS-1$
+                mItemAbout.setText(Messages.getString("gemx.MainWindow.M_ABOUT"));
                 mItemAbout.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
                         MainWindow.this.do_show_about_dialog();
@@ -3087,7 +3087,7 @@ public class MainWindow {
         this.clipboard = new Clipboard(shell.getDisplay());
 
         shell.setMaximized(true);
-        shell.setText(String.format("GemX %d.%d.%d.%d", gemx.constants.ApplicationVersion.verMajor,  //$NON-NLS-1$
+        shell.setText(String.format("GemX %d.%d.%d.%d", gemx.constants.ApplicationVersion.verMajor,
                 gemx.constants.ApplicationVersion.verMinor1, gemx.constants.ApplicationVersion.verMinor2,
                 gemx.constants.ApplicationVersion.verFix));
         shell.setLayout(new GridLayout(1, true));
@@ -3096,8 +3096,8 @@ public class MainWindow {
             public void shellClosed(ShellEvent e) {
                 MessageBox mes = new MessageBox(MainWindow.this.shell, SWT.OK | SWT.CANCEL
                         | SWT.ICON_QUESTION);
-                mes.setText("Exiting - GemX"); //$NON-NLS-1$
-                mes.setMessage(Messages.getString("gemx.MainWindow.S_ARE_YOU_SURE_TO_EXIT_GEMX")); //$NON-NLS-1$
+                mes.setText("Exiting - GemX");
+                mes.setMessage(Messages.getString("gemx.MainWindow.S_ARE_YOU_SURE_TO_EXIT_GEMX"));
                 if (mes.open() == SWT.CANCEL) {
                     e.doit = false;
                 }
@@ -3139,7 +3139,7 @@ public class MainWindow {
                 };
 
                 CTabItem tabItem1 = new CTabItem(sessionFolder, SWT.NONE);
-                tabItem1.setText(Messages.getString("gemx.MainWindow.S_SCOPE_HISTORY")); //$NON-NLS-1$
+                tabItem1.setText(Messages.getString("gemx.MainWindow.S_SCOPE_HISTORY"));
 
                 scopeHistoryList = new Table(sessionFolder, SWT.VIRTUAL | SWT.MULTI | SWT.FULL_SELECTION);
                 scopeHistoryList.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
@@ -3147,7 +3147,7 @@ public class MainWindow {
                 scopeHistoryList.addListener(SWT.MouseDoubleClick, focusedListener);
 
                 scopeHistoryList.setHeaderVisible(true);
-                String[] cols = {"", "Idx.", "Desc.", "#Files", "#Clones"}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$
+                String[] cols = {"", "Idx.", "Desc.", "#Files", "#Clones"};
                 int[] colWids = {10, 20, 90, 60, 60};
                 int[] colAligns = {SWT.LEFT, SWT.RIGHT, SWT.LEFT, SWT.RIGHT, SWT.RIGHT};
                 for (int i = 0; i < cols.length; ++i) {
@@ -3163,7 +3163,7 @@ public class MainWindow {
 
                     {
                         MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                        pitem.setText(Messages.getString("gemx.MainWindow.M_SHOW_SCOPE")); //$NON-NLS-1$
+                        pitem.setText(Messages.getString("gemx.MainWindow.M_SHOW_SCOPE"));
                         pitem.setSelection(true);
                         pitem.addSelectionListener(new SelectionAdapter() {
                             public void widgetSelected(SelectionEvent e) {
@@ -3174,7 +3174,7 @@ public class MainWindow {
                     new MenuItem(pmenu, SWT.SEPARATOR);
                     {
                         MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                        pitem.setText(Messages.getString("gemx.FileTable.M_POP_SCOPE")); //$NON-NLS-1$
+                        pitem.setText(Messages.getString("gemx.FileTable.M_POP_SCOPE"));
                         pitem.setSelection(true);
                         pitem.addSelectionListener(new SelectionAdapter() {
                             public void widgetSelected(SelectionEvent e) {
@@ -3184,7 +3184,7 @@ public class MainWindow {
                     }
                     {
                         MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                        pitem.setText(Messages.getString("gemx.MainWindow.M_PUSH_SCOPE")); //$NON-NLS-1$
+                        pitem.setText(Messages.getString("gemx.MainWindow.M_PUSH_SCOPE"));
                         pitem.setSelection(true);
                         pitem.addSelectionListener(new SelectionAdapter() {
                             public void widgetSelected(SelectionEvent e) {
@@ -3214,7 +3214,7 @@ public class MainWindow {
                 fileTable.addListener(SWT.MouseDown, focusedListener);
                 {
                     CTabItem tabItem1 = new CTabItem(listFolder, SWT.NONE);
-                    tabItem1.setText(Messages.getString("gemx.MainWindow.S_FILE_TABLE")); //$NON-NLS-1$
+                    tabItem1.setText(Messages.getString("gemx.MainWindow.S_FILE_TABLE"));
                     tabItem1.setControl(fileTable.getControl());
                 }
 
@@ -3223,7 +3223,7 @@ public class MainWindow {
                 cloneSetTable.addListener(SWT.MouseDown, focusedListener);
                 {
                     CTabItem tabItem2 = new CTabItem(listFolder, SWT.NONE);
-                    tabItem2.setText(Messages.getString("gemx.MainWindow.S_CLONE_SET_TABLE")); //$NON-NLS-1$
+                    tabItem2.setText(Messages.getString("gemx.MainWindow.S_CLONE_SET_TABLE"));
                     tabItem2.setControl(cloneSetTable.getControl());
                 }
 
@@ -3252,7 +3252,7 @@ public class MainWindow {
                 scatterPlotPane.addListener(SWT.MouseDown, focusedListener);
                 {
                     CTabItem tabItem1 = new CTabItem(mapFolder, SWT.NONE);
-                    tabItem1.setText(Messages.getString("gemx.MainWindow.S_SCATTER_PLOT")); //$NON-NLS-1$
+                    tabItem1.setText(Messages.getString("gemx.MainWindow.S_SCATTER_PLOT"));
                     tabItem1.setControl(scatterPlotPane.getControl());
                 }
 
@@ -3263,7 +3263,7 @@ public class MainWindow {
                 sourcePane.setEncoding(encodingName);
                 {
                     CTabItem tabItem2 = new CTabItem(mapFolder, SWT.NONE);
-                    tabItem2.setText(Messages.getString("gemx.MainWindow.S_SOURCE_TEXT")); //$NON-NLS-1$
+                    tabItem2.setText(Messages.getString("gemx.MainWindow.S_SOURCE_TEXT"));
                     tabItem2.setControl(sourcePane.getControl());
                 }
 
@@ -3273,7 +3273,7 @@ public class MainWindow {
                 theScrapbook.setEncoding(encodingName);
                 {
                     CTabItem tabItem3 = new CTabItem(mapFolder, SWT.NONE);
-                    tabItem3.setText(Messages.getString("gemx.MainWindow.S_SCRAPBOOK"));  //$NON-NLS-1$
+                    tabItem3.setText(Messages.getString("gemx.MainWindow.S_SCRAPBOOK"));
                     tabItem3.setControl(theScrapbook.getControl());
                 }
                 theScrapbook.changeIndependentMode(true);
@@ -3326,12 +3326,12 @@ public class MainWindow {
     }
 
     public void resizeScatterPlotDrawingAreaToWindow(int times) {
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_RESIZING_SCATTER_PLOT_PANE")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_RESIZING_SCATTER_PLOT_PANE"));
         ClonesetMetricModel cloneSetMetricModel = metricModels.getCloneSetMetricModel();
         if (cloneSetMetricModel != null) {
             try {
                 CloneSetMetricExtractor extractor = CloneSetMetricExtractor.newCloneSetMetricExtractorByID(cloneSetMetricModel,
-                        gemx.model.ClonesetMetricModel.fieldNameToID("RNR"));  //$NON-NLS-1$
+                        gemx.model.ClonesetMetricModel.fieldNameToID("RNR"));
                 scatterPlotPane.resizeDrawingAreaToWindow(currentScope, extractor, times);
             } catch (IndexOutOfBoundsException e) {
                 scatterPlotPane.resizeDrawingAreaToWindow(currentScope, times);
@@ -3339,14 +3339,14 @@ public class MainWindow {
         } else {
             scatterPlotPane.resizeDrawingAreaToWindow(currentScope, times);
         }
-        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+        statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
     }
 
     private void addScopeHistoryItem(String description, int fileCount, long cloneCount, boolean marked) {
         int index = scopeHistoryList.getItemCount();
         TableItem item = new TableItem(scopeHistoryList, SWT.NULL);
         String[] itemData = {
-                marked ? ">" : "", //$NON-NLS-1$ //$NON-NLS-2$
+                marked ? ">" : "",
                 String.valueOf(index),
                 description,
                 String.valueOf(fileCount),
@@ -3364,11 +3364,11 @@ public class MainWindow {
             String s = item.getText(0);
             if (i != index) {
                 if (s.length() != 0) {
-                    item.setText(0, ""); //$NON-NLS-1$
+                    item.setText(0, "");
                 }
             } else {
                 if (s.length() == 0) {
-                    item.setText(0, ">"); //$NON-NLS-1$
+                    item.setText(0, ">");
                 }
             }
         }
@@ -3384,12 +3384,12 @@ public class MainWindow {
             Model recoveredModel = new Model();
             try {
                 try {
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE"));
                     recoveredModel.readCloneDataFile(recoveredModelFilePath);
                 } catch (IOException e) {
                     MessageBox box1 = new MessageBox(shell, SWT.OK | SWT.ICON_ERROR);
-                    box1.setText("Error - GemX"); //$NON-NLS-1$
-                    box1.setMessage(String.format(Messages.getString("gemx.MainWindow.S_CANNOT_READ_FILE"), recoveredModelFilePath)); //$NON-NLS-1$
+                    box1.setText("Error - GemX");
+                    box1.setMessage(String.format(Messages.getString("gemx.MainWindow.S_CANNOT_READ_FILE"), recoveredModelFilePath));
                     box1.open();
                 }
                 update_model(recoveredModel);
@@ -3398,24 +3398,24 @@ public class MainWindow {
 
                 if (shi.fileMetricFile != null) {
                     metricModels.readFileMetricFile(shi.fileMetricFile, this.currentScope.getMaxFileID());
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE"));
                     fileTable.addFileMetricModel(metricModels.getFileMetricModel());
                 }
 
                 if (shi.cloneSetMetricFile != null) {
                     metricModels.readCloneSetMetricFile(shi.cloneSetMetricFile, this.currentScope.getMaxCloneSetID());
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE"));
                     cloneSetTable.addCloneSetMetricModel(metricModels.getCloneSetMetricModel());
                     scatterPlotPane.updateModel(currentScope, metricModels.getCloneSetMetricModel());
                 }
 
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_RECOVERING_SELECTIONS")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_RECOVERING_SELECTIONS"));
                 load_selection(sel);
                 update_info_bars();
             } finally {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
 
-                this.addScopeHistoryItem("Scope :" + index, recoveredModel.getFileCount(), recoveredModel.getCloneSetCount(), true); //$NON-NLS-1$
+                this.addScopeHistoryItem("Scope :" + index, recoveredModel.getFileCount(), recoveredModel.getCloneSetCount(), true);
             }
         }
     }
@@ -3429,12 +3429,12 @@ public class MainWindow {
             Model recoveredModel = new Model();
             try {
                 try {
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_READING_CLONE_DATA_FILE"));
                     recoveredModel.readCloneDataFile(recoveredModelFilePath);
                 } catch (IOException e) {
                     MessageBox box1 = new MessageBox(shell, SWT.OK | SWT.ICON_ERROR);
-                    box1.setText("Error - GemX"); //$NON-NLS-1$
-                    box1.setMessage(String.format(Messages.getString("gemx.MainWindow.S_CANNOT_READ_FILE"), recoveredModelFilePath));   //$NON-NLS-1$
+                    box1.setText("Error - GemX");
+                    box1.setMessage(String.format(Messages.getString("gemx.MainWindow.S_CANNOT_READ_FILE"), recoveredModelFilePath));
                     box1.open();
                 }
                 update_model(recoveredModel);
@@ -3443,32 +3443,28 @@ public class MainWindow {
 
                 if (shi.fileMetricFile != null) {
                     metricModels.readFileMetricFile(shi.fileMetricFile, this.currentScope.getMaxFileID());
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_FILE_TABLE"));
                     fileTable.addFileMetricModel(metricModels.getFileMetricModel());
                 }
 
                 if (shi.cloneSetMetricFile != null) {
                     metricModels.readCloneSetMetricFile(shi.cloneSetMetricFile, this.currentScope.getMaxCloneSetID());
-                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE")); //$NON-NLS-1$
+                    statusBar.setText(Messages.getString("gemx.MainWindow.SB_UPDATING_CLONE_SET_TABLE"));
                     cloneSetTable.addCloneSetMetricModel(metricModels.getCloneSetMetricModel());
                     scatterPlotPane.updateModel(currentScope, metricModels.getCloneSetMetricModel());
                 }
 
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_RECOVERING_SELECTIONS")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_RECOVERING_SELECTIONS"));
                 load_selection(sel);
                 update_info_bars();
             } finally {
-                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY")); //$NON-NLS-1$
+                statusBar.setText(Messages.getString("gemx.MainWindow.SB_READY"));
 
                 setScopeHistoryMark(index);
             }
         }
     }
 
-    /*
-     * CustomCTabFolder��CTabFolder���n�b�N�������́B�^�u���N���b�N���đI�����ꂽCTabFolder��m�邽�߂ɁA
-     * showItem()���I�[�o�[���C�h���Ă���
-     */
     private interface CustomCTabFolderSelectionListener {
         void selected(CustomCTabFolder selectedFolder);
     }

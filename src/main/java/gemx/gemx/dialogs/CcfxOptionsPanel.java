@@ -53,7 +53,7 @@ public class CcfxOptionsPanel { // package internal
 
                 GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
                 preprocessorForcedLabel.setLayoutData(gridData);
-                preprocessorForcedLabel.setText(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_PREPROCESSOR")); //$NON-NLS-1$
+                preprocessorForcedLabel.setText(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_PREPROCESSOR"));
 
                 forcedPreprocessor = new Combo(shellC, SWT.NONE);
                 gridData = new GridData(GridData.FILL_HORIZONTAL);
@@ -72,7 +72,7 @@ public class CcfxOptionsPanel { // package internal
             Label labelMinimumCloneLength = new Label(shellC, SWT.NONE);
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             labelMinimumCloneLength.setLayoutData(gridData);
-            labelMinimumCloneLength.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_MINIMUM_CLONE_LENGTH"));  //$NON-NLS-1$
+            labelMinimumCloneLength.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_MINIMUM_CLONE_LENGTH"));
 
             minCloneLength = new gemx.customwidgets.Spinner(shellC, SWT.NONE);
             minCloneLength.setMaximum(10000);
@@ -90,7 +90,7 @@ public class CcfxOptionsPanel { // package internal
             Label labelMinimumTKS = new Label(shellC, SWT.NONE);
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             labelMinimumTKS.setLayoutData(gridData);
-            labelMinimumTKS.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_MINIMUM_TKS")); //$NON-NLS-1$
+            labelMinimumTKS.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_MINIMUM_TKS"));
 
             minTKS = new gemx.customwidgets.Spinner(shellC, SWT.NONE);
             minTKS.setMaximum(10000);
@@ -108,13 +108,13 @@ public class CcfxOptionsPanel { // package internal
             Label labelShaperLevel = new Label(shellC, SWT.NONE);
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             labelShaperLevel.setLayoutData(gridData);
-            labelShaperLevel.setText(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_SHAPER_LEVEL")); //$NON-NLS-1$
+            labelShaperLevel.setText(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_SHAPER_LEVEL"));
 
             shaperLevel = new Combo(shellC, SWT.READ_ONLY);
-            shaperLevel.add(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_0_DONT_USE_SHAPER")); //$NON-NLS-1$
-            shaperLevel.add(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_1_EASY_SHAPER")); //$NON-NLS-1$
-            shaperLevel.add(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_2_SOFT_SHAPER")); //$NON-NLS-1$
-            shaperLevel.add(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_3_HARD_SHAPER")); //$NON-NLS-1$
+            shaperLevel.add(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_0_DONT_USE_SHAPER"));
+            shaperLevel.add(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_1_EASY_SHAPER"));
+            shaperLevel.add(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_2_SOFT_SHAPER"));
+            shaperLevel.add(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_3_HARD_SHAPER"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             shaperLevel.setLayoutData(gridData);
             shaperLevel.addSelectionListener(new SelectionAdapter() {
@@ -128,10 +128,10 @@ public class CcfxOptionsPanel { // package internal
             Label labelUsePMatch = new Label(shellC, SWT.NONE);
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             labelUsePMatch.setLayoutData(gridData);
-            labelUsePMatch.setText(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_PMATCH_APPLICATOIN")); //$NON-NLS-1$
+            labelUsePMatch.setText(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_PMATCH_APPLICATOIN"));
 
             usePMatch = new Button(shellC, SWT.CHECK);
-            usePMatch.setText(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_USE_PMATCH")); //$NON-NLS-1$
+            usePMatch.setText(Messages.getString("gemx.CloneDetectionFromFileListOptionDialog.S_USE_PMATCH"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             usePMatch.setLayoutData(gridData);
             usePMatch.addSelectionListener(new SelectionAdapter() {
@@ -145,10 +145,10 @@ public class CcfxOptionsPanel { // package internal
             Label labelUsePrescreening = new Label(shellC, SWT.NONE);
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             labelUsePrescreening.setLayoutData(gridData);
-            labelUsePrescreening.setText(Messages.getString("gemxCcfxOptionsPanel.S_PRESCREENING_APPLICATION")); //$NON-NLS-1$
+            labelUsePrescreening.setText(Messages.getString("gemxCcfxOptionsPanel.S_PRESCREENING_APPLICATION"));
 
             usePrescreening = new Button(shellC, SWT.CHECK);
-            usePrescreening.setText(Messages.getString("gemxCcfxOptionsPanel.S_USE_PRESCREENING")); //$NON-NLS-1$
+            usePrescreening.setText(Messages.getString("gemxCcfxOptionsPanel.S_USE_PRESCREENING"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             usePrescreening.setLayoutData(gridData);
             usePrescreening.addSelectionListener(new SelectionAdapter() {

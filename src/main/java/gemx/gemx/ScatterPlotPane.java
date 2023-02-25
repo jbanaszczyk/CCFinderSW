@@ -31,7 +31,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
     private final Combo cmColoringMetricName;
     private final Button ckCloneSpace;
     private final Display display;
-    private final String strNotApplicable = "N/A"; //$NON-NLS-1$
+    private final String strNotApplicable = "N/A";
     protected MainWindow mainWindow;
     protected Canvas canvas;
     boolean directoryLabelShownInLowerRight;
@@ -79,7 +79,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
         buttonPanel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
         {
             ckFileBoundary = new Button(buttonPanel, SWT.CHECK);
-            ckFileBoundary.setText(Messages.getString("gemx.ScatterPlotPane.S_FILE_BOUNDARY")); //$NON-NLS-1$
+            ckFileBoundary.setText(Messages.getString("gemx.ScatterPlotPane.S_FILE_BOUNDARY"));
             ckFileBoundary.setEnabled(true);
             ckFileBoundary.setSelection(showFileBoundary);
             ckFileBoundary.addSelectionListener(new SelectionAdapter() {
@@ -88,7 +88,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
                 }
             });
             ckFileGap = new Button(buttonPanel, SWT.CHECK);
-            ckFileGap.setText(Messages.getString("gemx.ScatterPlotPane.S_FILE_GAP")); //$NON-NLS-1$
+            ckFileGap.setText(Messages.getString("gemx.ScatterPlotPane.S_FILE_GAP"));
             ckFileGap.setEnabled(true);
             ckFileGap.setSelection(showFileGap);
             ckFileGap.addSelectionListener(new SelectionAdapter() {
@@ -97,7 +97,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
                 }
             });
             ckDirectoryBox = new Button(buttonPanel, SWT.CHECK);
-            ckDirectoryBox.setText(Messages.getString("gemx.ScatterPlotPane.S_DIRECTORY_BOX")); //$NON-NLS-1$
+            ckDirectoryBox.setText(Messages.getString("gemx.ScatterPlotPane.S_DIRECTORY_BOX"));
             ckDirectoryBox.setEnabled(true);
             ckDirectoryBox.setSelection(showDirectoryBox);
             ckDirectoryBox.addSelectionListener(new SelectionAdapter() {
@@ -107,7 +107,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
             });
 
             ckCloneSpace = new Button(buttonPanel, SWT.CHECK);
-            ckCloneSpace.setText(Messages.getString("gemx.ScatterPlotPane.S_DIAGONALIZE_FILL")); //$NON-NLS-1$
+            ckCloneSpace.setText(Messages.getString("gemx.ScatterPlotPane.S_DIAGONALIZE_FILL"));
             ckCloneSpace.setEnabled(true);
             showCloneSpace = true;
             ckCloneSpace.setSelection(showCloneSpace);
@@ -118,7 +118,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
             });
 
             Label lbColoringMetricName = new Label(buttonPanel, SWT.NONE);
-            lbColoringMetricName.setText(Messages.getString("gemx.ScatterPlotPane.S_COLORING_METRICS")); //$NON-NLS-1$
+            lbColoringMetricName.setText(Messages.getString("gemx.ScatterPlotPane.S_COLORING_METRICS"));
 
             cmColoringMetricName = new Combo(buttonPanel, SWT.DROP_DOWN | SWT.READ_ONLY);
             cmColoringMetricName.add(strNotApplicable);
@@ -266,7 +266,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
 
             {
                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_SELECT_INCLUDING_DIRECTORY_BOX")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_SELECT_INCLUDING_DIRECTORY_BOX"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -299,7 +299,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
             new MenuItem(pmenu, SWT.SEPARATOR);
             {
                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_FIT_SCOPE_TO_SELECTED_FILES")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_FIT_SCOPE_TO_SELECTED_FILES"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -313,7 +313,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
             new MenuItem(pmenu, SWT.SEPARATOR);
             {
                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_POP_SCOPE")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_POP_SCOPE"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -324,7 +324,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
 
             if (bAddResetScopeItemToContextMenu) {
                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_RESET_SCOPE")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_RESET_SCOPE"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -336,7 +336,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
             new MenuItem(pmenu, SWT.SEPARATOR);
             {
                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_RESIZE_DRAWING_AREA")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.ScatterPlotPane.M_RESIZE_DRAWING_AREA"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -346,7 +346,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
             }
             {
                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.ScatterPlotPane.S_RESIZE_DRAWING_AREA_2")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.ScatterPlotPane.S_RESIZE_DRAWING_AREA_2"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -374,7 +374,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
     }
 
     private static int countFileSeparator(String str) {
-        return countFileSeparator_i(str, "\\") + countFileSeparator_i(str, "/"); //$NON-NLS-1$ //$NON-NLS-2$
+        return countFileSeparator_i(str, "\\") + countFileSeparator_i(str, "/");
     }
 
     private static int commonLength(String strA, String strB) {
@@ -392,8 +392,8 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
         ArrayList<String> ary = new ArrayList<String>();
         int i = 0;
         while (i < str.length()) {
-            int p1 = str.indexOf("\\", i); //$NON-NLS-1$
-            int p2 = str.indexOf("/", i); //$NON-NLS-1$
+            int p1 = str.indexOf("\\", i);
+            int p2 = str.indexOf("/", i);
             int p;
             if (p1 < 0) {
                 p = p2;
@@ -415,7 +415,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
         if (data.containsFileRemark(fileID)) {
             ArrayList<String> remarks = data.getFileRemarkFromFileID(fileID);
             for (String remark : remarks) {
-                if (remark.equals("masked")) { //$NON-NLS-1$
+                if (remark.equals("masked")) {
                     return true;
                 }
             }
@@ -678,8 +678,8 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
         }
 
         this.selectedIndex = selectedIndex;
-        // this.setSelection(selectedIndex); �����setCloneSelectionByFileAndOffset�ōĕ`�悳���̂ŌĂяo���Ȃ�
-        mainWindow.setFileSelection(selectedIndex, null); // �����setCloneSelectionByFileAndOffset�ōĕ`�悳���̂�null�ɂ��Ă���
+        // this.setSelection(selectedIndex);
+        mainWindow.setFileSelection(selectedIndex, null);
 
         mainWindow.setCloneSelectionByFlieAndOffset(
                 yFileBegin, yb.offset, ye.offset,
@@ -907,7 +907,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
             long size = 0;
             int lastFileID = -1;
             TIntArrayList pathPartIndices = new TIntArrayList();
-            String lastPath = ""; //$NON-NLS-1$
+            String lastPath = "";
             ArrayList<DirectoryBoxPosition> directoryAry = new ArrayList<DirectoryBoxPosition>();
 
             for (int i = 0; i < files; ++i) {
@@ -946,7 +946,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
                         {
                             String firstPath = data.getFile(beginI).path;
                             String commonPathWithinTheBox = lastPath.substring(0, commonLength(lastPath, firstPath));
-                            String commonPathWithNeighbors = ""; //$NON-NLS-1$
+                            String commonPathWithNeighbors = "";
                             if (beginI - 1 > 0) {
                                 String nPath = data.getFile(beginI - 1).path;
                                 String ctn = nPath.substring(0, commonLength(nPath, firstPath));
@@ -1244,7 +1244,7 @@ public class ScatterPlotPane implements FileSelectionListener, CloneSelectionLis
     }
 
     public void updateModel(Model data, ClonesetMetricModel metricModelData) {
-        final String defaultMetric = "RNR"; //$NON-NLS-1$
+        final String defaultMetric = "RNR";
 
         viewedModel = data;
         assert viewedCloneSetMetricModel != null;

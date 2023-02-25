@@ -19,7 +19,7 @@ public class PythonVersionChecker {
         String exeDir = gemx.utility.ExecutionModuleDirectory.get();
         //System.err.println("exeDir=" + exeDir + ".");
         assert exeDir != null;
-        String scriptPath = exeDir + File.separator + "scripts" + File.separator + "pythonversionchecker.py"; //$NON-NLS-1$ //$NON-NLS-2$
+        String scriptPath = exeDir + File.separator + "scripts" + File.separator + "pythonversionchecker.py";
         Runtime rt = Runtime.getRuntime();
         try {
             //System.err.println("thePythonInterpreterPath=" + thePythonInterpreterPath + ".");

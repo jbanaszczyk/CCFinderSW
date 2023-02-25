@@ -55,15 +55,15 @@ public class PrepToken {
     @Override
     public String toString() {
 
-        String buffer = "<" + //$NON-NLS-1$
+        String buffer = "<" +
                 beginIndex +
-                "," + //$NON-NLS-1$
+                "," +
                 endIndex +
 
 //debug
-//		buffer.append(","); //$NON-NLS-1$
+//		buffer.append(","); 
 //		buffer.append(str);
-                ">"; //$NON-NLS-1$
+                ">";
 
         return buffer;
     }

@@ -22,7 +22,7 @@ public class CloneDetectionOptionDialog {
     private Shell shellC = null;
     private int result;
 
-    private String valuePreprocessor = "N/A";  //$NON-NLS-1$
+    private String valuePreprocessor = "N/A";
     private int valueIdentifiedSourceFiles = 0;
 
     public CloneDetectionOptionDialog(Shell shell) {
@@ -47,7 +47,7 @@ public class CloneDetectionOptionDialog {
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.horizontalSpan = 2;
             message.setLayoutData(gridData);
-            message.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_SPECIFY_DETECTION_OPTION_BY_THIS_DIALOG")); //$NON-NLS-1$
+            message.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_SPECIFY_DETECTION_OPTION_BY_THIS_DIALOG"));
         }
 
         {
@@ -55,7 +55,7 @@ public class CloneDetectionOptionDialog {
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 100;
             labelPreprocessor.setLayoutData(gridData);
-            labelPreprocessor.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_PREPROCESSOR"));  //$NON-NLS-1$
+            labelPreprocessor.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_PREPROCESSOR"));
 
             preprocessor = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
@@ -67,12 +67,12 @@ public class CloneDetectionOptionDialog {
             Label labelIdentifiedSourceFiles = new Label(shellC, SWT.NONE);
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             labelIdentifiedSourceFiles.setLayoutData(gridData);
-            labelIdentifiedSourceFiles.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_NUM_IDENTIFIED_SOURCE_FILES"));  //$NON-NLS-1$
+            labelIdentifiedSourceFiles.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_NUM_IDENTIFIED_SOURCE_FILES"));
 
             identifiedSourceFiles = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             identifiedSourceFiles.setLayoutData(gridData);
-            identifiedSourceFiles.setText("0");  //$NON-NLS-1$
+            identifiedSourceFiles.setText("0");
         }
 
         {
@@ -103,7 +103,7 @@ public class CloneDetectionOptionDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             okButton.setLayoutData(gridData);
-            okButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_OK"));  //$NON-NLS-1$
+            okButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_OK"));
             okButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.OK;
@@ -115,7 +115,7 @@ public class CloneDetectionOptionDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             cancelButton.setLayoutData(gridData);
-            cancelButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_CANCEL"));  //$NON-NLS-1$
+            cancelButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_CANCEL"));
             cancelButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.CANCEL;

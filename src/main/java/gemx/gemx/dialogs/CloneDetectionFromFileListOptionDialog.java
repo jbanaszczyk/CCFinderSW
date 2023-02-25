@@ -21,7 +21,7 @@ public class CloneDetectionFromFileListOptionDialog {
     private Shell shellC = null;
     private int result;
 
-    private String valueFileListPath = ""; //$NON-NLS-1$
+    private String valueFileListPath = "";
 
     public CloneDetectionFromFileListOptionDialog(Shell shell) {
         parent = shell;
@@ -45,7 +45,7 @@ public class CloneDetectionFromFileListOptionDialog {
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.horizontalSpan = 2;
             message.setLayoutData(gridData);
-            message.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_SPECIFY_DETECTION_OPTION_BY_THIS_DIALOG")); //$NON-NLS-1$
+            message.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_SPECIFY_DETECTION_OPTION_BY_THIS_DIALOG"));
         }
 
         {
@@ -53,7 +53,7 @@ public class CloneDetectionFromFileListOptionDialog {
             GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 100;
             labelFileListPath.setLayoutData(gridData);
-            labelFileListPath.setText(Messages.getString("gemx.CloneDetectionOptionDialogs.S_FILE_LIST1")); //$NON-NLS-1$
+            labelFileListPath.setText(Messages.getString("gemx.CloneDetectionOptionDialogs.S_FILE_LIST1"));
 
             fileListPath = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
@@ -89,7 +89,7 @@ public class CloneDetectionFromFileListOptionDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             okButton.setLayoutData(gridData);
-            okButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_OK"));  //$NON-NLS-1$
+            okButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_OK"));
             okButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.OK;
@@ -101,7 +101,7 @@ public class CloneDetectionFromFileListOptionDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             cancelButton.setLayoutData(gridData);
-            cancelButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_CANCEL"));  //$NON-NLS-1$
+            cancelButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_CANCEL"));
             cancelButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.CANCEL;

@@ -28,7 +28,7 @@ public class AboutDialog {
 
 //	private void showErrorMessage(String message) {
 //		MessageBox mes = new MessageBox(shellC, SWT.OK | SWT.ICON_ERROR);
-//		mes.setText("Error - GemX"); //$NON-NLS-1$
+//		mes.setText("Error - GemX"); 
 //		mes.setMessage(message);
 //		mes.open();
 //	}
@@ -52,7 +52,7 @@ public class AboutDialog {
         if (backgroundColor != null) {
             shellC.setBackground(backgroundColor);
         }
-        shellC.setText("About - GemX"); //$NON-NLS-1$
+        shellC.setText("About - GemX");
 
         GridData gridData;
 
@@ -81,7 +81,7 @@ public class AboutDialog {
                 }
                 Image img = null;
                 {
-                    ImageData imgData = new ImageData(AboutDialog.class.getResourceAsStream("/logonew_with_name.png")); //$NON-NLS-1$
+                    ImageData imgData = new ImageData(AboutDialog.class.getResourceAsStream("/logonew_with_name.png"));
                     if (imgData != null) {
                         img = new Image(parent.getDisplay(), imgData);
                         labelIcon.setImage(img);
@@ -106,7 +106,7 @@ public class AboutDialog {
                 }
                 Image img = null;
                 {
-                    ImageData imgData = new ImageData(AboutDialog.class.getResourceAsStream("logonew64.png")); //$NON-NLS-1$
+                    ImageData imgData = new ImageData(AboutDialog.class.getResourceAsStream("logonew64.png"));
                     if (imgData != null) {
                         img = new Image(parent.getDisplay(), imgData);
                         labelIcon.setImage(img);
@@ -114,14 +114,14 @@ public class AboutDialog {
                 }
             }
 
-            String versionStr = String.format("%d.%d.%d.%d", gemx.constants.ApplicationVersion.verMajor, //$NON-NLS-1$
+            String versionStr = String.format("%d.%d.%d.%d", gemx.constants.ApplicationVersion.verMajor,
                     gemx.constants.ApplicationVersion.verMinor1, gemx.constants.ApplicationVersion.verMinor2,
                     gemx.constants.ApplicationVersion.verFix);
 
             label.setText(
-                    "GemX, the GUI front-end of CCFinderX version " + versionStr //$NON-NLS-1$
-                            + "  (C) 2009-2010 AIST. \n\n" //$NON-NLS-1$
-                            + (needAcknoledgement ? Messages.getString("gemx.AboutDialog.S_ACKNOLEDGEMENT") : "") //$NON-NLS-1$ //$NON-NLS-2$
+                    "GemX, the GUI front-end of CCFinderX version " + versionStr
+                            + "  (C) 2009-2010 AIST. \n\n"
+                            + (needAcknoledgement ? Messages.getString("gemx.AboutDialog.S_ACKNOLEDGEMENT") : "")
             );
         }
 
@@ -143,11 +143,11 @@ public class AboutDialog {
             }
 
             Link linkToWebsite = new Link(buttonsCompo, SWT.NONE);
-            linkToWebsite.setText("<a>http://www.ccfinder.net/</a>"); //$NON-NLS-1$
+            linkToWebsite.setText("<a>http://www.ccfinder.net/</a>");
             linkToWebsite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
             linkToWebsite.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
-                    ccfinderx.openOfficialSiteTop(Messages.getString("gemx.AboutDialog.S_PAGE_SUFFIX")); //$NON-NLS-1$
+                    ccfinderx.openOfficialSiteTop(Messages.getString("gemx.AboutDialog.S_PAGE_SUFFIX"));
                     AboutDialog.this.shellC.dispose();
                 }
             });
@@ -156,7 +156,7 @@ public class AboutDialog {
             gridData = new GridData(GridData.FILL);
             gridData.widthHint = 150;
             button1.setLayoutData(gridData);
-            button1.setText(Messages.getString("gemx.MainWindow.S_OK")); //$NON-NLS-1$
+            button1.setText(Messages.getString("gemx.MainWindow.S_OK"));
             button1.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     AboutDialog.this.shellC.dispose();
@@ -206,22 +206,22 @@ public class AboutDialog {
     }
 
     protected String strProduct() {
-        return "GemX"; //$NON-NLS-1$
+        return "GemX";
     }
 
     private void showErrorMessageAndOpenTroubleshootingPage(String message) {
         MessageBox mes = new MessageBox(shellC, SWT.YES | SWT.NO | SWT.ICON_ERROR);
-        mes.setText("Error - GemX"); //$NON-NLS-1$
+        mes.setText("Error - GemX");
         mes.setMessage(message + "\n\n" + "Open the troubleshooting page in www.ccfinder.net?");
         int r = mes.open();
         if (r == SWT.YES) {
-            ccfinderx.openOfficialSiteDocumentPage(Messages.getString("gemx.MainWindow.S_DOCUMENT_PAGE_LANG"), "troubleshooting.html"); //$NON-NLS-1$
+            ccfinderx.openOfficialSiteDocumentPage(Messages.getString("gemx.MainWindow.S_DOCUMENT_PAGE_LANG"), "troubleshooting.html");
         }
     }
 
     private int confirmMessage(String message) {
         MessageBox mes = new MessageBox(shellC, SWT.OK | SWT.CANCEL | SWT.ICON_INFORMATION);
-        mes.setText("Confirmation - GemX"); //$NON-NLS-1$
+        mes.setText("Confirmation - GemX");
         mes.setMessage(message);
         int r = mes.open();
         return r;
@@ -244,17 +244,17 @@ public class AboutDialog {
             String exeDir = gemx.utility.ExecutionModuleDirectory.get();
             assert exeDir != null;
             if (exeDir.indexOf('%') >= 0) {
-                showErrorMessageAndOpenTroubleshootingPage("INSTALLATION ERROR:\n" //$NON-NLS-1$
-                        + "Non-ASCII characters may not be included in path of installation directory."); //$NON-NLS-1$
+                showErrorMessageAndOpenTroubleshootingPage("INSTALLATION ERROR:\n"
+                        + "Non-ASCII characters may not be included in path of installation directory.");
                 System.exit(1);
             }
 
 //			if (! utility.PythonVersionChecker.check(shellC)) {
-//				showErrorMessageAndOpenTroubleshootingPage("INSTALLATION ERROR:\n" //$NON-NLS-1$
-//						+ "Python interpreter was not found. \n" //$NON-NLS-1$
-//						+ "Install Python version 2.5 or later.\n" //$NON-NLS-1$
-//						+ "When two or more Python interpreters are installed, \n" //$NON-NLS-1$
-//						+ "set enviornment variable CCFINDERX_PYTHON_INTERPRETER_PATH."); //$NON-NLS-1$
+//				showErrorMessageAndOpenTroubleshootingPage("INSTALLATION ERROR:\n" 
+//						+ "Python interpreter was not found. \n" 
+//						+ "Install Python version 2.5 or later.\n" 
+//						+ "When two or more Python interpreters are installed, \n" 
+//						+ "set enviornment variable CCFINDERX_PYTHON_INTERPRETER_PATH."); 
 //				System.exit(1);
 //			}
 

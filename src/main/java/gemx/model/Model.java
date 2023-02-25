@@ -19,7 +19,7 @@ public class Model {
     private static final int[] exceptedCcfxVersion = {10, 2};
     private static int tempFileCounter = 0;
     private final String GEMXCLONESETDATA_TEMPFILE = TemporaryFileManager.createTemporaryFileName();
-    private final String SCOPE_TEMPFILE_FORMAT = TemporaryFileManager.createTemporaryFileName("gemxscope%d", ".ccfxd.tmp"); //$NON-NLS-1$ //$NON-NLS-2$
+    private final String SCOPE_TEMPFILE_FORMAT = TemporaryFileManager.createTemporaryFileName("gemxscope%d", ".ccfxd.tmp");
     private String cloneDataFilePath = null;
     private CcfxDetectionOptions detectionOption = null;
     private String preprocessScript = null;
@@ -31,7 +31,7 @@ public class Model {
     private long cloneSetIDCount = 0;
     private int[] fileIdToFileIndex = null;
     private int maxFileID = 0;
-    private String commonPath = ""; //$NON-NLS-1$
+    private String commonPath = "";
 
     private boolean hasSortedFileList = false;
 
@@ -164,7 +164,7 @@ public class Model {
             SourceFileAndPosition fA = sourceFiles.get(index);
 
             try {
-                RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r"); //$NON-NLS-1$
+                RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r");
                 FileChannel channel = raFile.getChannel();
                 try {
                     long position = fA.beginPosition;
@@ -205,7 +205,7 @@ public class Model {
         TLongHashSet idSet = new TLongHashSet();
 
         try {
-            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r"); //$NON-NLS-1$
+            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r");
             FileChannel channel = raFile.getChannel();
             try {
                 long position = fA.beginPosition;
@@ -237,7 +237,7 @@ public class Model {
         TLongHashSet idSet = new TLongHashSet();
 
         try {
-            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r"); //$NON-NLS-1$
+            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r");
             FileChannel channel = raFile.getChannel();
             try {
                 for (int index : fileIDs) {
@@ -279,7 +279,7 @@ public class Model {
 
         TLongHashSet idSet0 = new TLongHashSet();
         try {
-            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r"); //$NON-NLS-1$
+            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r");
             FileChannel channel = raFile.getChannel();
             try {
                 {
@@ -344,7 +344,7 @@ public class Model {
         SourceFileAndPosition fA = sourceFiles.get(index);
         TLongHashSet ids = new TLongHashSet();
         try {
-            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r"); //$NON-NLS-1$
+            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r");
             FileChannel channel = raFile.getChannel();
             try {
                 long position = fA.beginPosition;
@@ -374,7 +374,7 @@ public class Model {
         SourceFileAndPosition fA = sourceFiles.get(index);
         try {
             RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath,
-                    "r"); //$NON-NLS-1$
+                    "r");
             FileChannel channel = raFile.getChannel();
             try {
                 long position = fA.beginPosition;
@@ -413,7 +413,7 @@ public class Model {
         ArrayList<ClonePair> list = new ArrayList<ClonePair>();
         SourceFileAndPosition fA = sourceFiles.get(index);
         try {
-            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r"); //$NON-NLS-1$
+            RandomAccessFile raFile = new RandomAccessFile(cloneDataFilePath, "r");
             FileChannel channel = raFile.getChannel();
             try {
                 long position = fA.beginPosition;
@@ -467,7 +467,7 @@ public class Model {
         if (pos >= 0) {
             return pathFileName.substring(0, pos + 1);
         } else {
-            return ""; //$NON-NLS-1$
+            return "";
         }
     }
 
@@ -484,7 +484,7 @@ public class Model {
         cloneSetIDCount = 0;
         fileIdToFileIndex = null;
         maxFileID = -1;
-        commonPath = ""; //$NON-NLS-1$
+        commonPath = "";
         hasSortedFileList = true;
 
         String rootDirPath = getDir(path);
@@ -494,12 +494,12 @@ public class Model {
 
             {
                 File f = new File(GEMXCLONESETDATA_TEMPFILE);
-                RandomAccessFile raFile = new RandomAccessFile(f, "rw"); //$NON-NLS-1$
+                RandomAccessFile raFile = new RandomAccessFile(f, "rw");
                 cloneSetDataStore = raFile.getChannel();
                 cloneSetDataStore.truncate(0);
             }
 
-            RandomAccessFile raFile = new RandomAccessFile(path, "r"); //$NON-NLS-1$
+            RandomAccessFile raFile = new RandomAccessFile(path, "r");
             FileChannel channel = raFile.getChannel();
 
             // check magic number
@@ -509,8 +509,8 @@ public class Model {
                 byte[] ary = buffer.array();
 
                 String b = new String(ary);
-                if (!b.equals("ccfxraw0")) { //$NON-NLS-1$
-                    throw new DataFileReadError("Invalid file"); //$NON-NLS-1$
+                if (!b.equals("ccfxraw0")) {
+                    throw new DataFileReadError("Invalid file");
                 }
             }
 
@@ -525,12 +525,12 @@ public class Model {
                 channel.read(buffer);
                 byte[] ary = buffer.array();
                 String b = new String(ary);
-                if (b.equals("pa:d")) { //$NON-NLS-1$
+                if (b.equals("pa:d")) {
                     if (!(v1 == exceptedCcfxVersion[0] && v2 == exceptedCcfxVersion[1])) { // version check will be done to the first two numbers. the last number will be omitted.
-                        throw new DataFileReadError("Version mismatch"); //$NON-NLS-1$
+                        throw new DataFileReadError("Version mismatch");
                     }
                 } else {
-                    throw new DataFileReadError("Invalid format"); //$NON-NLS-1$
+                    throw new DataFileReadError("Invalid format");
                 }
             }
 
@@ -545,7 +545,7 @@ public class Model {
                     }
                     final String[] fields = StringUtil.split(line, '\t');
                     if (fields == null || fields.length != 2) {
-                        throw new DataFileReadError("Invalid option data"); //$NON-NLS-1$
+                        throw new DataFileReadError("Invalid option data");
                     }
                     final String name = fields[0];
                     final String value = fields[1];
@@ -567,13 +567,13 @@ public class Model {
                     int fileId = ler.readInt(channel);
                     int length = ler.readInt(channel);
                     if (!(fileId == 0 && length == 0)) {
-                        throw new DataFileReadError("Invalid file terminator"); //$NON-NLS-1$
+                        throw new DataFileReadError("Invalid file terminator");
                     }
                     break; // while
                 }
                 String s;
                 if (rootDirPath.length() > 0 &&
-                        filePath.length() >= 2 && ((s = filePath.substring(0, 2)).equals("./") || s.equals(".\\"))) { //$NON-NLS-1$ //$NON-NLS-2$
+                        filePath.length() >= 2 && ((s = filePath.substring(0, 2)).equals("./") || s.equals(".\\"))) {
                     filePath = rootDirPath + filePath.substring(2);
                 }
                 if (fileCount == 0) {
@@ -583,7 +583,7 @@ public class Model {
                 }
                 int fileId = ler.readInt(channel);
                 if (!(lastId < fileId)) {
-                    //throw new CloneDataFileReadError("Invalid file order"); //$NON-NLS-1$
+                    //throw new CloneDataFileReadError("Invalid file order"); 
                 }
                 int length = ler.readInt(channel);
                 SourceFileAndPosition source = new SourceFileAndPosition(fileId, filePath, length, 0, 0);
@@ -602,7 +602,7 @@ public class Model {
                 totalFileSize += length;
                 ++fileCount;
             }
-            //SourceFileAndPosition terminator = new SourceFileAndPosition(0, "", 0, -1, -1); //$NON-NLS-1$
+            //SourceFileAndPosition terminator = new SourceFileAndPosition(0, "", 0, -1, -1); 
             //sourceFiles.add(terminator);
             fileIdToFileIndex = new int[id2idx.size()];
             int p = 0;
@@ -618,7 +618,7 @@ public class Model {
                     if (remarkText.length() == 0) {
                         int fileId = ler.readInt(channel);
                         if (fileId != 0) {
-                            throw new DataFileReadError("Invalid file remark terminator"); //$NON-NLS-1$
+                            throw new DataFileReadError("Invalid file remark terminator");
                         }
                         break; // while true
                     }
@@ -656,7 +656,7 @@ public class Model {
                         }
                         int lf;
                         if (!(0 <= leftId && leftId < fileIdToFileIndex.length && (lf = fileIdToFileIndex[leftId]) != -1)) {
-                            throw new DataFileReadError("Invalid file id"); //$NON-NLS-1$
+                            throw new DataFileReadError("Invalid file id");
                         }
                         if (lf != leftFile) {
                             if (leftFile != -1) {
@@ -673,7 +673,7 @@ public class Model {
                     {
                         int rightId = bbuffer32.getInt(12);
                         if (!(0 <= rightId && rightId < fileIdToFileIndex.length && fileIdToFileIndex[rightId] != -1)) {
-                            throw new DataFileReadError("Invalid file id"); //$NON-NLS-1$
+                            throw new DataFileReadError("Invalid file id");
                         }
                     }
 
@@ -734,7 +734,7 @@ public class Model {
                     if (remarkText.length() == 0) {
                         long cloneId = ler.readLong(channel);
                         if (cloneId != 0) {
-                            throw new DataFileReadError("Invalid clone-set remark terminator"); //$NON-NLS-1$
+                            throw new DataFileReadError("Invalid clone-set remark terminator");
                         }
                         break; // while true
                     }
@@ -775,17 +775,17 @@ public class Model {
         if (lastPathSepPos >= 0) {
             return a.substring(0, lastPathSepPos + 1);
         } else {
-            return ""; //$NON-NLS-1$
+            return "";
         }
     }
 
     public Model fitScopeToFileIDs(String fileIdList) throws CCFinderXInvocationException {
         String tempFile = new Formatter(new StringBuilder()).format(SCOPE_TEMPFILE_FORMAT, tempFileCounter).toString();
         String[] args = {
-                "S",  //$NON-NLS-1$
+                "S",
                 this.cloneDataFilePath,
-                "-o", tempFile, //$NON-NLS-1$
-                "-fi", fileIdList  //$NON-NLS-1$
+                "-o", tempFile,
+                "-fi", fileIdList
         };
         ++tempFileCounter;
         CCFinderX ccfx = CCFinderX.theInstance;
@@ -824,10 +824,10 @@ public class Model {
         }
         String tempFile = new Formatter(new StringBuilder()).format(SCOPE_TEMPFILE_FORMAT, tempFileCounter).toString();
         final String[] args = {
-                "S",  //$NON-NLS-1$
+                "S",
                 this.cloneDataFilePath,
-                "-o", tempFile, //$NON-NLS-1$
-                "-f", buf.subSequence(0, buf.length() - 1).toString()  //$NON-NLS-1$
+                "-o", tempFile,
+                "-f", buf.subSequence(0, buf.length() - 1).toString()
         };
         ++tempFileCounter;
         CCFinderX ccfx = CCFinderX.theInstance;
@@ -866,10 +866,10 @@ public class Model {
         }
         String tempFile = new Formatter(new StringBuilder()).format(SCOPE_TEMPFILE_FORMAT, tempFileCounter).toString();
         String[] args = {
-                "S",  //$NON-NLS-1$
+                "S",
                 this.cloneDataFilePath,
-                "-o", tempFile, //$NON-NLS-1$
-                "-!f", buf.subSequence(0, buf.length() - 1).toString()  //$NON-NLS-1$
+                "-o", tempFile,
+                "-!f", buf.subSequence(0, buf.length() - 1).toString()
         };
         ++tempFileCounter;
         CCFinderX ccfx = CCFinderX.theInstance;
@@ -891,10 +891,10 @@ public class Model {
     public Model fitScopeToClones(String cloneIdList) throws CCFinderXInvocationException {
         String tempFile = new Formatter(new StringBuilder()).format(SCOPE_TEMPFILE_FORMAT, tempFileCounter).toString();
         String[] args = {
-                "S",  //$NON-NLS-1$
+                "S",
                 this.cloneDataFilePath,
-                "-o", tempFile, //$NON-NLS-1$
-                "-ci", cloneIdList  //$NON-NLS-1$
+                "-o", tempFile,
+                "-ci", cloneIdList
         };
         ++tempFileCounter;
         CCFinderX ccfx = CCFinderX.theInstance;
@@ -947,10 +947,10 @@ public class Model {
         String tempFile = new Formatter(new StringBuilder()).format(SCOPE_TEMPFILE_FORMAT, tempFileCounter).toString();
         ++tempFileCounter;
         String[] args = {
-                "S",  //$NON-NLS-1$
+                "S",
                 this.cloneDataFilePath,
-                "-o", tempFile, //$NON-NLS-1$
-                "-ci", tempFile2, //$NON-NLS-1$
+                "-o", tempFile,
+                "-ci", tempFile2,
         };
         CCFinderX ccfx = CCFinderX.theInstance;
         int r = ccfx.invokeCCFinderX(args);
@@ -1002,10 +1002,10 @@ public class Model {
         String tempFile = new Formatter(new StringBuilder()).format(SCOPE_TEMPFILE_FORMAT, tempFileCounter).toString();
         ++tempFileCounter;
         String[] args = {
-                "S",  //$NON-NLS-1$
+                "S",
                 this.cloneDataFilePath,
-                "-o", tempFile, //$NON-NLS-1$
-                "-!ci", tempFile2, //$NON-NLS-1$
+                "-o", tempFile,
+                "-!ci", tempFile2,
         };
         CCFinderX ccfx = CCFinderX.theInstance;
         int r = ccfx.invokeCCFinderX(args);
@@ -1076,7 +1076,7 @@ public class Model {
                 bbuffer8.rewind();
                 int length = bbuffer8.getInt(0);
                 if (length < 0 && length != -1) {
-                    System.err.println("ng"); //$NON-NLS-1$
+                    System.err.println("ng");
                 }
                 if (length >= 0) {
                     CloneSet cs = new CloneSet(id, length);

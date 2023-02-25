@@ -42,7 +42,7 @@ public class DropdownDialog {
         gridData = new GridData(GridData.FILL);
         gridData.widthHint = 100;
         button1.setLayoutData(gridData);
-        button1.setText(Messages.getString("gemx.MainWindow.S_NEXT")); //$NON-NLS-1$
+        button1.setText(Messages.getString("gemx.MainWindow.S_NEXT"));
         button1.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
                 resString = combo.getText();
@@ -68,7 +68,7 @@ public class DropdownDialog {
         gridData = new GridData(GridData.FILL_HORIZONTAL);
         gridData.widthHint = 100;
         button2.setLayoutData(gridData);
-        button2.setText(Messages.getString("gemx.MainWindow.S_CANCEL")); //$NON-NLS-1$
+        button2.setText(Messages.getString("gemx.MainWindow.S_CANCEL"));
         button2.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent e) {
                 shellC.dispose();

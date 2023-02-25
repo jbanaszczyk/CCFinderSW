@@ -61,7 +61,7 @@ public class ClonesetTable implements CloneSelectionListener {
         };
 
         table.setHeaderVisible(true);
-        String[] colCaps = {"Clone-Set ID", "LEN", "", "", "", "", "", "", "", ""}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$
+        String[] colCaps = {"Clone-Set ID", "LEN", "", "", "", "", "", "", "", ""};
         int[] colWids = {30, 50, 5, 5, 5, 5, 5, 5, 5, 5};
         cols = new TableColumn[colCaps.length];
         for (int i = 0; i < colCaps.length; ++i) {
@@ -404,7 +404,7 @@ public class ClonesetTable implements CloneSelectionListener {
 
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_COPY_ITEMS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_COPY_ITEMS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -414,7 +414,7 @@ public class ClonesetTable implements CloneSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_COPY_CLONE_SET_IDS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_COPY_CLONE_SET_IDS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -426,7 +426,7 @@ public class ClonesetTable implements CloneSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_PASTE_SELECTION")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_PASTE_SELECTION"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -481,7 +481,7 @@ public class ClonesetTable implements CloneSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitemCheck = new MenuItem(pmenu, SWT.CASCADE);
-            pitemCheck.setText(Messages.getString("gemx.ClonesetTable.M_CHECK_MARK")); //$NON-NLS-1$
+            pitemCheck.setText(Messages.getString("gemx.ClonesetTable.M_CHECK_MARK"));
             Menu pmenuCheck = new Menu(pitemCheck);
             pitemCheck.setMenu(pmenuCheck);
 
@@ -490,7 +490,7 @@ public class ClonesetTable implements CloneSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_FIT_SCOPE_TO_SELECTED_CLONE_SETS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_FIT_SCOPE_TO_SELECTED_CLONE_SETS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -501,7 +501,7 @@ public class ClonesetTable implements CloneSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_POP_SCOPE")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_POP_SCOPE"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -523,7 +523,7 @@ public class ClonesetTable implements CloneSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_SELECT_FILES_INCLUDING_THEM")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_SELECT_FILES_INCLUDING_THEM"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -535,7 +535,7 @@ public class ClonesetTable implements CloneSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_SELECT_FILES_INCLUDING_ALL_OF_THEM")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_SELECT_FILES_INCLUDING_ALL_OF_THEM"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -548,7 +548,7 @@ public class ClonesetTable implements CloneSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_ADD_CLONE_SET_METRICS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_ADD_CLONE_SET_METRICS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -558,7 +558,7 @@ public class ClonesetTable implements CloneSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_FILTER_CLONE_SET_BY_METRIC"));  //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_FILTER_CLONE_SET_BY_METRIC"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -569,7 +569,7 @@ public class ClonesetTable implements CloneSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.ClonesetTable.M_SHOW_A_CODE_FRAGMENT")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.ClonesetTable.M_SHOW_A_CODE_FRAGMENT"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -581,8 +581,8 @@ public class ClonesetTable implements CloneSelectionListener {
                         ClonesetTable.this.mainWindow.showACodeFragmentOfClone(selectedIDs[0], ClonesetTable.this);
                     } else {
                         MessageBox mes = new MessageBox(shell, SWT.OK | SWT.ICON_WARNING);
-                        mes.setText("Warning - GemX"); //$NON-NLS-1$
-                        mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET")); //$NON-NLS-1$
+                        mes.setText("Warning - GemX");
+                        mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET"));
                         mes.open();
                     }
                 }
@@ -591,7 +591,7 @@ public class ClonesetTable implements CloneSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_SHOW_NEXT_CODE")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_SHOW_NEXT_CODE"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -603,8 +603,8 @@ public class ClonesetTable implements CloneSelectionListener {
                         ClonesetTable.this.mainWindow.showNextPairedCodeOfClone(selectedIDs[0], 1, ClonesetTable.this);
                     } else {
                         MessageBox mes = new MessageBox(shell, SWT.OK | SWT.ICON_WARNING);
-                        mes.setText("Warning - GemX"); //$NON-NLS-1$
-                        mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET")); //$NON-NLS-1$
+                        mes.setText("Warning - GemX");
+                        mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET"));
                         mes.open();
                     }
                 }
@@ -612,7 +612,7 @@ public class ClonesetTable implements CloneSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.CloneSetTable.M_SHOW_PREV_CODE")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.CloneSetTable.M_SHOW_PREV_CODE"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -624,8 +624,8 @@ public class ClonesetTable implements CloneSelectionListener {
                         ClonesetTable.this.mainWindow.showNextPairedCodeOfClone(selectedIDs[0], -1, ClonesetTable.this);
                     } else {
                         MessageBox mes = new MessageBox(shell, SWT.OK | SWT.ICON_WARNING);
-                        mes.setText("Warning - GemX"); //$NON-NLS-1$
-                        mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET")); //$NON-NLS-1$
+                        mes.setText("Warning - GemX");
+                        mes.setMessage(Messages.getString("gemx.CloneSetTable.S_SELECT_ONE_CLONE_SET"));
                         mes.open();
                     }
                 }
@@ -637,7 +637,7 @@ public class ClonesetTable implements CloneSelectionListener {
         for (int i = 0; i < this.cloneSets.length; ++i) {
             TableItem item = table.getItem(i);
             if (i == indexAndMore) {
-                item.setText(0, "+" + andMoreCloneSetCount + " clone sets"); //$NON-NLS-1$ //$NON-NLS-2$
+                item.setText(0, "+" + andMoreCloneSetCount + " clone sets");
             } else {
                 CloneSet cs = cloneSets[i];
                 item.setText(0, String.valueOf(cs.id));
@@ -663,7 +663,7 @@ public class ClonesetTable implements CloneSelectionListener {
             final int ccount = table.getColumnCount();
             for (int i = 2; i < ccount; ++i) {
                 TableColumn tci = table.getColumn(i);
-                tci.setText(""); //$NON-NLS-1$
+                tci.setText("");
             }
 
             table.removeAll();
@@ -740,11 +740,11 @@ public class ClonesetTable implements CloneSelectionListener {
 
             for (int i = 0; i < cloneSetMetricModel.getFieldCount(); ++i) {
                 TableColumn tc = table.getColumn(i + 1);
-                tc.setText(cloneSetMetricModel.getMetricName(i)); //$NON-NLS-1$
+                tc.setText(cloneSetMetricModel.getMetricName(i));
             }
 
-            DecimalFormat intFormat = new DecimalFormat("#"); //$NON-NLS-1$
-            DecimalFormat doubleFormat = new DecimalFormat("#.000"); //$NON-NLS-1$
+            DecimalFormat intFormat = new DecimalFormat("#");
+            DecimalFormat doubleFormat = new DecimalFormat("#.000");
             fieldFormats = new DecimalFormat[cloneSetMetricModel.getFieldCount()];
             for (int i = 0; i < fieldFormats.length; ++i) {
                 if (cloneSetMetricModel.isFlotingPoint(i)) {
@@ -795,7 +795,7 @@ public class ClonesetTable implements CloneSelectionListener {
     }
 
     private void searchingId(String text) {
-        assert text.startsWith("#"); //$NON-NLS-1$
+        assert text.startsWith("#");
         if (cloneSets == null) {
             return;
         }
@@ -844,7 +844,7 @@ public class ClonesetTable implements CloneSelectionListener {
         return new SearchboxListener() {
             public void searchBackward(SearchboxData data) {
                 String text = data.text;
-                if (text.startsWith("#")) { //$NON-NLS-1$
+                if (text.startsWith("#")) {
                     searchingId(text);
                 }
             }
@@ -854,7 +854,7 @@ public class ClonesetTable implements CloneSelectionListener {
 
             public void searchForward(SearchboxData data) {
                 String text = data.text;
-                if (text.startsWith("#")) { //$NON-NLS-1$
+                if (text.startsWith("#")) {
                     searchingId(text);
                 }
             }

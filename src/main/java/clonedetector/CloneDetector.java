@@ -49,11 +49,11 @@ public class CloneDetector {
         Time time = new Time();
         if (!or.isNoLexer()) {
             System.out.println("\n---Lexer start---" + System.lineSeparator() + "Lexer progress");
-            //ファイルサーチ
+            //File search
             lx.searchDirectory();
-            //全ファイルのレクサー
+            //Lexer for all files
             lx.doPreProcess();
-            //情報の出力
+            //information output
             lx.outputFileList();
             System.out.println("Lexer " + time.end() + "\nLOC = " + fd.lineCount + " Token = " + fd.tokenCount + "\n---Lexer end---\n");
         } else {
@@ -140,7 +140,7 @@ public class CloneDetector {
     }
 
     private int[][] convertTwice(int[][] pair) {
-        //クローンペアを2倍にして返す
+        // double the clone pair and return
         int[][] pair2 = new int[pair.length * 2][4];
         for (int j = 0; j < pair.length; j++) {
             pair2[j * 2][0] = pair[j][0];

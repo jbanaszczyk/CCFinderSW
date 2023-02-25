@@ -68,7 +68,7 @@ public class TableWithCheckHelper {
     public void addCheckRelatedItemsToMenu(Menu pmenuCheck) {
         {
             MenuItem pitem = new MenuItem(pmenuCheck, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_ADD_CHECK_MARKS_TO_SELECTED_ITEMS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_ADD_CHECK_MARKS_TO_SELECTED_ITEMS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -78,7 +78,7 @@ public class TableWithCheckHelper {
         }
         {
             MenuItem pitem = new MenuItem(pmenuCheck, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_REMOVE_CHECK_MARKS_FROM_SELECTED_ITEMS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_REMOVE_CHECK_MARKS_FROM_SELECTED_ITEMS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -89,7 +89,7 @@ public class TableWithCheckHelper {
         new MenuItem(pmenuCheck, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenuCheck, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_INVERT_CHECK_MARKS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_INVERT_CHECK_MARKS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -99,7 +99,7 @@ public class TableWithCheckHelper {
         }
         {
             MenuItem pitem = new MenuItem(pmenuCheck, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_CLEAR_CHECK_MARKS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_CLEAR_CHECK_MARKS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -110,7 +110,7 @@ public class TableWithCheckHelper {
         new MenuItem(pmenuCheck, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenuCheck, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_SELECT_CHECKED_ITEMS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.TableWithCheckHelper.M_SELECT_CHECKED_ITEMS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {

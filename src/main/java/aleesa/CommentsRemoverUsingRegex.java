@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class CommentsRemoverUsingRegex {
 
 
-    //通常
+    // Usually
     public static String getCommentRemover(String path, String charset, String COM, String STR) {
         String source = "";
         try {

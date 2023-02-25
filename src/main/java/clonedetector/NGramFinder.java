@@ -20,24 +20,24 @@ import static common.TokenName.getNewHash;
 public class NGramFinder {
 
     /**
-     * クローン検出のトークン数のしきい値
+     * Token Count Threshold for Clone Detection
      */
     private final int THRESHOLD;
     /**
-     * ユニークリスト
+     * unique list
      */
     private final ArrayList<ArrayList<Integer>> uniqueList;
     public int N;
     /**
-     * ハッシュでソートする(uniqueを作るために用いる，uniqueを作ったらcountソートに戻す)
+     * Sort by hash (used to create unique, return to count sort when unique is created)
      */
     public HashCount[] sethList;
     /**
-     * トークンリスト
+     * token list
      */
     public TokenData[] tokenList;
     /**
-     * pairArray はクローンペアを格納するリストである
+     * pairArray is a list that stores clone pairs
      * pairList.get(0) frontward clone index
      * pairList.get(1) backward clone index
      * pairList.get(2) distance
@@ -47,7 +47,7 @@ public class NGramFinder {
     public int[][] pairArray;
     OptionReader or;
     /**
-     * 検出範囲についてのオプション
+     * Options for detection range
      */
     private int detectionRange = 0;
 
@@ -160,8 +160,8 @@ public class NGramFinder {
     /**
      * make Ngram
      *
-     * @param fileNumber ファイル番号
-     * @param lineList   トークンリスト
+     * @param fileNumber file number
+     * @param lineList   token list
      */
     private void makeFileNgram(int fileNumber, int count, ArrayList<Token> lineList, boolean reserved) {
         for (int j = N - 1; j < lineList.size(); j++) {

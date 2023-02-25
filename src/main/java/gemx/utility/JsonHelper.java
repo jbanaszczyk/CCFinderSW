@@ -24,7 +24,7 @@ public class JsonHelper {
         final double[] rgb = new double[3];
         try {
             for (int ci = 0; ci < 3; ++ci) {
-                final String rkey = String.format("%s[%d]/", key, ci); //$NON-NLS-1$
+                final String rkey = String.format("%s[%d]/", key, ci);
                 if (settings.containsKey(rkey)) {
                     Double rvalue = (Double) settings.get(rkey);
                     rgb[ci] = rvalue.doubleValue();
@@ -55,7 +55,7 @@ public class JsonHelper {
 
         final ArrayList<RGB> rgbs = new ArrayList<RGB>();
         for (int i = 0; true; ++i) {
-            String nkey = String.format("%s[%d]/", key, i); //$NON-NLS-1$
+            String nkey = String.format("%s[%d]/", key, i);
             RGB rgb = readRGBFromSettings(settings, nkey);
             if (rgb == null) {
                 break; // for i

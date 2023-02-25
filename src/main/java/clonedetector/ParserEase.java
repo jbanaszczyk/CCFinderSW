@@ -12,9 +12,9 @@ public class ParserEase {
 
     public ArrayList<Pre> removeTokensC(ArrayList<Pre> tokenList) {
 
-        //関数やらなんやらの削除
-        //関数の出入りをindentCountで管理
-        //短い関数の削除（セミコロン1個以下1）
+        // Deletion of functions and such
+        // Manage entry and exit of functions with indent Count
+        // Eliminate short functions (less than one semicolon1)
         int i = 0;
         int indentCount = 0;
         int semicolonCount = 0;
@@ -98,7 +98,7 @@ public class ParserEase {
             }
         }
 
-        //case文のブロック入れる
+        //case put a block of sentences
         i = 0;
         ArrayList<Pre> addList = new ArrayList<>();
         while (i < tokenList.size()) {
@@ -111,7 +111,7 @@ public class ParserEase {
         }
         tokenList = addList;
 
-        //assert breakの削除
+        //assert break deletion of
         lastStart = -1;
         for (i = 0; i < tokenList.size(); i++) {
             switch (tokenList.get(i).token) {
@@ -130,10 +130,10 @@ public class ParserEase {
             }
         }
 
-        //特定トークンの削除
+        // Delete specific token
         tokenList.removeIf(t -> t.token.equals("struct") || t.token.equals("static") || t.token.equals("inline") || t.token.equals("union"));
 
-        //トークンの結合
+        // Combining Tokens
         addList = new ArrayList<>();
         i = 0;
         while (i < tokenList.size()) {

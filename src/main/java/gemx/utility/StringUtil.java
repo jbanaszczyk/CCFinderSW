@@ -3,7 +3,7 @@ package gemx.utility;
 import gnu.trove.TIntArrayList;
 
 public class StringUtil {
-    public static final String NewLineString = System.getProperty("line.separator"); //$NON-NLS-1$
+    public static final String NewLineString = System.getProperty("line.separator");
 
     public static int findAll(int[] poss, String str, int target) {
         if (poss.length == 0) {

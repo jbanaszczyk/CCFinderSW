@@ -32,7 +32,7 @@ public class ParentDirectorySelectDialog {
             gridLayout.marginWidth = 15;
             gridLayout.horizontalSpacing = 15;
             shellC.setLayout(gridLayout);
-            shellC.setText(Messages.getString("gemx.ParentDirectorySelectDialog.S_PARENT_DIRECTORY_SELECTION_GEMX")); //$NON-NLS-1$
+            shellC.setText(Messages.getString("gemx.ParentDirectorySelectDialog.S_PARENT_DIRECTORY_SELECTION_GEMX"));
         }
 
         String[] paths = getParentPaths(path);
@@ -74,7 +74,7 @@ public class ParentDirectorySelectDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             okButton.setLayoutData(gridData);
-            okButton.setText(Messages.getString("gemx.ParentDirectorySelectDialog.S_OK")); //$NON-NLS-1$
+            okButton.setText(Messages.getString("gemx.ParentDirectorySelectDialog.S_OK"));
             okButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.OK;
@@ -86,7 +86,7 @@ public class ParentDirectorySelectDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             cancelButton.setLayoutData(gridData);
-            cancelButton.setText(Messages.getString("gemx.ParentDirectorySelectDialog.S_CANCEL")); //$NON-NLS-1$
+            cancelButton.setText(Messages.getString("gemx.ParentDirectorySelectDialog.S_CANCEL"));
             cancelButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.CANCEL;

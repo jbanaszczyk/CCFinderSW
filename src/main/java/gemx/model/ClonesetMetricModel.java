@@ -47,17 +47,17 @@ public class ClonesetMetricModel {
         {
             File f = new File(GEMXCLONESETMETRIC_TEMPFILE);
             f.deleteOnExit();
-            RandomAccessFile raFile = new RandomAccessFile(f, "rw"); //$NON-NLS-1$
+            RandomAccessFile raFile = new RandomAccessFile(f, "rw");
             cloneSetDataStore = raFile.getChannel();
             cloneSetDataStore.truncate(0);
         }
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
         String line;
         line = reader.readLine();
         String supposedTitleLine = "CID" + "\t" + StringUtil.join(ClonesetMetricModel.getFieldNames(), "\t");
-        if (!line.equals(supposedTitleLine)) { //$NON-NLS-1$
-            throw new DataFileReadError("invalid clone-set metric file"); //$NON-NLS-1$
+        if (!line.equals(supposedTitleLine)) {
+            throw new DataFileReadError("invalid clone-set metric file");
         }
 
         String[] ss = StringUtil.split(line, '\t');
@@ -90,18 +90,18 @@ public class ClonesetMetricModel {
         while (true) {
             line = reader.readLine();
             if (line == null) {
-                throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_INVALID_CLONE_SET_METRIC_FILE")); //$NON-NLS-1$
+                throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_INVALID_CLONE_SET_METRIC_FILE"));
             }
             String[] subs = StringUtil.split(line, '\t');
-            if (subs[0].equals("ave.")) { //$NON-NLS-1$
+            if (subs[0].equals("ave.")) {
                 break;
             }
             if (subs.length != fields + 1) {
-                throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_INVALID_CLONE_SET_METRIC_FILE")); //$NON-NLS-1$
+                throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_INVALID_CLONE_SET_METRIC_FILE"));
             }
             long cloneSetID = Long.parseLong(subs[0]);
             if (!(0 <= cloneSetID && cloneSetID <= maxCloneSetID)) {
-                throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_INVALID_CLONE_SET_ID_IN_CLONE_SET_METRIC_FILE")); //$NON-NLS-1$
+                throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_INVALID_CLONE_SET_ID_IN_CLONE_SET_METRIC_FILE"));
             }
             ++cloneSetIDCount;
             for (int i = 0; i < fields; ++i) {

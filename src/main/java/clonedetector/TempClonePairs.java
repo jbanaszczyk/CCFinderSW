@@ -27,14 +27,14 @@ public class TempClonePairs {
             int distance = x[2];
             buf.append(distance).append("\t");
 
-            //pairの前
+            //pair before
             TokenData backward = nf.tokenList[x[0]];
             int file = backward.file;
             int num = backward.num;
 
             buf.append(file).append(",").append(num).append("\t");
 
-            //pairの後
+            //pair after
             backward = nf.tokenList[x[1]];
             file = backward.file;
             num = backward.num;

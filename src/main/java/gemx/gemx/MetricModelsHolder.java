@@ -52,7 +52,7 @@ public class MetricModelsHolder {
         try {
             fmModel.readFileMetricFile(metricFile, maxFileID);
         } catch (IOException e) {
-            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_FILE_METRIC_FILE")); //$NON-NLS-1$
+            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_FILE_METRIC_FILE"));
         }
 
         this.fileMetricModel = fmModel;
@@ -65,7 +65,7 @@ public class MetricModelsHolder {
         try {
             cmModel.readCloneSetMetricFile(metricFile, maxCloneSetID);
         } catch (IOException e) {
-            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_CLONE_SET_METRIC_FILE")); //$NON-NLS-1$
+            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_CLONE_SET_METRIC_FILE"));
         }
 
         this.cloneSetMetricModel = cmModel;
@@ -93,12 +93,12 @@ public class MetricModelsHolder {
 
         this.fileMetricModel = fmReader.getModel();
         if (this.fileMetricModel == null) {
-            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_FILE_METRIC_FILE")); //$NON-NLS-1$
+            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_FILE_METRIC_FILE"));
         }
 
         this.cloneSetMetricModel = cmReader.getModel();
         if (this.cloneSetMetricModel == null) {
-            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_CLONE_SET_METRIC_FILE")); //$NON-NLS-1$
+            mainWindow.showErrorMessage(Messages.getString("gemx.MainWindow.S_CAN_NOT_READ_CLONE_SET_METRIC_FILE"));
         }
     }
 

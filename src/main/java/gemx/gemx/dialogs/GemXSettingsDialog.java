@@ -64,13 +64,13 @@ public class GemXSettingsDialog {
             gridLayout.horizontalSpacing = 15;
             shellC.setLayout(gridLayout);
         }
-        shellC.setText(Messages.getString("gemx.GemXSettingsDialog.S_GEMX_SETTINGS")); //$NON-NLS-1$
+        shellC.setText(Messages.getString("gemx.GemXSettingsDialog.S_GEMX_SETTINGS"));
 
         GridData gridData2;
 
         {
             ckResizeScatterPlot = new Button(shellC, SWT.CHECK);
-            ckResizeScatterPlot.setText(Messages.getString("gemx.GemXSettingsDialog.S_FIT_SCATTER_PLOT_TO_WINDOW_SIZE")); //$NON-NLS-1$
+            ckResizeScatterPlot.setText(Messages.getString("gemx.GemXSettingsDialog.S_FIT_SCATTER_PLOT_TO_WINDOW_SIZE"));
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             gridData2.horizontalSpan = 3;
             ckResizeScatterPlot.setLayoutData(gridData2);
@@ -83,7 +83,7 @@ public class GemXSettingsDialog {
 
         {
             ckCalcFileMetricAlways = new Button(shellC, SWT.CHECK);
-            ckCalcFileMetricAlways.setText(Messages.getString("gemx.GemXSettingsDialog.S_CALC_FILE_METRICS_ALWAYS")); //$NON-NLS-1$
+            ckCalcFileMetricAlways.setText(Messages.getString("gemx.GemXSettingsDialog.S_CALC_FILE_METRICS_ALWAYS"));
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             gridData2.horizontalSpan = 3;
             ckCalcFileMetricAlways.setLayoutData(gridData2);
@@ -96,7 +96,7 @@ public class GemXSettingsDialog {
 
         {
             ckCalcCloneMetricAlways = new Button(shellC, SWT.CHECK);
-            ckCalcCloneMetricAlways.setText(Messages.getString("gemx.GemXSettingsDialog.S_CALC_CLONE_METRICS_ALWAYS")); //$NON-NLS-1$
+            ckCalcCloneMetricAlways.setText(Messages.getString("gemx.GemXSettingsDialog.S_CALC_CLONE_METRICS_ALWAYS"));
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             gridData2.horizontalSpan = 3;
             ckCalcCloneMetricAlways.setLayoutData(gridData2);
@@ -107,12 +107,12 @@ public class GemXSettingsDialog {
             });
         }
         {
-            //String tooltipText = Messages.getString("gemx.CcfxSettingsDialog.S_TOOLTIP_FOR_CHUNK_SIZE"); //$NON-NLS-1$
+            //String tooltipText = Messages.getString("gemx.CcfxSettingsDialog.S_TOOLTIP_FOR_CHUNK_SIZE"); 
 
             Label label = new Label(shellC, SWT.NONE);
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             label.setLayoutData(gridData2);
-            label.setText(Messages.getString("gemx.GemXSettingsDialog.S_MAX_NUM_FILES_SHOWN_IN_SOURCE_TEXT_PANE")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.GemXSettingsDialog.S_MAX_NUM_FILES_SHOWN_IN_SOURCE_TEXT_PANE"));
             //label.setToolTipText(tooltipText);
 
             ntipleSourceTextPane = new gemx.customwidgets.Spinner(shellC, SWT.NONE);
@@ -130,12 +130,12 @@ public class GemXSettingsDialog {
             Label unit = new Label(shellC, SWT.NONE);
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             unit.setLayoutData(gridData2);
-            unit.setText(Messages.getString("gemx.GemXSettingsDialog.S_IT_WILL_TAKE_EFFECT_AFTER_RESTART")); //$NON-NLS-1$
+            unit.setText(Messages.getString("gemx.GemXSettingsDialog.S_IT_WILL_TAKE_EFFECT_AFTER_RESTART"));
             //unit.setToolTipText(tooltipText);
         }
         {
             ckAllFileViewModeEnabled = new Button(shellC, SWT.CHECK);
-            ckAllFileViewModeEnabled.setText(Messages.getString("gemx.GemXSettingsDialog.S_USE_INDEPENDENT_SOURCETEXT_MODE"));  //$NON-NLS-1$
+            ckAllFileViewModeEnabled.setText(Messages.getString("gemx.GemXSettingsDialog.S_USE_INDEPENDENT_SOURCETEXT_MODE"));
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             gridData2.horizontalSpan = 3;
             ckAllFileViewModeEnabled.setLayoutData(gridData2);
@@ -147,7 +147,7 @@ public class GemXSettingsDialog {
         }
         {
             ckClonesetTableClickToShowPair = new Button(shellC, SWT.CHECK);
-            ckClonesetTableClickToShowPair.setText(Messages.getString("gemx.GemXSettingsDialog.S_SHOW_CODE_FRAGMENTS_OF_A_CLONE_PAIR")); //$NON-NLS-1$
+            ckClonesetTableClickToShowPair.setText(Messages.getString("gemx.GemXSettingsDialog.S_SHOW_CODE_FRAGMENTS_OF_A_CLONE_PAIR"));
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             gridData2.horizontalSpan = 3;
             ckClonesetTableClickToShowPair.setLayoutData(gridData2);
@@ -159,7 +159,7 @@ public class GemXSettingsDialog {
         }
         {
             ckResetItemInContextMenus = new Button(shellC, SWT.CHECK);
-            ckResetItemInContextMenus.setText(Messages.getString("gemx.GemXSettingsDialog.S_ADD_RESET_SCOPE_TO_CONTEXT_MENU")); //$NON-NLS-1$
+            ckResetItemInContextMenus.setText(Messages.getString("gemx.GemXSettingsDialog.S_ADD_RESET_SCOPE_TO_CONTEXT_MENU"));
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             gridData2.horizontalSpan = 3;
             ckResetItemInContextMenus.setLayoutData(gridData2);
@@ -174,7 +174,7 @@ public class GemXSettingsDialog {
             gridData2 = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
             gridData2.widthHint = 150;
             initializeValuesButton.setLayoutData(gridData2);
-            initializeValuesButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_INITIALIZE_SETTINGS")); //$NON-NLS-1$
+            initializeValuesButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_INITIALIZE_SETTINGS"));
             initializeValuesButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     initializeValues();
@@ -199,7 +199,7 @@ public class GemXSettingsDialog {
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             gridData2.widthHint = 80;
             okButton.setLayoutData(gridData2);
-            okButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_OK")); //$NON-NLS-1$
+            okButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_OK"));
             okButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.OK;
@@ -211,7 +211,7 @@ public class GemXSettingsDialog {
             gridData2 = new GridData(GridData.FILL_HORIZONTAL);
             gridData2.widthHint = 80;
             cancelButton.setLayoutData(gridData2);
-            cancelButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_CANCEL")); //$NON-NLS-1$
+            cancelButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_CANCEL"));
             cancelButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.CANCEL;

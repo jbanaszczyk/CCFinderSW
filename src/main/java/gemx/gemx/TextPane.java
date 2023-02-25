@@ -88,8 +88,8 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
 
         fileNameLabel = new Label(sc, SWT.LEFT);
         fileNameLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
-        fileNameLabel.setText("-"); //$NON-NLS-1$
-        fileNameLabel.setToolTipText(""); //$NON-NLS-1$
+        fileNameLabel.setText("-");
+        fileNameLabel.setToolTipText("");
 
         lineNumberAndText = new Composite(sc, SWT.NONE);
         lineNumberAndText.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
@@ -141,7 +141,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
                     fileNameLabel.setMenu(pmenu);
                     {
                         MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                        pitem.setText(Messages.getString("gemx.SourceTextPane.M_COPY_FILE_PATH")); //$NON-NLS-1$
+                        pitem.setText(Messages.getString("gemx.SourceTextPane.M_COPY_FILE_PATH"));
                         pitem.setSelection(true);
                         pitem.addSelectionListener(new SelectionAdapter() {
                             public void widgetSelected(SelectionEvent e) {
@@ -172,7 +172,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
             text.setLayoutData(gridData);
         }
         text.setEditable(false);
-        text.setText(""); //$NON-NLS-1$
+        text.setText("");
         text.addListener(SWT.FocusIn, new Listener() {
             public void handleEvent(Event event) {
                 final Display display = TextPane.this.shell.getDisplay();
@@ -320,7 +320,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
 
                             {
                                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                                pitem.setText(Messages.getString("gemx.SourceTextPane.M_COPY_TEXT")); //$NON-NLS-1$
+                                pitem.setText(Messages.getString("gemx.SourceTextPane.M_COPY_TEXT"));
                                 pitem.setSelection(true);
                                 pitem.addSelectionListener(new SelectionAdapter() {
                                     public void widgetSelected(SelectionEvent e) {
@@ -330,7 +330,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
                             }
                             {
                                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                                pitem.setText(Messages.getString("gemx.SourceTextPane.M_COPY_FILE_PATH")); //$NON-NLS-1$
+                                pitem.setText(Messages.getString("gemx.SourceTextPane.M_COPY_FILE_PATH"));
                                 pitem.setSelection(true);
                                 pitem.addSelectionListener(new SelectionAdapter() {
                                     public void widgetSelected(SelectionEvent e) {
@@ -343,7 +343,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
                             new MenuItem(pmenu, SWT.SEPARATOR);
                             {
                                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                                pitem.setText(Messages.getString("gemx.SourceTextPane.M_SELECT_ALL_CLONE_SETS_AROUND")); //$NON-NLS-1$
+                                pitem.setText(Messages.getString("gemx.SourceTextPane.M_SELECT_ALL_CLONE_SETS_AROUND"));
                                 pitem.setSelection(true);
                                 pitem.addSelectionListener(new SelectionAdapter() {
                                     public void widgetSelected(SelectionEvent e) {
@@ -354,27 +354,27 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
                             }
                             {
                                 MenuItem pitemSelectACloneSet = new MenuItem(pmenu, SWT.CASCADE);
-                                pitemSelectACloneSet.setText(Messages.getString("gemx.SourceTextPane.M_SELECT_ONE_CLONE_SET")); //$NON-NLS-1$
+                                pitemSelectACloneSet.setText(Messages.getString("gemx.SourceTextPane.M_SELECT_ONE_CLONE_SET"));
                                 Menu pmenuSelectACloneSet = new Menu(pitemSelectACloneSet);
                                 pitemSelectACloneSet.setMenu(pmenuSelectACloneSet);
                                 if (allCloneSetIDsSelectedByRightClick.length > 0) {
                                     for (int i = 0; i < innerfileCloneSetIDsSelectedByRightClick.length; ++i) {
                                         MenuItem pitem = new MenuItem(pmenuSelectACloneSet, SWT.PUSH);
-                                        pitem.setText("ID " + innerfileCloneSetIDsSelectedByRightClick[i]); //$NON-NLS-1$
+                                        pitem.setText("ID " + innerfileCloneSetIDsSelectedByRightClick[i]);
                                         pitem.setSelection(true);
                                         pitem.addSelectionListener(new SelectionAdapterWithCloneSetIDs(TextPane.this, new long[]{innerfileCloneSetIDsSelectedByRightClick[i]}));
                                     }
                                     new MenuItem(pmenuSelectACloneSet, SWT.SEPARATOR);
                                     for (int i = 0; i < bothCloneSetIDsSelectedByRightClick.length; ++i) {
                                         MenuItem pitem = new MenuItem(pmenuSelectACloneSet, SWT.PUSH);
-                                        pitem.setText("ID " + bothCloneSetIDsSelectedByRightClick[i]); //$NON-NLS-1$
+                                        pitem.setText("ID " + bothCloneSetIDsSelectedByRightClick[i]);
                                         pitem.setSelection(true);
                                         pitem.addSelectionListener(new SelectionAdapterWithCloneSetIDs(TextPane.this, new long[]{bothCloneSetIDsSelectedByRightClick[i]}));
                                     }
                                     new MenuItem(pmenuSelectACloneSet, SWT.SEPARATOR);
                                     for (int i = 0; i < crossfileCloneSetIDsSelectedByRightClick.length; ++i) {
                                         MenuItem pitem = new MenuItem(pmenuSelectACloneSet, SWT.PUSH);
-                                        pitem.setText("ID " + crossfileCloneSetIDsSelectedByRightClick[i]); //$NON-NLS-1$
+                                        pitem.setText("ID " + crossfileCloneSetIDsSelectedByRightClick[i]);
                                         pitem.setSelection(true);
                                         pitem.addSelectionListener(new SelectionAdapterWithCloneSetIDs(TextPane.this, new long[]{crossfileCloneSetIDsSelectedByRightClick[i]}));
                                     }
@@ -383,7 +383,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
                             new MenuItem(pmenu, SWT.SEPARATOR);
                             {
                                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                                pitem.setText(Messages.getString("gemx.SourceTextPane.M_COPY_TO_SCRAPBOOK")); //$NON-NLS-1$
+                                pitem.setText(Messages.getString("gemx.SourceTextPane.M_COPY_TO_SCRAPBOOK"));
                                 pitem.setSelection(true);
                                 pitem.addSelectionListener(new SelectionAdapter() {
                                     public void widgetSelected(SelectionEvent e) {
@@ -428,7 +428,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
 
             {
                 MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.SourcePane.M_POP_SCOPE")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.SourcePane.M_POP_SCOPE"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -483,7 +483,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
             String prepDir = prepDirs[i];
             if (path.startsWith(prepDir)) {
                 if (path.length() > prepDir.length() && path.charAt(prepDir.length()) == File.separatorChar) {
-                    return prepDir + File.separator + ".ccfxprepdir" + path.substring(prepDir.length()); //$NON-NLS-1$
+                    return prepDir + File.separator + ".ccfxprepdir" + path.substring(prepDir.length());
                 }
             }
         }
@@ -532,7 +532,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
 
         fileIndex = -1;
         file = null;
-        textString = textStringLower = ""; //$NON-NLS-1$
+        textString = textStringLower = "";
         tokens = null;
         tokenEndIndices = null;
         clonePairs = null;
@@ -556,7 +556,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
         } else {
             this.fileIndex = -1;
             this.file = null;
-            this.textString = this.textStringLower = ""; //$NON-NLS-1$
+            this.textString = this.textStringLower = "";
             this.tokens = null;
             this.tokenEndIndices = null;
             this.clonePairs = null;
@@ -744,8 +744,8 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
                         gc.drawText(str, clientRect.width - extent.x, y, SWT.DRAW_TRANSPARENT);
                         boolean inTheInitialPosition = initialTopPosition != -1 && i == initialTopPosition;
                         if (inTheInitialPosition) {
-                            Point ex = gc.stringExtent("M"); //$NON-NLS-1$
-                            String s = "i"; //$NON-NLS-1$
+                            Point ex = gc.stringExtent("M");
+                            String s = "i";
                             gc.setBackground(black);
                             gc.fillRectangle(0, y, ex.x, charHeight);
                             gc.setForeground(white);
@@ -806,7 +806,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
         clonePairs = null;
         selectedClonePairs = null;
         lineStatus = null;
-        text.setText(""); //$NON-NLS-1$
+        text.setText("");
         textString = textStringLower = null;
         tokens = null;
         tokenEndIndices = null;
@@ -822,8 +822,8 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
         if (newFileIndex >= 0) {
             setFile(newFileIndex);
         } else {
-            fileNameLabel.setText("-"); //$NON-NLS-1$
-            fileNameLabel.setToolTipText(""); //$NON-NLS-1$
+            fileNameLabel.setText("-");
+            fileNameLabel.setToolTipText("");
             GC gc = new GC(lineNumber);
             try {
                 redrawLineNumber(gc, true);
@@ -839,7 +839,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
         final InputStream inp = new FileInputStream(file);
         final BufferedInputStream inpBuf = new BufferedInputStream(inp);
         if (encodingName.length() == 0) {
-            Reader reader = new InputStreamReader(inpBuf, StandardCharsets.UTF_8); //$NON-NLS-1$
+            Reader reader = new InputStreamReader(inpBuf, StandardCharsets.UTF_8);
             StringWriter writer = new StringWriter();
             int data;
             while ((data = reader.read()) != -1) {
@@ -978,14 +978,14 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
     private void setFile(int fileIndex) {
         this.fileIndex = fileIndex;
         file = viewedModel.getFile(fileIndex);
-        String filenamestr = file.id + " " + file.path; //$NON-NLS-1$
-        fileNameLabel.setText(filenamestr); //$NON-NLS-1$
+        String filenamestr = file.id + " " + file.path;
+        fileNameLabel.setText(filenamestr);
         fileNameLabel.setToolTipText(filenamestr);
         CcfxDetectionOptions options = viewedModel.getDetectionOption();
         String postfix = options.getPostfix();
-        String[] prepDirs = options.get("n"); //$NON-NLS-1$
+        String[] prepDirs = options.get("n");
         if (postfix == null) {
-            postfix = "." + viewedModel.getPreprocessScript() + ".ccfxprep"; //$NON-NLS-1$ //$NON-NLS-2$
+            postfix = "." + viewedModel.getPreprocessScript() + ".ccfxprep";
         }
         tokenEndIndices = null;
 
@@ -1035,11 +1035,11 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
             setTextHighlightsAndLineStatus(false);
             //rebuildLineNumberImage();
         } catch (FileNotFoundException e) {
-            textString = textStringLower = ""; //$NON-NLS-1$
-            text.setText(textString); //$NON-NLS-1$
+            textString = textStringLower = "";
+            text.setText(textString);
         } catch (IOException e) {
-            textString = textStringLower = ""; //$NON-NLS-1$
-            text.setText(textString); //$NON-NLS-1$
+            textString = textStringLower = "";
+            text.setText(textString);
         } finally {
             if (lineNumberAndTextVisible) {
                 lineNumberAndText.setVisible(true);
@@ -1059,7 +1059,7 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
             clonePairs = null;
             selectedClonePairs = null;
             lineStatus = null;
-            text.setText(""); //$NON-NLS-1$
+            text.setText("");
             textString = textStringLower = null;
             tokens = null;
             tokenEndIndices = null;
@@ -1070,8 +1070,8 @@ public class TextPane implements FileSelectionListener, CloneSelectionListener {
             searchingIndex = -1;
             searchingText = null;
 
-            fileNameLabel.setText("-"); //$NON-NLS-1$
-            fileNameLabel.setToolTipText(""); //$NON-NLS-1$
+            fileNameLabel.setText("-");
+            fileNameLabel.setToolTipText("");
             GC gc = new GC(lineNumber);
             try {
                 this.redrawLineNumber(gc, true);

@@ -38,10 +38,10 @@ public class MetricsSummaryData {
             String[] subs = StringUtil.split(line, '\t');
             if (subs[0].equals(statisticFieldNames[0])) {
                 if (subs.length != countOfFields + 1) {
-                    throw new DataFileReadError("invalid file metric file"); //$NON-NLS-1$
+                    throw new DataFileReadError("invalid file metric file");
                 }
                 if (!subs[0].equals(statisticFieldNames[0])) {
-                    throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_SUMMARY_VALUES_MISSING")); //$NON-NLS-1$
+                    throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_SUMMARY_VALUES_MISSING"));
                 }
                 Double[] vs = gemx.utility.DoublesParser.parseDoublesNullable(subs, 1, subs.length);
                 totalValues = vs;
@@ -59,10 +59,10 @@ public class MetricsSummaryData {
             }
             String[] subs = StringUtil.split(line, '\t');
             if (subs.length != countOfFields + 1) {
-                throw new DataFileReadError("invalid file metric file"); //$NON-NLS-1$
+                throw new DataFileReadError("invalid file metric file");
             }
             if (!subs[0].equals(statisticFieldNames[si])) {
-                throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_SUMMARY_VALUES_MISSING")); //$NON-NLS-1$
+                throw new DataFileReadError(Messages.getString("gemx.CloneSetMetricModel.S_SUMMARY_VALUES_MISSING"));
             }
             double[] vs = gemx.utility.DoublesParser.parseDoubles(subs, 1, subs.length);
             switch (si) {

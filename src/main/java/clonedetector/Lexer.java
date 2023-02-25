@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 /**
- * クローン検出対象ファイルをディレクトリ内から検索し，
- * 各ファイルのPreProcessを呼ぶ役割
+ * Search the directory for the target file for clone detection,
+ * Role of calling Pre Process of each file
  */
 public class Lexer {
     private final FileData fd;
@@ -117,7 +117,7 @@ public class Lexer {
     }
 
     /**
-     * nolexer 指定時
+     * nolexer When specified
      */
     public void loadLexer() {
         String filename = getFileListPath();
@@ -170,7 +170,7 @@ public class Lexer {
      * @param i        file number
      * @param language (refer to extensionMapTrueEnd)
      */
-    public void tokenizeAFile(String filename, int i, String language) {// 通常使用
+    public void tokenizeAFile(String filename, int i, String language) {// normal use
         PreProcess pp = new PreProcess(or, language, filename);
         pp.readFile();
 

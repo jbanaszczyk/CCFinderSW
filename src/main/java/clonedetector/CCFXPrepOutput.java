@@ -21,16 +21,16 @@ public class CCFXPrepOutput {
     }
 
     /**
-     * 見たらわかる
+     * you'll know when you see it
      */
     private String replaceNewLine(String str) {
         return str.replaceAll("\r", "&r;").replaceAll("\n", "&n;");
     }
 
     /**
-     * ccfxprepファイル出力 c,cpp,java以外
+     * ccfxprep file output Other than c, cpp, java
      *
-     * @param filename 出力先
+     * @param filename Output destination
      */
     public void outputCCFXPrep(String filename) {
         String dirname = directoryName + File.separator + ".ccfxprepdir";

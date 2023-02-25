@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.TreeSet;
 
 /**
- * クローンペアからクローンセットの情報を計算するクラス
+ * A class that computes clone set information from a clone pair
  */
 public class Pair2Set {
     private final ArrayList<PlaceAndRoad> placeAndRoadList = new ArrayList<>();
@@ -62,16 +62,16 @@ public class Pair2Set {
     }
 
     /**
-     * ペアを受け取り，クローンセット情報を付加したクローンペアを返す
-     * （クローンIDによってクローンセットであるかを判別する）
+     * Receive a pair and return a clone pair with clone set information added
+     * (Distinguish whether it is a clone set by clone ID)
      */
     int[][] makeCloneSet(int[][] pair) {
         System.out.println("Shaping Clone Pairs...");
 
-        // 長さが同じものしかクローンセットにならないためソートをかける
+        // Only those with the same length will be clone sets, so sort
         Arrays.sort(pair, Pair2Set::compareDistanceForBack);
 
-        // 長さが同じものを集めてクローンセットであるかどうかを判別する
+        // Collect clones with the same length and determine whether they are a clone set
         int nowDistance = 0;
         int i = 0;
         int cloneID = 1;
@@ -130,7 +130,7 @@ public class Pair2Set {
             }
             par.visited = true;
             TreeSet<Integer> cs = new TreeSet<>();
-            snake(par, cs);//これ帰ってきたらcs出来てる
+            snake(par, cs); // cs will be ready when i come back
             for (Integer x : cs) {
                 pair[x][3] = cloneID;
             }
@@ -153,23 +153,23 @@ public class Pair2Set {
     }
 
     /**
-     * そのコード片の位置と，ペアとなるコード片のインスタンスを保持するクラス
+     * A class that holds the location of the code fragment and the instance of the code fragment it is paired with
      */
     static class PlaceAndRoad {
         /**
-         * コード片の出現場所
+         * where the code fragment appears
          */
         int place;
         /**
-         * コード片の探索が終わったかどうか
+         * whether the search for the code fragment is finished
          */
         boolean visited = false;
         /**
-         * このコード片とペアとなるコード片のリスト
+         * a list of code snippets to pair with this code snippet
          */
         ArrayList<PlaceAndRoad> direction = new ArrayList<>();
         /**
-         * このコード片を含むクローンペアの位置(clonePairList中のindex)
+         * position of clone pair containing this code fragment (index in clone pair list)
          */
         ArrayList<Integer> indexOfPair = new ArrayList<>();
 

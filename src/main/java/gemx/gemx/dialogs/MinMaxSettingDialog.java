@@ -60,12 +60,12 @@ public class MinMaxSettingDialog {
             dummy1.setLayoutData(gridData);
 
             Label minColumnLabel = new Label(shellC, SWT.NONE);
-            minColumnLabel.setText(Messages.getString("gemx.MainWindow.S_Minumum")); //$NON-NLS-1$
+            minColumnLabel.setText(Messages.getString("gemx.MainWindow.S_Minumum"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             minColumnLabel.setLayoutData(gridData);
             Label maxColumnLabel = new Label(shellC, SWT.NONE);
-            maxColumnLabel.setText(Messages.getString("gemx.MainWindow.S_Maximum")); //$NON-NLS-1$
+            maxColumnLabel.setText(Messages.getString("gemx.MainWindow.S_Maximum"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             maxColumnLabel.setLayoutData(gridData);
@@ -101,7 +101,7 @@ public class MinMaxSettingDialog {
 
         {
             Group gr = new Group(shellC, SWT.NONE);
-            gr.setText(Messages.getString("gemx.MinMaxSettingDialog.S_ACTION")); //$NON-NLS-1$
+            gr.setText(Messages.getString("gemx.MinMaxSettingDialog.S_ACTION"));
             gr.setLayout(new GridLayout());
             {
                 GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
@@ -125,9 +125,9 @@ public class MinMaxSettingDialog {
 
             actionButtons = new Button[CountOfActions];
             String[] buttonTexts = new String[]{
-                    Messages.getString("gemx.MinMaxSettingDialog.S_MAKE_SCOPE"), //$NON-NLS-1$
-                    Messages.getString("gemx.MinMaxSettingDialog.S_ADD_CHECK_MARK"), //$NON-NLS-1$
-                    Messages.getString("gemx.MinMaxSettingDialog.S_SELECT"), //$NON-NLS-1$
+                    Messages.getString("gemx.MinMaxSettingDialog.S_MAKE_SCOPE"),
+                    Messages.getString("gemx.MinMaxSettingDialog.S_ADD_CHECK_MARK"),
+                    Messages.getString("gemx.MinMaxSettingDialog.S_SELECT"),
             };
 
             for (int i = 0; i < CountOfActions; ++i) {
@@ -167,7 +167,7 @@ public class MinMaxSettingDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             okButton.setLayoutData(gridData);
-            okButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_OK"));  //$NON-NLS-1$
+            okButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_OK"));
             okButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.OK;
@@ -179,7 +179,7 @@ public class MinMaxSettingDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             cancelButton.setLayoutData(gridData);
-            cancelButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_CANCEL"));  //$NON-NLS-1$
+            cancelButton.setText(Messages.getString("gemx.CloneDetectionOptionDialog.S_CANCEL"));
             cancelButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.CANCEL;

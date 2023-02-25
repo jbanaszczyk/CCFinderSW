@@ -2,7 +2,7 @@ package clonedetector.classlist;
 
 public class Token {
     /**
-     * 文字のハッシュ
+     * character hash
      */
     public int hash;
     /**
@@ -10,19 +10,19 @@ public class Token {
      */
     public int type;
     /**
-     * 開始行
+     * starting line
      */
     public int lineStart;
     /**
-     * 終了行
+     * end line
      */
     public int lineEnd;
     /**
-     * 開始列
+     * start column
      */
     public int columnStart;
     /**
-     * 終了列
+     * end column
      */
     public int columnEnd;
 

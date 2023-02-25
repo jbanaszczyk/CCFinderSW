@@ -6,27 +6,27 @@ package clonedetector.classlist;
  */
 public class Pre {
     /**
-     * 開始行
+     * starting line
      */
     public int lineStart;
     /**
-     * 開始列
+     * start column
      */
     public int clmStart;
     /**
-     * 終了行
+     * end line
      */
     public int lineEnd;
     /**
-     * 終了列
+     * end column
      */
     public int clmEnd;
     /**
-     * ファイルでの開始文字数
+     * starting number of characters in the file
      */
     public int sumStart;
     /**
-     * ファイルでの終了文字数
+     * number of ending characters in the file
      */
     public int sumEnd;
     /**

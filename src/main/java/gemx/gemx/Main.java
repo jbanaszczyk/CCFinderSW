@@ -24,32 +24,32 @@ import java.util.Properties;
 
 public class Main {
     private static final String sVerMajor = "verMajor";
-    private static final String sVerMinor1 = "verMinor1"; //$NON-NLS-1$
-    private static final String sVerMinor2 = "verMinor2"; //$NON-NLS-1$
-    private static final String sSettingPreprocessor = "settingPreprocessor"; //$NON-NLS-1$
-    private static final String sSettingMinimumCloneLength = "settingMinimumCloneLength"; //$NON-NLS-1$
-    private static final String sSettingMinimumTKS = "settingMinimumTKS"; //$NON-NLS-1$
-    private static final String sSettingEncoding = "settingEncoding"; //$NON-NLS-1$
-    private static final String sSettingChunkSize = "settingChunkSize"; //$NON-NLS-1$
-    private static final String sSettingShaperLevel = "settingShaperLevel"; //$NON-NLS-1$
-    private static final String sSettingUsePMatch = "settingUsePMatch"; //$NON-NLS-1$
+    private static final String sVerMinor1 = "verMinor1";
+    private static final String sVerMinor2 = "verMinor2";
+    private static final String sSettingPreprocessor = "settingPreprocessor";
+    private static final String sSettingMinimumCloneLength = "settingMinimumCloneLength";
+    private static final String sSettingMinimumTKS = "settingMinimumTKS";
+    private static final String sSettingEncoding = "settingEncoding";
+    private static final String sSettingChunkSize = "settingChunkSize";
+    private static final String sSettingShaperLevel = "settingShaperLevel";
+    private static final String sSettingUsePMatch = "settingUsePMatch";
     private static final String sSettingUsePreprocessCache = "settingUsePreprocessCache";
     private static final String sSettingMaxWorkerThreads = "settingMaxWorkerThreads";
-    private static final String sSettingCalcFileMetricAlways = "settingCalcFileMetricAlways"; //$NON-NLS-1$
-    private static final String sSettingCalcCloneMetricAlways = "settingCalcCloneMetricAlways"; //$NON-NLS-1$
-    private static final String sSettingResizeScatterPlot = "settingResizeScatterPlot"; //$NON-NLS-1$
-    private static final String sSettingNtipleSourceTextPane = "settingNtipleSourceTextPane"; //$NON-NLS-1$
-    private static final String sSettingAllFileViewModeEnabled = "settingAllFileViewModeEnabled"; //$NON-NLS-1$
-    private static final String sSettingColorSchemeFile = "settingColorSchemeFile"; //$NON-NLS-1$
+    private static final String sSettingCalcFileMetricAlways = "settingCalcFileMetricAlways";
+    private static final String sSettingCalcCloneMetricAlways = "settingCalcCloneMetricAlways";
+    private static final String sSettingResizeScatterPlot = "settingResizeScatterPlot";
+    private static final String sSettingNtipleSourceTextPane = "settingNtipleSourceTextPane";
+    private static final String sSettingAllFileViewModeEnabled = "settingAllFileViewModeEnabled";
+    private static final String sSettingColorSchemeFile = "settingColorSchemeFile";
     private static final String sSettingClonesetTableClickToShowPair = "settingClonesetTableClickToShowPair";
     private static final String sSettingUsePrescreening = "settingUsePrescreening";
     private static final String sSettingResetScopeItemInContextMenus = "settingResetScopeItemInContextMenus";
-    private static String propertyFile = "gemx.properties"; //$NON-NLS-1$
+    private static String propertyFile = "gemx.properties";
 
     static {
         String path = CCFinderX.getApplicationDataPath();
         if (path.length() > 0) {
-            propertyFile = path + java.io.File.separator + "gemx.properties"; //$NON-NLS-1$
+            propertyFile = path + java.io.File.separator + "gemx.properties";
         }
     }
 
@@ -112,9 +112,9 @@ public class Main {
     }
 
     private static String readColorConfigFile() {
-        final String fileName = CCFinderX.getApplicationDataPath() + "/colors.json"; //$NON-NLS-1$
+        final String fileName = CCFinderX.getApplicationDataPath() + "/colors.json";
         try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8)); //$NON-NLS-1$
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8));
             StringBuilder builder = new StringBuilder();
             String line;
             while ((line = in.readLine()) != null) {
@@ -159,7 +159,7 @@ public class Main {
         try {
             Image img = null;
             {
-                ImageData imgData = new ImageData(Main.class.getResourceAsStream("/logonew64.png")); //$NON-NLS-1$
+                ImageData imgData = new ImageData(Main.class.getResourceAsStream("/logonew64.png"));
                 if (imgData != null) {
                     img = new Image(display, imgData);
                     shell.setImage(img);
@@ -246,11 +246,11 @@ public class Main {
             if (propertyFileVersionMismatch) {
                 MessageBox box1 = new MessageBox(shell,
                         SWT.ICON_WARNING | SWT.OK | SWT.CANCEL);
-                box1.setText("Warning - GemX"); //$NON-NLS-1$
+                box1.setText("Warning - GemX");
                 box1.setMessage(
-                        Messages.getString("gemx.Main.S_PROPERTY_FILE_VERSION_MISMATCH") //$NON-NLS-1$
-                                + "\n" //$NON-NLS-1$
-                                + Messages.getString("gemx.Main.S_INITIALIZE_THE_PROPERTY_FILE_P") //$NON-NLS-1$
+                        Messages.getString("gemx.Main.S_PROPERTY_FILE_VERSION_MISMATCH")
+                                + "\n"
+                                + Messages.getString("gemx.Main.S_INITIALIZE_THE_PROPERTY_FILE_P")
                 );
                 if (box1.open() == SWT.CANCEL) {
                     System.exit(0);
@@ -264,9 +264,9 @@ public class Main {
         } catch (IOException e) {
             MessageBox box1 = new MessageBox(shell,
                     SWT.ICON_ERROR | SWT.OK);
-            box1.setText("Error - GemX"); //$NON-NLS-1$
+            box1.setText("Error - GemX");
             box1.setMessage(
-                    Messages.getString("gemx.Main.S_FILE_IO_ERROR_IN_READING_PROPERTY_FILE") //$NON-NLS-1$
+                    Messages.getString("gemx.Main.S_FILE_IO_ERROR_IN_READING_PROPERTY_FILE")
             );
             System.exit(1);
         }
@@ -319,20 +319,20 @@ public class Main {
         try {
             if (!makeDirectoryIfNotExist(propertyFile)) {
                 MessageBox box1 = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-                box1.setText("Error - GemX"); //$NON-NLS-1$
+                box1.setText("Error - GemX");
                 box1.setMessage(String.format("Fail to make directory for property file '%s'", propertyFile));
                 box1.open();
                 System.exit(1);
             }
             OutputStream outputStream = new FileOutputStream(new File(propertyFile));
-            config.store(outputStream, "GemX properties"); //$NON-NLS-1$
+            config.store(outputStream, "GemX properties");
             outputStream.close();
         } catch (IOException e) {
             MessageBox box1 = new MessageBox(shell,
                     SWT.ICON_ERROR | SWT.OK);
-            box1.setText("Error - GemX"); //$NON-NLS-1$
+            box1.setText("Error - GemX");
             box1.setMessage(
-                    Messages.getString("gemx.Main.S_FILE_IO_ERROR_IN_WRITING_PROPERTY_FILE") //$NON-NLS-1$
+                    Messages.getString("gemx.Main.S_FILE_IO_ERROR_IN_WRITING_PROPERTY_FILE")
             );
             System.exit(1);
         }
@@ -371,13 +371,13 @@ public class Main {
         try {
             if (!makeDirectoryIfNotExist(propertyFile)) {
                 MessageBox box1 = new MessageBox(shell, SWT.ICON_ERROR | SWT.OK);
-                box1.setText("Error - GemX"); //$NON-NLS-1$
+                box1.setText("Error - GemX");
                 box1.setMessage(String.format("Fail to make directory for property file '%s'", propertyFile));
                 box1.open();
                 System.exit(1);
             }
             OutputStream outputStream = new FileOutputStream(new File(propertyFile));
-            config.store(outputStream, "GemX properties"); //$NON-NLS-1$
+            config.store(outputStream, "GemX properties");
             outputStream.close();
         } catch (IOException e) {
             // no recover

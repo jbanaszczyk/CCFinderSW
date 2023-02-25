@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class FileAndString {
 
     /*
-    【Java】テキストファイル全体を読み込み文字列を返すメソッド
+    A method that reads the entire text file and returns a string
     https://qiita.com/penguinshunya/items/353bb1c555f337b0cf6d
      **/
     public static String readAll(final String path) throws IOException {
@@ -38,7 +38,7 @@ public class FileAndString {
         }
     }
 
-    public static ArrayList<String> searchDirectory(String directory) {// 通常使用
+    public static ArrayList<String> searchDirectory(String directory) {// normal use
         ArrayList<String> list = new ArrayList<>();
         File cDirectory = new File(directory);
         if (!cDirectory.exists()) {

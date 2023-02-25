@@ -17,7 +17,7 @@ public class TemporaryFileManager {
         int mn = cal.get(Calendar.MINUTE);
         int se = cal.get(Calendar.SECOND);
         int msec = cal.get(Calendar.MILLISECOND);
-        baseString = String.format("%04d%02d%02d-%02d%02d%02d-%03d", yr, mo, dy, hr, mn, se, msec); //$NON-NLS-1$
+        baseString = String.format("%04d%02d%02d-%02d%02d%02d-%03d", yr, mo, dy, hr, mn, se, msec);
         try {
             tempDirPath = System.getenv("CCFINDERX_TEMPORARY_DIRECTORY"); // may returns null
         } catch (SecurityException e) {
@@ -38,7 +38,7 @@ public class TemporaryFileManager {
     }
 
     public static String createTemporaryFileName() {
-        return createTemporaryFileName("gemxtemp", ".tmp"); //$NON-NLS-1$ //$NON-NLS-2$
+        return createTemporaryFileName("gemxtemp", ".tmp");
     }
 
     public static String createTemporaryFileName(String prefix, String extension) {

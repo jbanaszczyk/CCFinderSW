@@ -78,11 +78,11 @@ public class CCFXFormatter {
                 out.write(0x00);
 
             PrintProgress ps = new PrintProgress(2);
-            //clone pair 一つは 32byte
+            //clone pair One is 32 bytes
             for (int[] k : cpd.pairListTrue) {
                 byte[] outClone = new byte[32];
                 int distance = k[2];
-                int count = k[0];// クローン内の一番最後のNgramが全Ngram中何番目か
+                int count = k[0];// The last Ngram in the clone is the number of all Ngrams
 
                 int filenum = nf.tokenList[count - distance + 1].file + 1;
                 int tokennum = nf.tokenList[count - distance + 1].num;
@@ -99,7 +99,7 @@ public class CCFXFormatter {
                 for (int j = 0; j < 4; j++)
                     outClone[j + 8] = tmp_token[3 - j];
 
-                count = k[1];// クローン内の一番最後のNgramが全Ngram中何番目か
+                count = k[1];// The last Ngram in the clone is the number of all Ngrams
                 filenum = nf.tokenList[count - distance + 1].file + 1;
                 tokennum = nf.tokenList[count - distance + 1].num;
                 tmp_file = ByteBuffer.allocate(4).putInt(filenum).array();

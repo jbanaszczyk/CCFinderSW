@@ -24,8 +24,8 @@ public class Searchbox extends Composite {
         super(sc, style);
 
         final Display display = sc.getDisplay();
-        magnifyGlassImage = gemx.resources.ImageManager.loadImage(display, "search.png"); //$NON-NLS-1$
-        cancelImage = gemx.resources.ImageManager.loadImage(display, "cancel.png"); //$NON-NLS-1$
+        magnifyGlassImage = gemx.resources.ImageManager.loadImage(display, "search.png");
+        cancelImage = gemx.resources.ImageManager.loadImage(display, "cancel.png");
 
         {
             GridLayout layout = new GridLayout(3, false);
@@ -48,7 +48,7 @@ public class Searchbox extends Composite {
             });
         }
         {
-            Image image = gemx.resources.ImageManager.loadImage(display, "up.png"); //$NON-NLS-1$
+            Image image = gemx.resources.ImageManager.loadImage(display, "up.png");
             ToolItem item = new ToolItem(toolBar, SWT.PUSH);
             item.setImage(image);
             item.addSelectionListener(new SelectionAdapter() {
@@ -61,7 +61,7 @@ public class Searchbox extends Composite {
             });
         }
         {
-            Image image = gemx.resources.ImageManager.loadImage(display, "down.png"); //$NON-NLS-1$
+            Image image = gemx.resources.ImageManager.loadImage(display, "down.png");
             ToolItem item = new ToolItem(toolBar, SWT.PUSH);
             item.setImage(image);
             item.addSelectionListener(new SelectionAdapter() {
@@ -75,7 +75,7 @@ public class Searchbox extends Composite {
         }
 
         ignoreCaseCheckbox = new Button(this, SWT.CHECK);
-        ignoreCaseCheckbox.setText(Messages.getString("gemx.Searchbox.S_IGNORE_CASE"));  //$NON-NLS-1$
+        ignoreCaseCheckbox.setText(Messages.getString("gemx.Searchbox.S_IGNORE_CASE"));
         ignoreCaseCheckbox.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent arg0) {
@@ -86,7 +86,7 @@ public class Searchbox extends Composite {
         });
         isIgnoreCase = false;
 
-        searchText.setText(""); //$NON-NLS-1$
+        searchText.setText("");
         searchText.addSelectionListener(new SelectionAdapter() {
             public void widgetDefaultSelected(SelectionEvent e) {
                 if (e.detail == SWT.CANCEL) {
@@ -176,7 +176,7 @@ public class Searchbox extends Composite {
         if (pictureItem != null) {
             pictureItem.setImage(magnifyGlassImage);
         }
-        searchText.setText(""); //$NON-NLS-1$
+        searchText.setText("");
         for (SearchboxListener listener : listeners) {
             SearchboxData data = new SearchboxData();
             data.text = null;

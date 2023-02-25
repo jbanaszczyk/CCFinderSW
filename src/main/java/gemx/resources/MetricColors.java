@@ -48,7 +48,7 @@ public class MetricColors {
 
     public static void initialize(Display display, HashMap<String, Object> settings) {
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/metrics/frame/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/metrics/frame/");
             if (rgb == null) {
                 rgb = defaultFrameColorValue;
             }
@@ -56,7 +56,7 @@ public class MetricColors {
         }
 
         {
-            RGB[] rgbs = JsonHelper.readRGBArrayFromSettings(settings, "/metrics/bar_colors/"); //$NON-NLS-1$
+            RGB[] rgbs = JsonHelper.readRGBArrayFromSettings(settings, "/metrics/bar_colors/");
             if (!(rgbs != null && rgbs.length >= 2 && rgbs.length <= 10)) {
                 rgbs = defaultColors;
             }

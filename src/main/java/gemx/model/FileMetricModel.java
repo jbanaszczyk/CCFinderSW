@@ -40,12 +40,12 @@ public class FileMetricModel {
 
     public void readFileMetricFile(String path, int maxFileID) throws DataFileReadError, IOException {
         this.maxFileID = maxFileID;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
         String line;
         line = reader.readLine();
         String supposedTitleLine = "FID" + "\t" + StringUtil.join(FileMetricModel.getFieldNames(), "\t");
-        if (!line.equals(supposedTitleLine)) { //$NON-NLS-1$
-            throw new DataFileReadError("invalid file metric file"); //$NON-NLS-1$
+        if (!line.equals(supposedTitleLine)) {
+            throw new DataFileReadError("invalid file metric file");
         }
 
         String[] ss = StringUtil.split(line, '\t');
@@ -62,19 +62,19 @@ public class FileMetricModel {
         while (true) {
             line = reader.readLine();
             if (line == null) {
-                throw new DataFileReadError(Messages.getString("gemx.FileMetricModel.S_INVLID_FILE_METRIC_FILE")); //$NON-NLS-1$
+                throw new DataFileReadError(Messages.getString("gemx.FileMetricModel.S_INVLID_FILE_METRIC_FILE"));
             }
             String[] subs = StringUtil.split(line, '\t');
             String subs0 = subs[0];
-            if (subs0.equals("ave.") || subs0.equals("total")) { //$NON-NLS-1$
+            if (subs0.equals("ave.") || subs0.equals("total")) {
                 break; // while
             }
             if (subs.length != fields + 1) {
-                throw new DataFileReadError("invalid file metric file"); //$NON-NLS-1$
+                throw new DataFileReadError("invalid file metric file");
             }
             int id = Integer.parseInt(subs[0]);
             if (!(0 <= id && id <= maxFileID)) {
-                throw new DataFileReadError("Invalid File ID"); //$NON-NLS-1$
+                throw new DataFileReadError("Invalid File ID");
             }
             isValidValue[id] = true;
             int valuePos = id * fields;

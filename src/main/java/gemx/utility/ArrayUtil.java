@@ -66,7 +66,7 @@ public class ArrayUtil {
         TIntArrayList ary = new TIntArrayList();
 
         long lineNumber = 0;
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
         String line;
         while ((line = in.readLine()) != null) {
             ++lineNumber;
@@ -88,7 +88,7 @@ public class ArrayUtil {
         TLongArrayList ary = new TLongArrayList();
 
         long lineNumber = 0;
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
         String line;
         while ((line = in.readLine()) != null) {
             ++lineNumber;
@@ -108,7 +108,7 @@ public class ArrayUtil {
     public static void iterateOnIntList(String path, IterateOnIntListClosure closure) throws
             IOException, NumberFormatErrorAtLineOfFile {
         long lineNumber = 0;
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
         String line;
         while ((line = in.readLine()) != null) {
             ++lineNumber;
@@ -126,7 +126,7 @@ public class ArrayUtil {
     public static void iterateOnLongList(String path, IterateOnLongListClosure closure) throws
             IOException, NumberFormatErrorAtLineOfFile {
         long lineNumber = 0;
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8)); //$NON-NLS-1$
+        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(path), StandardCharsets.UTF_8));
         String line;
         while ((line = in.readLine()) != null) {
             ++lineNumber;

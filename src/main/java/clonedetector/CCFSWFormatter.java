@@ -51,7 +51,7 @@ public class CCFSWFormatter {
         StringBuilder buf = new StringBuilder();
         optionRuleFile(buf);
 
-        // クローンペア部
+        // Clone pair part
         buf.append("#clone_pairs\n");
 
         PrintProgress ps = new PrintProgress(2);
@@ -59,7 +59,7 @@ public class CCFSWFormatter {
             int distance = x[2];
             buf.append("cloneID:").append(x[3]).append("\n\t");
 
-            //pairの前
+            //pair before
             TokenData forward = nf.tokenList[x[0] - distance + 1];
             int fileNum = forward.file;
             int lineNum = forward.lineStart + 1;
@@ -79,7 +79,7 @@ public class CCFSWFormatter {
             buf.append(columnNum);
             buf.append("\n\t");
 
-            //pairの後
+            //pair after
             forward = nf.tokenList[x[1] - distance + 1];
             fileNum = forward.file;
             lineNum = forward.lineStart + 1;
@@ -113,7 +113,7 @@ public class CCFSWFormatter {
         StringBuilder buf = new StringBuilder();
         optionRuleFile(buf);
 
-        // クローンセット部
+        // clone set
         buf.append("#clone_sets\n");
 
         PrintProgress ps = new PrintProgress(2);
@@ -156,7 +156,7 @@ public class CCFSWFormatter {
 
     private void appendSet(StringBuilder buf, int distance, ArrayList<Integer> setList) {
         for (Integer y : setList) {
-            //pairの前
+            //pair before
             TokenData forward = nf.tokenList[y - distance + 1];
             int fileNum = forward.file;
             int lineNum = forward.lineStart;
@@ -179,10 +179,10 @@ public class CCFSWFormatter {
     }
 
     /**
-     * ペアとセットの共通出力部
+     * Common output for pair and set
      */
     private void optionRuleFile(StringBuilder buf) {
-        // オプション部
+        // Option part
         buf.append("#version\t").append(toolName).append("\n");
         buf.append("#option\n-d\t").append(directoryPath).append("\n");
         buf.append("-l\t").append(language).append("\n");
@@ -191,7 +191,7 @@ public class CCFSWFormatter {
         //buf.append("-w\t").append(getRelation(detectionRange)).append("\n");
         buf.append("-charset\t").append(charset).append("\n");
 
-        //言語・予約語・コメントファイル
+        // Language/Reserved Word/Comment File
         buf.append("#rule_constructor\n");
         for (String x : languageRuleMap.keySet()) {
             buf.append(x).append("{\n");
@@ -200,7 +200,7 @@ public class CCFSWFormatter {
             buf.append("}\n");
         }
 
-        // ソースファイル部
+        // Source file part
         buf.append("#source_files\n");
         for (int i = 0; i < fd.filePathList.size(); i++) {
             buf.append(i);

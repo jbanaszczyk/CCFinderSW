@@ -27,8 +27,7 @@ public class OptionReader {
     public ArrayList<ArrayList<String>> extensionMap = new ArrayList<>();
     public HashMap<String, String> extensionMapTrueEnd = new HashMap<>();
     private String charset = "UTF-8";
-    private String variableRegex
-            = "[0-9a-zA-Z_]+";// [0-9a-zA-Z\\u3040-\\u30FF一-龠_]+
+    private String variableRegex = "[0-9a-zA-Z_]+";
     private int threshold = 50;
     private int N = threshold;
     private String output = null;

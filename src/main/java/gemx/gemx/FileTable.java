@@ -57,7 +57,7 @@ public class FileTable implements FileSelectionListener {
 
         commonPathLabel = new Label(sc, SWT.LEFT);
         commonPathLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
-        commonPathLabel.setText("-"); //$NON-NLS-1$
+        commonPathLabel.setText("-");
 
         table = new Table(sc, SWT.VIRTUAL | SWT.MULTI | SWT.FULL_SELECTION | SWT.CHECK);
         tableWithCheckHelper = new TableWithCheckHelper(table) {
@@ -73,7 +73,7 @@ public class FileTable implements FileSelectionListener {
         table.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         table.setHeaderVisible(true);
-        String[] colCaps = {"File ID", "Path          ", "LEN", "CLN", "", "", "", "", ""}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$
+        String[] colCaps = {"File ID", "Path          ", "LEN", "CLN", "", "", "", "", ""};
         int[] colWids = {40, 100, 50, 50, 5, 5, 5, 5, 5};
         int[] colAligns = {SWT.RIGHT, SWT.LEFT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.LEFT};
         cols = new TableColumn[colCaps.length];
@@ -130,7 +130,7 @@ public class FileTable implements FileSelectionListener {
         if (data.containsFileRemark(fileID)) {
             ArrayList<String> remarks = data.getFileRemarkFromFileID(fileID);
             for (String remark : remarks) {
-                if (remark.equals("masked")) { //$NON-NLS-1$
+                if (remark.equals("masked")) {
                     return true;
                 }
             }
@@ -278,7 +278,7 @@ public class FileTable implements FileSelectionListener {
 
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.M_COPY_ITEMS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.M_COPY_ITEMS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -288,7 +288,7 @@ public class FileTable implements FileSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.M_COPY_FILE_PATHS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.M_COPY_FILE_PATHS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -300,7 +300,7 @@ public class FileTable implements FileSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.M_PASTE_SELECTION")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.M_PASTE_SELECTION"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -350,7 +350,7 @@ public class FileTable implements FileSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitemCheck = new MenuItem(pmenu, SWT.CASCADE);
-            pitemCheck.setText(Messages.getString("gemx.FileTable.M_CHECK_MARK")); //$NON-NLS-1$
+            pitemCheck.setText(Messages.getString("gemx.FileTable.M_CHECK_MARK"));
             Menu pmenuCheck = new Menu(pitemCheck);
             pitemCheck.setMenu(pmenuCheck);
 
@@ -361,7 +361,7 @@ public class FileTable implements FileSelectionListener {
             Menu pmenuScope = pmenu;
             {
                 MenuItem pitem = new MenuItem(pmenuScope, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.FileTable.M_FIT_SCOPE_TO_SELECTED_FLIES")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.FileTable.M_FIT_SCOPE_TO_SELECTED_FLIES"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -372,7 +372,7 @@ public class FileTable implements FileSelectionListener {
             }
             {
                 MenuItem pitem = new MenuItem(pmenuScope, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.FileTable.M_POP_SCOPE")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.FileTable.M_POP_SCOPE"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new SelectionAdapter() {
                     public void widgetSelected(SelectionEvent e) {
@@ -394,7 +394,7 @@ public class FileTable implements FileSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.S_SELECT_FILES_THAT_HAVE_CLONES_BETWEEN_THEM"));  //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.S_SELECT_FILES_THAT_HAVE_CLONES_BETWEEN_THEM"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -410,13 +410,13 @@ public class FileTable implements FileSelectionListener {
         }
         {
             MenuItem pitemSelectFilesUnderDirectory = new MenuItem(pmenu, SWT.CASCADE);
-            pitemSelectFilesUnderDirectory.setText(Messages.getString("gemx.FileTable.M_SELECT_FILES_UNDER")); //$NON-NLS-1$
+            pitemSelectFilesUnderDirectory.setText(Messages.getString("gemx.FileTable.M_SELECT_FILES_UNDER"));
             Menu pmenuSelectFilesUnderDirectory = new Menu(pitemSelectFilesUnderDirectory);
             pitemSelectFilesUnderDirectory.setMenu(pmenuSelectFilesUnderDirectory);
 
             {
                 MenuItem pitem = new MenuItem(pmenuSelectFilesUnderDirectory, SWT.PUSH);
-                pitem.setText(Messages.getString("gemx.FileTable.M_THE_SAME_DIRECTORY")); //$NON-NLS-1$
+                pitem.setText(Messages.getString("gemx.FileTable.M_THE_SAME_DIRECTORY"));
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new FilesUnderDirectory(1));
             }
@@ -424,15 +424,15 @@ public class FileTable implements FileSelectionListener {
                 MenuItem pitem = new MenuItem(pmenuSelectFilesUnderDirectory, SWT.PUSH);
                 StringBuffer buf = new StringBuffer();
                 for (int j = 0; j < i; ++j) {
-                    buf.append("../"); //$NON-NLS-1$
+                    buf.append("../");
                 }
-                buf.append(" (&" + i + ")"); //$NON-NLS-1$ //$NON-NLS-2$
+                buf.append(" (&" + i + ")");
                 pitem.setText(buf.toString());
                 pitem.setSelection(true);
                 pitem.addSelectionListener(new FilesUnderDirectory(i));
             }
             MenuItem pitem = new MenuItem(pmenuSelectFilesUnderDirectory, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.M_NAMED_PARENT_DIRECTORY")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.M_NAMED_PARENT_DIRECTORY"));
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     int index = FileTable.this.table.getSelectionIndex();
@@ -445,7 +445,7 @@ public class FileTable implements FileSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.S_SELECT_CLONE_SETS_INCULDED_BY_THEM")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.S_SELECT_CLONE_SETS_INCULDED_BY_THEM"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -457,7 +457,7 @@ public class FileTable implements FileSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.M_CLONE_SETS_COMMONLY_INCLUDED_BY_THEM")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.M_CLONE_SETS_COMMONLY_INCLUDED_BY_THEM"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -470,7 +470,7 @@ public class FileTable implements FileSelectionListener {
         new MenuItem(pmenu, SWT.SEPARATOR);
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.M_ADD_FILE_METRICS")); //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.M_ADD_FILE_METRICS"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -480,7 +480,7 @@ public class FileTable implements FileSelectionListener {
         }
         {
             MenuItem pitem = new MenuItem(pmenu, SWT.PUSH);
-            pitem.setText(Messages.getString("gemx.FileTable.M_FILTER_FILE_BY_METRIC"));  //$NON-NLS-1$
+            pitem.setText(Messages.getString("gemx.FileTable.M_FILTER_FILE_BY_METRIC"));
             pitem.setSelection(true);
             pitem.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
@@ -513,7 +513,7 @@ public class FileTable implements FileSelectionListener {
             final int ccount = table.getColumnCount();
             for (int i = 4; i < ccount; ++i) {
                 TableColumn tci = table.getColumn(i);
-                tci.setText(""); //$NON-NLS-1$
+                tci.setText("");
             }
 
             int fileCount = data.getFileCount();
@@ -546,7 +546,7 @@ public class FileTable implements FileSelectionListener {
                 itemData[2] = String.valueOf(f.size);
                 itemData[3] = String.valueOf(data.getCloneSetCountOfFile(i));
                 for (int ci = 4; ci < ccount; ++ci) {
-                    itemData[ci] = ""; //$NON-NLS-1$
+                    itemData[ci] = "";
                 }
                 item.setText(itemData);
 
@@ -604,11 +604,11 @@ public class FileTable implements FileSelectionListener {
         try {
             for (int i = 0; i < fileMetricModel.getFieldCount(); ++i) {
                 TableColumn tc = table.getColumn(i + 2);
-                tc.setText(fileMetricModel.getMetricName(i)); //$NON-NLS-1$
+                tc.setText(fileMetricModel.getMetricName(i));
             }
 
-            final DecimalFormat intFormat = new DecimalFormat("#"); //$NON-NLS-1$
-            final DecimalFormat doubleFormat = new DecimalFormat("#.000"); //$NON-NLS-1$
+            final DecimalFormat intFormat = new DecimalFormat("#");
+            final DecimalFormat doubleFormat = new DecimalFormat("#.000");
             this.fieldFormats = new DecimalFormat[fileMetricModel.getFieldCount()];
             for (int i = 0; i < fieldFormats.length; ++i) {
                 if (fileMetricModel.isFlotingPoint(i)) {
@@ -645,7 +645,7 @@ public class FileTable implements FileSelectionListener {
     }
 
     private void searchingId(String text) {
-        assert text.startsWith("#"); //$NON-NLS-1$
+        assert text.startsWith("#");
         if (fileId2Index == null) {
             return;
         }
@@ -679,7 +679,7 @@ public class FileTable implements FileSelectionListener {
 
             public void searchForward(SearchboxData data) {
                 String text = data.text;
-                if (text.startsWith("#")) { //$NON-NLS-1$
+                if (text.startsWith("#")) {
                     searchingId(text);
                     return;
                 }
@@ -721,7 +721,7 @@ public class FileTable implements FileSelectionListener {
 
             public void searchBackward(SearchboxData data) {
                 String text = data.text;
-                if (text.startsWith("#")) { //$NON-NLS-1$
+                if (text.startsWith("#")) {
                     searchingId(text);
                     return;
                 }

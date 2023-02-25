@@ -19,10 +19,10 @@ public class Picosel {
         this.expressions = expressions;
 
         StringBuffer buf = new StringBuffer();
-        buf.append(String.format("picosel -o %s from %s select %s where ", outputFile, tableFile, column)); //$NON-NLS-1$
+        buf.append(String.format("picosel -o %s from %s select %s where ", outputFile, tableFile, column));
         for (int i = 0; i < expressions.length; ++i) {
             buf.append(expressions[i]);
-            buf.append(" "); //$NON-NLS-1$
+            buf.append(" ");
         }
 
         return buf.toString();

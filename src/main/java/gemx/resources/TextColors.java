@@ -85,42 +85,42 @@ public class TextColors {
 
     public static void initialize(Display display, HashMap<String, Object> settings) {
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/background/");
             if (rgb == null) {
                 rgb = defaultWhite;
             }
             white[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/foreground/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/foreground/");
             if (rgb == null) {
                 rgb = defaultBlack;
             }
             black[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/clonepair_background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/clonepair_background/");
             if (rgb == null) {
                 rgb = defaultClonePairColor;
             }
             clonePairColor[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/selected_clonepair_background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/selected_clonepair_background/");
             if (rgb == null) {
                 rgb = defaultSelectedClonePairColor;
             }
             selectedClonePairColor[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/reservedword_foreground/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/reservedword_foreground/");
             if (rgb == null) {
                 rgb = defaultReservedWordColor;
             }
             reservedWordColor[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/neglectedtext_foreground/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext/neglectedtext_foreground/");
             if (rgb == null) {
                 rgb = defaultNeglectedTextColor;
             }
@@ -128,35 +128,35 @@ public class TextColors {
         }
 
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/background/");
             if (rgb == null) {
                 rgb = defaultRulerBackgroundColor;
             }
             rulerBackgroundColor[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/scrollview_frame/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/scrollview_frame/");
             if (rgb == null) {
                 rgb = defaultRulerScrollviewFrameColor;
             }
             rulerScrollviewFrameColor[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/scrollview_dragging_frame/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/scrollview_dragging_frame/");
             if (rgb == null) {
                 rgb = defaultRulerScrollviewDraggingFrameColor;
             }
             rulerScrollviewDraggingFrameColor[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/filebody_line/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/filebody_line/");
             if (rgb == null) {
                 rgb = defaultRulerWhite;
             }
             rulerWhite[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/clone_line/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/sourcetext_ruler/clone_line/");
             if (rgb == null) {
                 rgb = defaultRulerGray;
             }

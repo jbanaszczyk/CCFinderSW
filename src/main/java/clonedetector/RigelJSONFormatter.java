@@ -44,7 +44,7 @@ public class RigelJSONFormatter {
             //environment and file
             optionRuleFile(bw, jsonIndent, indentCount + 1);
 
-            // クローンペア部
+            // Clone pair part
             clonePair(bw, jsonIndent, indentCount + 1);
             if (jsonIndent) {
                 bw.write("\n");
@@ -56,7 +56,7 @@ public class RigelJSONFormatter {
     }
 
     private void optionRuleFile(BufferedWriter bw, boolean indent, int indentCount) throws IOException {
-        // オプション部
+        // Option part
 		/*
 		"environment" : {
 		 	"clone_detector" : {

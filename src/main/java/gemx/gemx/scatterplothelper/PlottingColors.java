@@ -63,7 +63,7 @@ public class PlottingColors {
 
     public static void initialize(Display display, HashMap<String, Object> settings) {
         {
-            RGB[] rgbs = JsonHelper.readRGBArrayFromSettings(settings, "/clonescatterplot/bar_colors/"); //$NON-NLS-1$
+            RGB[] rgbs = JsonHelper.readRGBArrayFromSettings(settings, "/clonescatterplot/bar_colors/");
             if (!(rgbs != null && rgbs.length >= 2 && rgbs.length <= 10)) {
                 rgbs = defaultColors;
             }
@@ -71,49 +71,49 @@ public class PlottingColors {
         }
 
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/background/");
             if (rgb == null) {
                 rgb = defaultCloneAreaBackground;
             }
             cloneAreaBackground[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/border_background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/border_background/");
             if (rgb == null) {
                 rgb = defaultBorderBackground;
             }
             borderBackground[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/ruler_background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/ruler_background/");
             if (rgb == null) {
                 rgb = defaultRulerBackground;
             }
             rulerBackground[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/noclone_area_background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/noclone_area_background/");
             if (rgb == null) {
                 rgb = defaultNocloneAreaColor;
             }
             nocloneAreaColor[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/selected_file_frame/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/selected_file_frame/");
             if (rgb == null) {
                 rgb = defaultSelectedFileColor;
             }
             selectedFileColor[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/masked_file_background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/masked_file_background/");
             if (rgb == null) {
                 rgb = defaultMaskedFileBackground;
             }
             maskedFileBackground[0] = new Color(display, rgb);
         }
         {
-            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/directory_name_popup_background/"); //$NON-NLS-1$
+            RGB rgb = JsonHelper.readRGBFromSettings(settings, "/clonescatterplot/directory_name_popup_background/");
             if (rgb == null) {
                 rgb = defaultDirectoryNamePopupBackground;
             }

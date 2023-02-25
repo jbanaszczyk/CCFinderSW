@@ -3,8 +3,8 @@ package clonedetector.classlist;
 import java.util.ArrayList;
 
 /**
- * ある言語における設定を保持するファイル
- * （複数言語を同時に扱う可能性を考えて）
+ * A file that holds settings for a language
+ * (Considering the possibility of handling multiple languages at the same time)
  */
 public class LangRuleConstructor {
     public boolean comment = true;

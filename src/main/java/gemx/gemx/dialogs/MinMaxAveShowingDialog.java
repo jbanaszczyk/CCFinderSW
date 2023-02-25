@@ -63,19 +63,19 @@ public class MinMaxAveShowingDialog {
             dummy1.setLayoutData(gridData);
 
             Label minColumnLabel = new Label(shellC, SWT.NONE);
-            minColumnLabel.setText(Messages.getString("gemx.MainWindow.S_Minumum")); //$NON-NLS-1$
+            minColumnLabel.setText(Messages.getString("gemx.MainWindow.S_Minumum"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             minColumnLabel.setLayoutData(gridData);
 
             Label maxColumnLabel = new Label(shellC, SWT.NONE);
-            maxColumnLabel.setText(Messages.getString("gemx.MainWindow.S_Maximum")); //$NON-NLS-1$
+            maxColumnLabel.setText(Messages.getString("gemx.MainWindow.S_Maximum"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             maxColumnLabel.setLayoutData(gridData);
 
             Label aveColumnLabel = new Label(shellC, SWT.NONE);
-            aveColumnLabel.setText(Messages.getString("gemx.MinMaxAveShowingDialog.S_AVE")); //$NON-NLS-1$
+            aveColumnLabel.setText(Messages.getString("gemx.MinMaxAveShowingDialog.S_AVE"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             aveColumnLabel.setLayoutData(gridData);
@@ -131,7 +131,7 @@ public class MinMaxAveShowingDialog {
                 gridData.widthHint = 150;
                 buttonCopy.setLayoutData(gridData);
             }
-            buttonCopy.setText(Messages.getString("gemx.MinMaxAveShowingDialog.S_COPY_TO_CLIPBOARD")); //$NON-NLS-1$
+            buttonCopy.setText(Messages.getString("gemx.MinMaxAveShowingDialog.S_COPY_TO_CLIPBOARD"));
             buttonCopy.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     copyValues();
@@ -144,7 +144,7 @@ public class MinMaxAveShowingDialog {
                 gridData.widthHint = 80;
                 okButton.setLayoutData(gridData);
             }
-            okButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_OK")); //$NON-NLS-1$
+            okButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_OK"));
             okButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     shellC.dispose();
@@ -156,7 +156,7 @@ public class MinMaxAveShowingDialog {
 
     private String valuesToString() {
         StringBuffer buffer = new StringBuffer();
-        buffer.append("Name\tMin.\tMax.\tAverage"); //$NON-NLS-1$
+        buffer.append("Name\tMin.\tMax.\tAverage");
         buffer.append(StringUtil.NewLineString);
 
         for (int i = 0; i < valueMins.length; ++i) {
@@ -203,7 +203,7 @@ public class MinMaxAveShowingDialog {
         if (sign < 0) {
             buf.append('-');
         }
-        String num = String.format("%.3f", value / (double) d); //$NON-NLS-1$
+        String num = String.format("%.3f", value / (double) d);
         buf.append(num);
         return buf.toString();
     }

@@ -13,7 +13,7 @@ public class PreProcessEase {
 
     private final String variableRegex = "[0-9a-zA-Z_]+";
     private final String reservedRegex;
-    public int nowLine;// 行数
+    public int nowLine;// Number of lines
     public ArrayList<Token> tokenList = new ArrayList<>();
     public ArrayList<Pre> preList = new ArrayList<>();
     private int lastNewLine = 0;
@@ -38,17 +38,17 @@ public class PreProcessEase {
             startLine = nowLine;
             startIndex = i;
             startClm = i - lastNewLine;
-            // 空白タブ文字無視
+            // Ignore blank tab characters
             if (c == '\u0020' || c == '\t' || c == '\u00A0' || c == '\u3000') {
                 i++;
             }
 
-            // 改行文字
+            // newline character
             else if (i != (tmpIndex = isNewLine(str, i))) {
                 i = tmpIndex;
             }
 
-            // 英数字
+            // alphanumeric character
             else if (str.substring(i, i + 1).matches(variableRegex)) {
                 i++;
                 while (i < str.length()) {
@@ -61,7 +61,7 @@ public class PreProcessEase {
                 tokenRegister(str.substring(startIndex, i), startLine, startClm, nowLine, i - lastNewLine, startIndex, i);
             }
 
-            //変数と記号
+            // variables and symbols
             else {
                 int index = str.indexOf("\n", i);
                 index = index == -1 ? str.length() : index;

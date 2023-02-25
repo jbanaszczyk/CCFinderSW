@@ -1,19 +1,19 @@
 package clonedetector.classlist;
 
 public class TokenData {
-    //ハッシュ値
+    // hash value
     public int hash;
-    //ファイルナンバー
+    // file number
     public int file;
-    //ファイルでの順番
+    // order in the file
     public int num;
-    //何行目はじめ
+    // beginning of line
     public int lineStart;
-    //何行目終わり
+    // end of line
     public int lineEnd;
-    //カラムはじめ
+    // Column beginning
     public int columnStart;
-    //カラム終わり
+    // end of column
     public int columnEnd;
 
     public TokenData(int hash, int file, int num, int lineStart, int lineEnd, int columnStart, int columnEnd) {

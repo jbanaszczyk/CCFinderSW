@@ -69,7 +69,7 @@ public class LittleEndianReader {
             byte[] ary = bbuffer1.array();
             if (ary[0] == terminatingByte) {
                 byte[] a = buf.toNativeArray();
-                return new String(a, StandardCharsets.UTF_8); //$NON-NLS-1$
+                return new String(a, StandardCharsets.UTF_8);
             }
             buf.add(ary[0]);
         }
@@ -128,7 +128,7 @@ public class LittleEndianReader {
             }
             if ((byte) b == terminatingByte) {
                 byte[] a = buf.toNativeArray();
-                return new String(a, StandardCharsets.UTF_8); //$NON-NLS-1$
+                return new String(a, StandardCharsets.UTF_8);
             }
             buf.add((byte) b);
         }

@@ -96,7 +96,7 @@ public class CcfxDetectionOptions {
     }
 
     public String getDetector() {
-        return "ccfx"; //$NON-NLS-1$
+        return "ccfx";
     }
 
     private int indexOf(String key) {

@@ -41,7 +41,7 @@ public class CCFFormatter {
         System.out.println("ccfinder file = " + filename);
         StringBuffer buf = new StringBuffer();
 
-        // オプション部
+        // Option part
         buf.append("#version: ").append(toolName).append("\n");
         buf.append("#format: classwise\n");
 
@@ -54,7 +54,7 @@ public class CCFFormatter {
         buf.append("#option: -c wfg\n");
         buf.append("#option: -y \n");
 
-        // ソースファイル部
+        // Source file part
         buf.append("#begin{file description}\n");
         for (int i = 0; i < filePathList.size(); i++) {
             buf.append("0.").append(i);
@@ -65,7 +65,7 @@ public class CCFFormatter {
         }
         buf.append("#end{file description}\n");
         buf.append("#begin{syntax error}\n#end{syntax error}\n");
-        // クローンセット部
+        // clone set
         buf.append("#begin{clone}\n");
 
         PrintProgress ps = new PrintProgress(2);
@@ -110,7 +110,7 @@ public class CCFFormatter {
         int LNR = 0;
         buf.append("#begin{set}\n");
         for (Integer s : x) {
-            int count = s;// クローン内の一番最後のNgramが全Ngram中何番目か
+            int count = s;// The last Ngram in the clone is the number of all Ngrams
             int filenum = nf.tokenList[count - distance + 1].file;
             int linenum = nf.tokenList[count - distance + 1].lineStart;
             int columnnum = nf.tokenList[count - distance + 1].columnStart;

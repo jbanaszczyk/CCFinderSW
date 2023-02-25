@@ -34,12 +34,12 @@ public class CcfxSettingsDialog {
 
     private int valueMinimumCloneLength = 50;
     private int valueMinimumTKS = 12;
-    private String valuePreprocessor = ""; //$NON-NLS-1$
+    private String valuePreprocessor = "";
     private int valueChunkSize = 60;
     private int valueShaperLevel = 1;
     private boolean valueUsePMatch = true;
     private boolean valueUsePreprocessCache = true;
-    private String valueEncoding = ""; //$NON-NLS-1$
+    private String valueEncoding = "";
     private int valueMaxWorkerThreads = 0;
     private boolean valueUsePrescreening = false;
 
@@ -74,7 +74,7 @@ public class CcfxSettingsDialog {
             gridLayout.horizontalSpacing = 15;
             shellC.setLayout(gridLayout);
         }
-        shellC.setText(Messages.getString("gemx.CcfxSettingsDialog.S_CCFX_SETTINGS")); //$NON-NLS-1$
+        shellC.setText(Messages.getString("gemx.CcfxSettingsDialog.S_CCFX_SETTINGS"));
 
         GridData gridData;
 
@@ -82,7 +82,7 @@ public class CcfxSettingsDialog {
             Label label = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_PREPROCESSOR")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_PREPROCESSOR"));
 
             preprocessor = new Combo(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
@@ -100,7 +100,7 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 200;
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_MINIMUM_CLONE_LENGTH")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_MINIMUM_CLONE_LENGTH"));
 
             minimumCloneLength = new Spinner(shellC, SWT.NONE);
             minimumCloneLength.setMaximum(10000);
@@ -118,7 +118,7 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 100;
             unit.setLayoutData(gridData);
-            unit.setText("Token"); //$NON-NLS-1$
+            unit.setText("Token");
         }
 
         {
@@ -126,7 +126,7 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 200;
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_MINIMUM_TKS")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_MINIMUM_TKS"));
 
             minimumTKS = new Spinner(shellC, SWT.NONE);
             minimumTKS.setMaximum(10000);
@@ -144,20 +144,20 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 100;
             unit.setLayoutData(gridData);
-            unit.setText(""); //$NON-NLS-1$
+            unit.setText("");
         }
 
         {
             Label label = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_SHAPER_LEVEL")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_SHAPER_LEVEL"));
 
             shaperLevel = new Combo(shellC, SWT.READ_ONLY);
-            shaperLevel.add(Messages.getString("gemx.CcfxSettingsDialog.S_0_DONT_USE_SHAPER")); //$NON-NLS-1$
-            shaperLevel.add(Messages.getString("gemx.CcfxSettingsDialog.S_1_EASY_SHAPER")); //$NON-NLS-1$
-            shaperLevel.add(Messages.getString("gemx.CcfxSettingsDialog.S_2_SOFT_SHAPER")); //$NON-NLS-1$
-            shaperLevel.add(Messages.getString("gemx.CcfxSettingsDialog.S_3_HARD_SHAPER")); //$NON-NLS-1$
+            shaperLevel.add(Messages.getString("gemx.CcfxSettingsDialog.S_0_DONT_USE_SHAPER"));
+            shaperLevel.add(Messages.getString("gemx.CcfxSettingsDialog.S_1_EASY_SHAPER"));
+            shaperLevel.add(Messages.getString("gemx.CcfxSettingsDialog.S_2_SOFT_SHAPER"));
+            shaperLevel.add(Messages.getString("gemx.CcfxSettingsDialog.S_3_HARD_SHAPER"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.horizontalSpan = 2;
             shaperLevel.setLayoutData(gridData);
@@ -172,10 +172,10 @@ public class CcfxSettingsDialog {
             Label label = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_PMATCH_APPLICATION")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_PMATCH_APPLICATION"));
 
             usePMatch = new Button(shellC, SWT.CHECK);
-            usePMatch.setText(Messages.getString("gemx.CcfxSettingsDialog.S_USE_PMATCH")); //$NON-NLS-1$
+            usePMatch.setText(Messages.getString("gemx.CcfxSettingsDialog.S_USE_PMATCH"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.horizontalSpan = 2;
             usePMatch.setLayoutData(gridData);
@@ -190,10 +190,10 @@ public class CcfxSettingsDialog {
             Label label = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_PRESCREENING_UTILIZATION")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_DEFAULT_PRESCREENING_UTILIZATION"));
 
             usePrescreening = new Button(shellC, SWT.CHECK);
-            usePrescreening.setText(Messages.getString("gemx.CcfxSettingsDialog.S_USE_PRESCREENING")); //$NON-NLS-1$
+            usePrescreening.setText(Messages.getString("gemx.CcfxSettingsDialog.S_USE_PRESCREENING"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.horizontalSpan = 2;
             usePrescreening.setLayoutData(gridData);
@@ -216,11 +216,11 @@ public class CcfxSettingsDialog {
             //label.setEnabled(false); // 2007/11/16
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_PREPROCESSED_FILE_DIRECTORY")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_PREPROCESSED_FILE_DIRECTORY"));
 
             usePreprocessCache = new Button(shellC, SWT.CHECK);
             //usePreprocessCache.setEnabled(false); // 2007/11/16
-            usePreprocessCache.setText(Messages.getString("gemx.CcfxSettingsDialog.S_SAVE_TO_DISTINCT_DIRECTORY")); //$NON-NLS-1$
+            usePreprocessCache.setText(Messages.getString("gemx.CcfxSettingsDialog.S_SAVE_TO_DISTINCT_DIRECTORY"));
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.horizontalSpan = 2;
             usePreprocessCache.setLayoutData(gridData);
@@ -232,12 +232,12 @@ public class CcfxSettingsDialog {
         }
 
         {
-            String tooltipText = Messages.getString("gemx.CcfxSettingsDialog.S_TOOLTIP_FOR_CHUNK_SIZE"); //$NON-NLS-1$
+            String tooltipText = Messages.getString("gemx.CcfxSettingsDialog.S_TOOLTIP_FOR_CHUNK_SIZE");
 
             Label label = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_CHUNK_SIZE")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_CHUNK_SIZE"));
             label.setToolTipText(tooltipText);
 
             chunkSize = new Spinner(shellC, SWT.NONE);
@@ -255,7 +255,7 @@ public class CcfxSettingsDialog {
             Label unit = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             unit.setLayoutData(gridData);
-            unit.setText("MByte"); //$NON-NLS-1$
+            unit.setText("MByte");
             unit.setToolTipText(tooltipText);
         }
 
@@ -264,7 +264,7 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 200;
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_MAX_WORKER_THREADS")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_MAX_WORKER_THREADS"));
 
             maxWorkerThreads = new Spinner(shellC, SWT.NONE);
             maxWorkerThreads.setMaximum(100);
@@ -282,16 +282,16 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 100;
             unit.setLayoutData(gridData);
-            unit.setText(""); //$NON-NLS-1$
+            unit.setText("");
         }
 
         {
-            String tooltipText = Messages.getString("gemx.CcfxSettingsDialog.S_TOOLTIP_FOR_ENCODING"); //$NON-NLS-1$
+            String tooltipText = Messages.getString("gemx.CcfxSettingsDialog.S_TOOLTIP_FOR_ENCODING");
 
             Label label = new Label(shellC, SWT.NONE);
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             label.setLayoutData(gridData);
-            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_ENCODING")); //$NON-NLS-1$
+            label.setText(Messages.getString("gemx.CcfxSettingsDialog.S_ENCODING"));
             label.setToolTipText(tooltipText);
 
             encoding = new Text(shellC, SWT.NONE);
@@ -311,7 +311,7 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.HORIZONTAL_ALIGN_BEGINNING);
             gridData.widthHint = 150;
             initializeValuesButton.setLayoutData(gridData);
-            initializeValuesButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_INITIALIZE_SETTINGS")); //$NON-NLS-1$
+            initializeValuesButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_INITIALIZE_SETTINGS"));
             initializeValuesButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     initializeValues();
@@ -336,7 +336,7 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             okButton.setLayoutData(gridData);
-            okButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_OK")); //$NON-NLS-1$
+            okButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_OK"));
             okButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.OK;
@@ -348,7 +348,7 @@ public class CcfxSettingsDialog {
             gridData = new GridData(GridData.FILL_HORIZONTAL);
             gridData.widthHint = 80;
             cancelButton.setLayoutData(gridData);
-            cancelButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_CANCEL")); //$NON-NLS-1$
+            cancelButton.setText(Messages.getString("gemx.CcfxSettingsDialog.S_CANCEL"));
             cancelButton.addSelectionListener(new SelectionAdapter() {
                 public void widgetSelected(SelectionEvent e) {
                     result = SWT.CANCEL;
