@@ -23,7 +23,7 @@ import java.util.LinkedHashMap;
 import java.util.Properties;
 
 public class Main {
-    private static final String sVerMajor = "verMajor"; //$NON-NLS-1$
+    private static final String sVerMajor = "verMajor";
     private static final String sVerMinor1 = "verMinor1"; //$NON-NLS-1$
     private static final String sVerMinor2 = "verMinor2"; //$NON-NLS-1$
     private static final String sSettingPreprocessor = "settingPreprocessor"; //$NON-NLS-1$
@@ -159,7 +159,7 @@ public class Main {
         try {
             Image img = null;
             {
-                ImageData imgData = new ImageData(Main.class.getResourceAsStream("/logonew16.png")); //$NON-NLS-1$
+                ImageData imgData = new ImageData(Main.class.getResourceAsStream("/logonew64.png")); //$NON-NLS-1$
                 if (imgData != null) {
                     img = new Image(display, imgData);
                     shell.setImage(img);

@@ -1,9 +1,15 @@
 package gemx.ccfinderx;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.nio.file.Path;
 
 public class CCFinderX {
+
+    private static final Logger logger = LogManager.getLogger(MethodHandles.lookup().lookupClass());
 
     public static CCFinderX theInstance = new CCFinderX();
 
@@ -16,17 +22,11 @@ public class CCFinderX {
     }
 
     public static String getApplicationDataPath() {
-
-//        var clazz = MethodHandles.lookup().lookupClass();
-//        return CCFinderX.class.getProtectionDomain().getCodeSource().getLocation().getFile();
-
         try {
             return Path.of(".").toRealPath().toString();
         } catch (IOException e) {
             return System.getProperty("user.dir");
         }
-
-
     }
 
     public void setModuleDirectory(String path) {

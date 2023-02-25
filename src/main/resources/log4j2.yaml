@@ -1,0 +1,21 @@
+Configuration:
+  status: info
+
+  Appenders:
+    Console:
+      name: CONSOLE
+      PatternLayout:
+        Pattern: "%10r [%t] %-5level %c{3} - %msg%n"
+
+  Loggers:
+    Root:
+      level: info
+      AppenderRef:
+        ref: CONSOLE
+
+    Logger:
+      - name: gemx
+        additivity: false
+        level: debug
+        AppenderRef:
+          - ref: CONSOLE
