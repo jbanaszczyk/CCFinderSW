@@ -3,7 +3,7 @@ package gemx.gemx;
 import gemx.customwidgets.SearchboxData;
 import gemx.customwidgets.SearchboxListener;
 import gemx.model.*;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import gemx.resources.TextColors;
 import gemx.utility.Decoder;
 import gemx.utility.PrepReader;

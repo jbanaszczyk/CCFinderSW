@@ -7,7 +7,7 @@ import gemx.customwidgets.SearchboxListener;
 import gemx.gemx.dialogs.*;
 import gemx.gemx.scatterplothelper.CloneSetMetricExtractor;
 import gemx.model.*;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import gemx.utility.*;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -17,8 +17,6 @@ import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.ShellAdapter;
-import org.eclipse.swt.events.ShellEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
@@ -3091,18 +3089,6 @@ public class MainWindow {
                 gemx.constants.ApplicationVersion.verMinor1, gemx.constants.ApplicationVersion.verMinor2,
                 gemx.constants.ApplicationVersion.verFix));
         shell.setLayout(new GridLayout(1, true));
-
-        shell.addShellListener(new ShellAdapter() {
-            public void shellClosed(ShellEvent e) {
-                MessageBox mes = new MessageBox(MainWindow.this.shell, SWT.OK | SWT.CANCEL
-                        | SWT.ICON_QUESTION);
-                mes.setText("Exiting - GemX");
-                mes.setMessage(Messages.getString("gemx.MainWindow.S_ARE_YOU_SURE_TO_EXIT_GEMX"));
-                if (mes.open() == SWT.CANCEL) {
-                    e.doit = false;
-                }
-            }
-        });
 
         buildMenu();
 

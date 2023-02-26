@@ -5,7 +5,7 @@ import gemx.customwidgets.SearchboxListener;
 import gemx.model.CloneSet;
 import gemx.model.ClonesetMetricModel;
 import gemx.model.Model;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import gemx.resources.MetricColors;
 import gemx.utility.StringUtil;
 import gnu.trove.TLongArrayList;

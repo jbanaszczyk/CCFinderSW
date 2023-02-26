@@ -2,7 +2,7 @@ package gemx.gemx;
 
 import gemx.model.ClonesetMetricModel;
 import gemx.model.FileMetricModel;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 
 import java.io.IOException;
 

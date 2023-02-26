@@ -1,6 +1,6 @@
 package gemx.customwidgets;
 
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -24,7 +24,7 @@ public class Searchbox extends Composite {
         super(sc, style);
 
         final Display display = sc.getDisplay();
-        magnifyGlassImage = gemx.resources.ImageManager.loadImage(display, "search.png");
+        magnifyGlassImage = gemx.resources.ImageManager.loadImage(display, "magnifier.png");
         cancelImage = gemx.resources.ImageManager.loadImage(display, "cancel.png");
 
         {
@@ -48,7 +48,7 @@ public class Searchbox extends Composite {
             });
         }
         {
-            Image image = gemx.resources.ImageManager.loadImage(display, "up.png");
+            Image image = gemx.resources.ImageManager.loadImage(display, "arrow_up.png");
             ToolItem item = new ToolItem(toolBar, SWT.PUSH);
             item.setImage(image);
             item.addSelectionListener(new SelectionAdapter() {
@@ -61,7 +61,7 @@ public class Searchbox extends Composite {
             });
         }
         {
-            Image image = gemx.resources.ImageManager.loadImage(display, "down.png");
+            Image image = gemx.resources.ImageManager.loadImage(display, "arrow_down.png");
             ToolItem item = new ToolItem(toolBar, SWT.PUSH);
             item.setImage(image);
             item.addSelectionListener(new SelectionAdapter() {

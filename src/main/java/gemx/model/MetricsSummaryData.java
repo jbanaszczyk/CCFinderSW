@@ -1,6 +1,6 @@
 package gemx.model;
 
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import gemx.utility.StringUtil;
 
 import java.io.BufferedReader;

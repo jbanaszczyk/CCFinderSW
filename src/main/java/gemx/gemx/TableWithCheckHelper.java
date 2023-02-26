@@ -1,6 +1,6 @@
 package gemx.gemx;
 
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;

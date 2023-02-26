@@ -1,13 +1,12 @@
 package gemx.gemx.dialogs;
 
 import gemx.ccfinderx.CCFinderX;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -79,14 +78,9 @@ public class AboutDialog {
                 if (backgroundColor != null) {
                     labelIcon.setBackground(backgroundColor);
                 }
-                Image img = null;
-                {
-                    ImageData imgData = new ImageData(AboutDialog.class.getResourceAsStream("/logonew_with_name.png"));
-                    if (imgData != null) {
-                        img = new Image(parent.getDisplay(), imgData);
-                        labelIcon.setImage(img);
-                    }
-                }
+                Image img = gemx.resources.ImageManager.loadImage(display, "logonew_with_name.png");
+                labelIcon.setImage(img);
+
                 gridData = new GridData(GridData.HORIZONTAL_ALIGN_END);
                 labelIcon.setLayoutData(gridData);
                 new Label(buttonsCompo, SWT.NONE);
@@ -104,14 +98,8 @@ public class AboutDialog {
                 if (backgroundColor != null) {
                     labelIcon.setBackground(backgroundColor);
                 }
-                Image img = null;
-                {
-                    ImageData imgData = new ImageData(AboutDialog.class.getResourceAsStream("logonew64.png"));
-                    if (imgData != null) {
-                        img = new Image(parent.getDisplay(), imgData);
-                        labelIcon.setImage(img);
-                    }
-                }
+                Image img = gemx.resources.ImageManager.loadImage(display, "logonew64.png");
+                labelIcon.setImage(img);
             }
 
             String versionStr = String.format("%d.%d.%d.%d", gemx.constants.ApplicationVersion.verMajor,

@@ -6,7 +6,7 @@ import gemx.model.ClonePair;
 import gemx.model.ClonesetMetricModel;
 import gemx.model.Model;
 import gemx.model.SourceFile;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import gnu.trove.TIntArrayList;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;

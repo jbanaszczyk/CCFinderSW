@@ -6,13 +6,12 @@ import gemx.constants.CcfxDefaultSettings;
 import gemx.constants.GemXDefaultSettings;
 import gemx.gemx.dialogs.AboutDialog;
 import gemx.gemx.scatterplothelper.PlottingColors;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import gemx.resources.MetricColors;
 import gemx.resources.TextColors;
 import gemx.utility.TemporaryFileManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
@@ -157,14 +156,9 @@ public class Main {
         MainWindow mainWindow = new MainWindow(main, widgetsFactory);
         mainWindow.open(shell);
         try {
-            Image img = null;
-            {
-                ImageData imgData = new ImageData(Main.class.getResourceAsStream("/logonew64.png"));
-                if (imgData != null) {
-                    img = new Image(display, imgData);
-                    shell.setImage(img);
-                }
-            }
+            Image img = gemx.resources.ImageManager.loadImage(display, "logonew64.png");
+            shell.setImage(img);
+
             scan_command(args, mainWindow);
             try {
                 while (!shell.isDisposed()) {

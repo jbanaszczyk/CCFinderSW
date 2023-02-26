@@ -2,7 +2,7 @@ package gemx.gemx.dialogs;
 
 import gemx.constants.CcfxDefaultSettings;
 import gemx.customwidgets.Spinner;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;

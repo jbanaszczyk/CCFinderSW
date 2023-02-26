@@ -5,7 +5,7 @@ import gemx.customwidgets.SearchboxListener;
 import gemx.model.FileMetricModel;
 import gemx.model.Model;
 import gemx.model.SourceFile;
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import gemx.resources.MetricColors;
 import gemx.utility.StringUtil;
 import gnu.trove.TIntArrayList;

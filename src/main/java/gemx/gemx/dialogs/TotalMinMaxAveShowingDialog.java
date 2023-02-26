@@ -1,6 +1,6 @@
 package gemx.gemx.dialogs;
 
-import gemx.res.Messages;
+import gemx.resources.Messages;
 import gemx.utility.StringUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.Clipboard;
